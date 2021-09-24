@@ -4,13 +4,14 @@ driver:
 
 provisioner:
   name: chef_zero
+  deprecations_as_errors: true
   product_name: chef
   chef_license: accept-no-persist
   product_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
   install_strategy: once
   # enforce_idempotency: true
   # multiple_converge: 2
-  deprecations_as_errors: true
+  log_level: <%= ENV['CHEF_LOG_LEVEL'] || 'auto' %>
 
 verifier:
   name: inspec
@@ -27,7 +28,6 @@ platforms:
 
 suites:
   - name: default
-    verifier:
-      inspec_tests:
-        - test/integration/default
+    run_list:
+      - isc_kea_test
 ...
