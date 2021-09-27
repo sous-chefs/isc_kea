@@ -39,6 +39,8 @@ property :clear_default_config, [true, false],
 unified_mode true
 
 action_class do
+  include IscKea::Cookbook::InstallHelpers
+
   def do_package_action(action)
     package 'isc-kea' do
       package_name new_resource.packages
@@ -84,19 +86,40 @@ action :install do
     end
   when 'debian'
     remote_file "/etc/apt/sources.list.d/isc-kea-#{new_resource.install_version}.list" do
-      source "https://dl.cloudsmith.io/public/isc/kea-1-9/config.deb.txt?distro=#{node['platform']}&codename=#{node['platform_version']}"
+      source "https://dl.cloudsmith.io/public/isc/kea-#{new_resource.install_version}/config.deb.txt?distro=#{node['platform']}&codename=#{node['os_release']['version_codename']}"
 
       owner 'root'
       group 'root'
       mode '0644'
 
       action :create
+      notifies :run, 'notify_group[Post APT repo install actions]', :immediately
     end
 
-    execute 'name' do
+    notify_group 'Post APT repo install actions' do
+      notifies :create, 'remote_file[get-kea-remote-apt-key]', :immediately
+      notifies :run, "execute[apt-key add #{Chef::Config[:file_cache_path]}/isc-kea-repo.key]", :immediately
+      notifies :run, 'execute[sudo apt-get update]', :immediately
+    end
+
+    remote_file 'get-kea-remote-apt-key' do
+      source debian_key_url
+      path "#{Chef::Config[:file_cache_path]}/isc-kea-repo.key"
+
+      owner 'root'
+      group 'root'
+      mode '0644'
+
+      action :nothing
+    end
+
+    execute "apt-key add #{Chef::Config[:file_cache_path]}/isc-kea-repo.key" do
+      action :nothing
+    end
+
+    execute 'sudo apt-get update' do
       command 'sudo apt-get update'
       action :nothing
-      subscribes :run, "remote_file[/etc/apt/sources.list.d/isc-kea-#{new_resource.install_version}.list]", :immediately
     end
   else
     raise "Unsupported platform family #{node['platform_family']}"

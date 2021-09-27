@@ -22,7 +22,7 @@ include IscKea::Cookbook::Helpers
 unified_mode true
 
 property :service_name, String,
-          equal_to: %w(kea-ctrl-agent kea-dhcp-ddns kea-dhcp4 kea-dhcp6),
+          equal_to: %w(kea-ctrl-agent isc-kea-ctrl-agent kea-dhcp-ddns isc-kea-dhcp-ddns-server kea-dhcp4 isc-kea-dhcp4-server kea-dhcp6 isc-kea-dhcp6-server),
           name_property: true
 
 property :config_file, String,

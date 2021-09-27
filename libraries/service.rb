@@ -25,7 +25,22 @@ module IscKea
       end
 
       def kea_config_test_command(service_name, config_file)
-        "#{service_name} -t #{config_file}"
+        binary_path = case service_name
+                      when 'kea-dhcp4', 'isc-kea-dhcp4-server'
+                        '/usr/sbin/kea-dhcp4'
+                      when 'kea-dhcp6', 'isc-kea-dhcp6-server'
+                        '/usr/sbin/kea-dhcp6'
+                      when 'kea-dhcp-ddns', 'isc-kea-dhcp-ddns-server'
+                        '/usr/sbin/kea-dhcp-ddns'
+                      when 'kea-ctrl-agent', 'isc-kea-ctrl-agent'
+                        '/usr/sbin/kea-ctrl-agent'
+                      else
+                        raise ArgumentError, "Unsupported service name #{service_name}"
+                      end
+
+        Chef::Log.debug("kea_config_test_command: #{binary_path} -t #{config_file}")
+
+        "#{binary_path} -t #{config_file}"
       end
     end
   end

@@ -33,8 +33,30 @@ module IscKea
         packages
       end
 
+      def debian_key_url
+        case new_resource.install_version
+        when '1-6'
+          'https://dl.cloudsmith.io/public/isc/kea-1-6/gpg.0607E2621F1564A6.key'
+        when '1-7'
+          'https://dl.cloudsmith.io/public/isc/kea-1-7/gpg.40544590508A17DE.key'
+        when '1-8'
+          'https://dl.cloudsmith.io/public/isc/kea-1-8/gpg.4DD5AE28ADA7268E.key'
+        when '1-9'
+          'https://dl.cloudsmith.io/public/isc/kea-1-9/gpg.5DC67B0A74E30739.key'
+        else
+          raise ArgumentError, "Unsupported version #{new_resource.install_version}"
+        end
+      end
+
       def default_install_packages
-        %w(isc-kea isc-kea-devel isc-kea-hooks isc-kea-libs isc-kea-shell)
+        case node['platform_family']
+        when 'amazon', 'fedora', 'rhel'
+          %w(isc-kea isc-kea-devel isc-kea-hooks isc-kea-libs isc-kea-shell)
+        when 'debian'
+          %w(isc-kea-admin isc-kea-common isc-kea-ctrl-agent isc-kea-dev isc-kea-dhcp-ddns-server isc-kea-dhcp4-server isc-kea-dhcp6-server isc-kea-doc)
+        else
+          raise ArgumentError, "Unsupported platform family #{node['platform_family']}"
+        end
       end
     end
   end
