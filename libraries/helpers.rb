@@ -21,10 +21,10 @@ module IscKea
   module Cookbook
     module Helpers
       def default_config_file
-        cfg_file = if resource_name.to_s.match?(/isc_kea_config_(dhcp4|dhcp6|ddns_dhcp|ctrl_agent)/)
-                     "/etc/kea/kea-#{resource_name.to_s.match(/(dhcp4|dhcp6|ddns_dhcp|ctrl_agent)/)[1].gsub('_', '-')}.conf"
+        cfg_file = if resource_name.to_s.match?(/isc_kea_config_(dhcp4|dhcp6|ddns_dhcp|control_agent)/)
+                     "/etc/kea/kea-#{resource_name.to_s.match(/(dhcp4|dhcp6|ddns_dhcp|control_agent)/)[1].gsub('_', '-')}.conf"
                    elsif resource_name.to_s.eql?('isc_kea_service')
-                     "/etc/kea/kea-#{service_name.match(/(dhcp4|dhcp6|ddns_dhcp|ctrl_agent)/)[1].gsub('_', '-')}.conf"
+                     "/etc/kea/kea-#{service_name.match(/(dhcp4|dhcp6|ddns_dhcp|control_agent)/)[1].gsub('_', '-')}.conf"
                    end
 
         Chef::Log.debug("default_config_file: Config file #{cfg_file}")
