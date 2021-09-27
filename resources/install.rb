@@ -46,9 +46,10 @@ action_class do
     end
 
     %w(ctrl-agent dhcp4 dhcp6 dhcp-ddns).each do |cfg_file|
-      execute ">/etc/kea/kea-#{cfg_file}.conf" do
+      file "/etc/kea/kea-#{cfg_file}.conf" do
+        content '{}'
         action(:nothing)
-        subscribes :run, 'package[isc-kea]', :immediately
+        subscribes :create, 'package[isc-kea]', :immediately
       end
     end if new_resource.clear_default_config
   end

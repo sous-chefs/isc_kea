@@ -17,11 +17,16 @@
 # limitations under the License.
 #
 
+include IscKea::Cookbook::Helpers
+
 unified_mode true
 
 property :service_name, String,
-          required: true,
-          equal_to: %w(kea-ctrl-agent kea-dhcp-ddns kea-dhcp4 kea-dhcp6)
+          equal_to: %w(kea-ctrl-agent kea-dhcp-ddns kea-dhcp4 kea-dhcp6),
+          name_property: true
+
+property :config_file, String,
+          default: lazy { default_config_file }
 
 property :config_test, [true, false],
           default: true,
