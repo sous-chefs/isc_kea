@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4
+# Resource:: config_dhcp4_interfaces
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -21,10 +21,20 @@ unified_mode true
 
 use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
-use 'partial/_config_dhcp4_parameters_global'
 
 def auto_accumulator_options_override
-  { config_path_override: %w(Dhcp4) }.freeze
+  { config_path_override: %w(Dhcp4 interfaces-config) }.freeze
 end
 
-property :store_extended_info, [true, false]
+property :interfaces, [String, Array],
+          coerce: proc { |p| p.is_a?(String) ? p.split(',') : p }
+
+property :dhcp_socket_type, [String, Symbol],
+          equal_to: %w(raw udp),
+          coerce: proc { |p| p.to_s }
+
+property :dhcp_socket_type, [String, Symbol],
+          equal_to: %w(use-routing same-as-inbound),
+          coerce: proc { |p| p.to_s }
+
+property :re_detect, [true, false]

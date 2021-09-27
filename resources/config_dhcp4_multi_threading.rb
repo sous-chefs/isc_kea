@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4
+# Resource:: config_dhcp4_multi_threading
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -21,10 +21,15 @@ unified_mode true
 
 use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
-use 'partial/_config_dhcp4_parameters_global'
 
 def auto_accumulator_options_override
-  { config_path_override: %w(Dhcp4) }.freeze
+  {
+    config_path_override: %w(Dhcp4 multi-threading),
+  }.freeze
 end
 
-property :store_extended_info, [true, false]
+property :enable_multi_threading, [true, false]
+
+property :thread_pool_size, Integer
+
+property :packet_queue_size, Integer

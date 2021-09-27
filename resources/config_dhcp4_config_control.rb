@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4
+# Resource:: config_dhcp4_config_control
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -21,10 +21,12 @@ unified_mode true
 
 use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
-use 'partial/_config_dhcp4_parameters_global'
+use 'partial/_config_database'
 
 def auto_accumulator_options_override
-  { config_path_override: %w(Dhcp4) }.freeze
+  {
+    config_path_override: %w(Dhcp4 config-config),
+  }.freeze
 end
 
-property :store_extended_info, [true, false]
+property :config_fetch_wait_time, Integer

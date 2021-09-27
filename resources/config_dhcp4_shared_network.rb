@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4
+# Resource:: config_dhcp4_shared_network
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -21,10 +21,24 @@ unified_mode true
 
 use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
-use 'partial/_config_dhcp4_parameters_global'
+use 'partial/_config_dhcp4_parameters_shared_network'
 
 def auto_accumulator_options_override
-  { config_path_override: %w(Dhcp4) }.freeze
+  {
+    config_path_override: %w(Dhcp4 shared-networks),
+    config_path_type: :array,
+    config_path_match_field: 'name',
+    config_path_match_value: network_name,
+    property_translation_matrix: {
+      network_name: 'name',
+    },
+  }.freeze
 end
 
-property :store_extended_info, [true, false]
+property :network_name, String,
+          name_property: true
+
+property :interface, String
+
+property :subnets, [Array, Hash],
+          coerce: proc { |p| p.is_a?(Array) ? p : [p] }

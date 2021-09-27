@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4
+# Resource:: config_dhcp4_global_host_reservation
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -21,10 +21,20 @@ unified_mode true
 
 use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
-use 'partial/_config_dhcp4_parameters_global'
+use 'partial/_config_dhcp4_parameters_subnet'
 
 def auto_accumulator_options_override
-  { config_path_override: %w(Dhcp4) }.freeze
+  {
+    config_path_override: %w(Dhcp4 reservations),
+    config_path_type: :array,
+    config_path_match_key: 'ip_address',
+    config_path_match_value: ip_address,
+  }.freeze
 end
 
-property :store_extended_info, [true, false]
+property :hw_address, String
+
+property :ip_address, String,
+          name_property: true
+
+property :hostname, String

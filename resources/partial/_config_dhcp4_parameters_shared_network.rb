@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp6
+# Resource:: _config_dhcp4_parameters_shared_network
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -17,18 +17,7 @@
 # limitations under the License.
 #
 
-unified_mode true
-
-use 'partial/_config_auto_accumulator'
-use 'partial/_config_parameters_common'
-
-def auto_accumulator_options_override
-  { config_path_override: %w(Dhcp6) }.freeze
-end
-
-property :cache_max_age, String
-
-property :cache_threshold, String
+property :boot_file_name, String
 
 property :calculate_tee_times, String
 
@@ -46,62 +35,28 @@ property :ddns_generated_prefix, String
 
 property :ddns_qualifying_suffix, String
 
-property :decline_probation_period, String
-
-property :delegated_len, String
-
-property :dhcp4o6_port, String
-
-property :excluded_prefix, String
-
-property :excluded_prefix_len, String
-
-property :hostname_char_set, String
-
-property :hostname_char_replacement, String
-
 property :interface, String
 
-property :interface_id, String
+property :match_client_id, [true, false]
 
-property :max_preferred_lifetime, String
-
-property :max_valid_lifetime, String
-
-property :min_preferred_lifetime, String
-
-property :min_valid_lifetime, String
+property :next_server, String
 
 property :option_data, String
 
-property :option_def, String
-
-property :preferred_lifetime, String
-
-property :prefix, String
-
-property :prefix_len, String
-
-property :rapid_commit, String
-
 property :rebind_timer, String
 
-property :relay, String
-
 property :renew_timer, String
+
+property :server_hostname, String
+
+property :valid_lifetime, String
+
+property :relay, String
 
 property :require_client_classes, String
 
 property :reservation_mode, String
 
-property :reservations_global, String
-
-property :reservations_in_subnet, String
-
-property :reservations_out_of_pool, String
-
 property :t1_percent, String
 
 property :t2_percent, String
-
-property :valid_lifetime, String

@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4
+# Resource:: _config_dhcp4_parameters_pool
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -17,14 +17,8 @@
 # limitations under the License.
 #
 
-unified_mode true
+property :client_class, String
 
-use 'partial/_config_auto_accumulator'
-use 'partial/_config_parameters_common'
-use 'partial/_config_dhcp4_parameters_global'
+property :option_data, String
 
-def auto_accumulator_options_override
-  { config_path_override: %w(Dhcp4) }.freeze
-end
-
-property :store_extended_info, [true, false]
+property :require_client_classes, String

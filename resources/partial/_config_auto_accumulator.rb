@@ -1,6 +1,6 @@
 #
 # Cookbook:: chef_auto_accumulator
-# Resource:: _config_file
+# Resource:: _config_auto_accumulator
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -18,6 +18,7 @@
 #
 
 include ChefAutoAccumulator::Resource
+include IscKea::Cookbook::Helpers
 
 unified_mode true
 
@@ -25,14 +26,9 @@ property :sensitive, [true, false],
           default: false,
           desired_state: false
 
-property :config_directory, String,
-          required: true,
-          default: '/etc/kea',
-          desired_state: false
-
 property :config_file, String,
           required: true,
-          coerce: proc { |p| ::File.join(config_directory, p) },
+          default: lazy { default_config_file },
           desired_state: false
 
 property :load_existing_config_file, true,
@@ -69,7 +65,15 @@ load_current_value do |new_resource|
     return
   end
 
-  current_config = load_config_file_section(new_resource.config_file)
+  current_config = case option_config_path_type
+                   when :hash
+                     load_config_file_section(new_resource.config_file)
+                   when :array
+                     load_config_file_section_item(new_resource.config_file)
+                   when :contained_array
+                     load_config_file_section_contained_item(new_resource.config_file)
+                   end
+
   current_value_does_not_exist! if nil_or_empty?(current_config)
 
   if ::File.exist?(new_resource.config_file)
@@ -94,7 +98,6 @@ def auto_accumulator_options
   {
     config_file_type: :json,
     config_base_path: 'isc_kea_config_',
-    # config_path_override: %w(Dhcp4),
     property_name_gsub: %w(_ -),
   }.freeze
 end
@@ -105,28 +108,49 @@ end
 
 action :create do
   converge_if_changed do
-    resource_properties.each do |rp|
-      next if nil_or_empty?(new_resource.send(rp))
+    case option_config_path_type
+    when :array
+      map = resource_properties.map do |rp|
+        next if nil_or_empty?(new_resource.send(rp))
 
-      accumulator_config(:set, rp, new_resource.send(rp))
+        [translate_property_value(rp), new_resource.send(rp)]
+      end.compact.to_h
+
+      accumulator_config(action: :array_push, value: map)
+    when :contained_array
+      map = resource_properties.map do |rp|
+        next if nil_or_empty?(new_resource.send(rp))
+
+        [translate_property_value(rp), new_resource.send(rp)]
+      end.compact.to_h
+
+      accumulator_config(action: :key_push, key: option_config_path_contained_key, value: map)
+    when :hash
+      resource_properties.each do |rp|
+        next if nil_or_empty?(new_resource.send(rp))
+
+        accumulator_config(action: :set, key: rp, value: new_resource.send(rp))
+      end
+
+      new_resource.extra_options.each { |key, value| accumulator_config(:set, key, value) } if property_is_set?(:extra_options)
+    else
+      raise "Unknown config path type #{debug_var_output(option_config_path_type)}"
     end
-
-    new_resource.extra_options.each { |key, value| accumulator_config(:set, key, value) } if property_is_set?(:extra_options)
   end
 end
 
-action :delete do
-  set_properties = resource_properties.push(:extra_options).filter { |rp| property_is_set?(rp) }
-  delete_properties = nil_or_empty?(set_properties) ? resource_properties : set_properties
-  diff_properties = delete_properties.filter { |dp| load_config_file_section(new_resource.config_file).key?(translate_property_value(dp)) }
-  diff_properties.map! { |dp| translate_property_value(dp) }
+# action :delete do
+#   set_properties = resource_properties.push(:extra_options).filter { |rp| property_is_set?(rp) }
+#   delete_properties = nil_or_empty?(set_properties) ? resource_properties : set_properties
+#   diff_properties = delete_properties.filter { |dp| load_config_auto_accumulator_section(new_resource.config_file).key?(translate_property_value(dp)) }
+#   diff_properties.map! { |dp| translate_property_value(dp) }
 
-  if property_is_set?(:extra_options)
-    extra_options_diff = new_resource.extra_options.keys.filter { |eo| load_config_file_section(new_resource.config_file).key?(eo) }
-    diff_properties.concat(extra_options_diff) unless nil_or_empty?(extra_options_diff)
-  end
+#   if property_is_set?(:extra_options)
+#     extra_options_diff = new_resource.extra_options.keys.filter { |eo| load_config_auto_accumulator_section(new_resource.config_file).key?(eo) }
+#     diff_properties.concat(extra_options_diff) unless nil_or_empty?(extra_options_diff)
+#   end
 
-  converge_by("Deleting configuration for #{diff_properties.join(', ')}") do
-    diff_properties.each { |rp| accumulator_config(:delete, rp) }
-  end unless diff_properties.empty?
-end
+#   converge_by("Deleting configuration for #{diff_properties.join(', ')}") do
+#     diff_properties.each { |rp| accumulator_config(action: :delete, key: rp) }
+#   end unless diff_properties.empty?
+# end
