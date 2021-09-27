@@ -22,9 +22,7 @@ isc_kea_install 'kea' do
 end
 
 isc_kea_config_dhcp4 'test' do
-  config_file 'kea-dhcp4.conf'
-
-  boot_file_name 'test'
+  boot_file_name 'test.bootfile'
 end
 
 isc_kea_config_dhcp4_interfaces 'eth0' do
@@ -78,8 +76,9 @@ isc_kea_config_dhcp4_global_host_reservation 'test_id_2' do
   ip_address '192.0.3.210'
 end
 
-isc_kea_service 'kea-dhcp4' do
-  config_file '/etc/kea/kea-dhcp4.conf'
+dhcp4_service_name = platform_family?('debian') ? 'isc-kea-dhcp4-server' : 'kea-dhcp4'
+
+isc_kea_service dhcp4_service_name do
   action %i(enable start)
   subscribes :restart, 'template[/etc/kea/kea-dhcp4.conf]', :delayed
 end
