@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4_option_data
+# Resource:: config_dhcp6_expired_leases_processing
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -24,27 +24,18 @@ use 'partial/_config_parameters_common'
 
 def auto_accumulator_options_override
   {
-    config_path_override: %w(Dhcp4 option-data),
-    config_path_type: :array,
-    config_path_match_key: 'name',
-    config_path_match_value: option_name,
-    property_translation_matrix: {
-      option_name: 'name',
-    },
+    config_path_override: %w(Dhcp6 expired-leases-processing),
   }.freeze
 end
 
-property :option_name, String,
-          name_property: true
+property :flush_reclaimed_timer_wait_time, Integer
 
-property :code, Integer
+property :hold_reclaimed_time, Integer
 
-property :type, String
+property :max_reclaim_leases, Integer
 
-property :space, String
+property :max_reclaim_time, Integer
 
-property :csv_format, [true, false]
+property :reclaim_timer_wait_time, Integer
 
-property :data, [String, Integer]
-
-property :always_send, [true, false]
+property :unwarned_reclaim_cycles, Integer

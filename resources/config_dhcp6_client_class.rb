@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4_option_data
+# Resource:: config_dhcp6_client_class
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -24,27 +24,37 @@ use 'partial/_config_parameters_common'
 
 def auto_accumulator_options_override
   {
-    config_path_override: %w(Dhcp4 option-data),
+    config_path_override: %w(Dhcp6 client-classes),
     config_path_type: :array,
-    config_path_match_key: 'name',
-    config_path_match_value: option_name,
+    config_path_match_field: 'name',
+    config_path_match_value: class_name,
     property_translation_matrix: {
       option_name: 'name',
     },
   }.freeze
 end
 
-property :option_name, String,
+property :class_name, String,
           name_property: true
 
-property :code, Integer
+property :test, String
 
-property :type, String
+property :option_def, [Array, Hash],
+          coerce: proc { |p| p.is_a?(Array) ? p : [p] }
 
-property :space, String
+property :option_data, [Array, Hash],
+          coerce: proc { |p| p.is_a?(Array) ? p : [p] }
 
-property :csv_format, [true, false]
+property :valid_lifetime, Integer
 
-property :data, [String, Integer]
+property :min_valid_lifetime, Integer
 
-property :always_send, [true, false]
+property :max_valid_lifetime, Integer
+
+property :preferred_lifetime, Integer
+
+property :min_preferred_lifetime, Integer
+
+property :max_preferred_lifetime, Integer
+
+property :only_if_required, [true, false]

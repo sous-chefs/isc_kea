@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4_option_data
+# Resource:: config_dhcp6_lease_database
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -21,30 +21,34 @@ unified_mode true
 
 use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
+use 'partial/_config_dhcp6_parameters_subnet'
 
 def auto_accumulator_options_override
   {
-    config_path_override: %w(Dhcp4 option-data),
+    config_path_override: %w(Dhcp6 subnet6),
     config_path_type: :array,
-    config_path_match_key: 'name',
-    config_path_match_value: option_name,
-    property_translation_matrix: {
-      option_name: 'name',
-    },
+    config_path_match_key: 'subnet',
+    config_path_match_value: subnet,
   }.freeze
 end
 
-property :option_name, String,
+property :id, Integer,
+          callbacks: {
+            'should be greater than 0 and less than 4294967295' => ->(p) { p > 0 && p < 4294967295 },
+          }
+
+property :subnet, String,
           name_property: true
 
-property :code, Integer
+property :pd_pools, [Array, Hash],
+          coerce: proc { |p| p.is_a?(Array) ? p : [p] }
 
-property :type, String
+property :pools, [Array, Hash],
+          coerce: proc { |p| p.is_a?(Array) ? p : [p] }
 
-property :space, String
+property :option_data, [Array, Hash],
+          coerce: proc { |p| p.is_a?(Array) ? p : [p] }
 
-property :csv_format, [true, false]
+property :client_class, String
 
-property :data, [String, Integer]
-
-property :always_send, [true, false]
+property :require_client_classes, String

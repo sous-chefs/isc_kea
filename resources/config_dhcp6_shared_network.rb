@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4_option_data
+# Resource:: config_dhcp6_shared_network
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -21,30 +21,22 @@ unified_mode true
 
 use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
+use 'partial/_config_dhcp6_parameters_shared_network'
 
 def auto_accumulator_options_override
   {
-    config_path_override: %w(Dhcp4 option-data),
+    config_path_override: %w(Dhcp6 shared-networks),
     config_path_type: :array,
-    config_path_match_key: 'name',
-    config_path_match_value: option_name,
+    config_path_match_field: 'name',
+    config_path_match_value: network_name,
     property_translation_matrix: {
-      option_name: 'name',
+      network_name: 'name',
     },
   }.freeze
 end
 
-property :option_name, String,
+property :network_name, String,
           name_property: true
 
-property :code, Integer
-
-property :type, String
-
-property :space, String
-
-property :csv_format, [true, false]
-
-property :data, [String, Integer]
-
-property :always_send, [true, false]
+property :subnet6, [Array, Hash],
+          coerce: proc { |p| p.is_a?(Array) ? p : [p] }

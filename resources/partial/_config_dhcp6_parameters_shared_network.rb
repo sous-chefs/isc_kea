@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp6
+# Resource:: _config_dhcp6_parameters_shared_network
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -17,22 +17,13 @@
 # limitations under the License.
 #
 
-unified_mode true
+property :cache_threshold, [Integer, Float]
 
-use 'partial/_config_auto_accumulator'
-use 'partial/_config_parameters_common'
-
-def auto_accumulator_options_override
-  { config_path_override: %w(Dhcp6) }.freeze
-end
-
-property :cache_threshold, Integer
-
-property :cache_max_age, Integer
+property :cache_max_age, [Integer, Float]
 
 property :calculate_tee_times, [true, false]
 
-property :data_directory, String
+property :client_class, String
 
 property :ddns_generated_prefix, String
 
@@ -52,20 +43,13 @@ property :ddns_update_on_renew, [true, false]
 
 property :ddns_use_conflict_resolution, [true, false]
 
-property :decline_probation_period, Integer
-
-property :dhcp4o6_port, Integer
-
-property :host_reservation_identifiers, Array
-
 property :hostname_char_replacement, String
 
 property :hostname_char_set, String
 
-property :ip_reservations_unique, [true, false]
+property :interface, String
 
-property :mac_sources, [String, Array],
-          coerce: proc { |p| p.is_a?(String) ? p.split(',') : p }
+property :interface_id, String
 
 property :min_preferred_lifetime, Integer
 
@@ -75,18 +59,17 @@ property :max_preferred_lifetime, Integer
 
 property :max_valid_lifetime, Integer
 
-property :parked_packet_limit, Integer
+property :option_data, Array
 
-property :preferred_lifetime, String
+property :preferred_lifetime, Integer
 
-property :rapid_commit, String
+property :rapid_commit, [true, false]
 
 property :rebind_timer, Integer
 
-property :relay_supplied_options, [String, Array],
-          coerce: proc { |p| p.is_a?(String) ? p.split(',') : p }
+property :relay, Hash
 
-property :renew_timer, Integer
+property :renew_timer, String
 
 property :reservations_global, [true, false]
 
@@ -94,11 +77,9 @@ property :reservations_in_subnet, [true, false]
 
 property :reservations_out_of_pool, [true, false]
 
-property :server_tag, String
+property :require_client_classes, Array
 
-property :statistic_default_sample_count, Integer
-
-property :statistic_default_sample_age, Integer
+property :reservation_mode, String
 
 property :store_extended_info, [true, false]
 

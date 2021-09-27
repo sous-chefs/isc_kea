@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4_option_data
+# Resource:: config_dhcp6_interfaces
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -23,28 +23,10 @@ use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
 
 def auto_accumulator_options_override
-  {
-    config_path_override: %w(Dhcp4 option-data),
-    config_path_type: :array,
-    config_path_match_key: 'name',
-    config_path_match_value: option_name,
-    property_translation_matrix: {
-      option_name: 'name',
-    },
-  }.freeze
+  { config_path_override: %w(Dhcp6 interfaces-config) }.freeze
 end
 
-property :option_name, String,
-          name_property: true
+property :interfaces, [String, Array],
+          coerce: proc { |p| p.is_a?(String) ? p.split(',') : p }
 
-property :code, Integer
-
-property :type, String
-
-property :space, String
-
-property :csv_format, [true, false]
-
-property :data, [String, Integer]
-
-property :always_send, [true, false]
+property :re_detect, [true, false]

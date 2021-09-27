@@ -62,3 +62,5 @@ property :consistency, String,
 
 property :serial_consistency, String,
           equal_to: %w(any one two three quorum all local-quorum each-quorum serial local-serial local-one)
+
+property :readonly, [true, false]

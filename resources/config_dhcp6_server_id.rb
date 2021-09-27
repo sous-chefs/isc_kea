@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4_option_data
+# Resource:: config_dhcp6_server_id
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -24,27 +24,20 @@ use 'partial/_config_parameters_common'
 
 def auto_accumulator_options_override
   {
-    config_path_override: %w(Dhcp4 option-data),
-    config_path_type: :array,
-    config_path_match_key: 'name',
-    config_path_match_value: option_name,
-    property_translation_matrix: {
-      option_name: 'name',
-    },
+    config_path_override: %w(Dhcp6 server-id),
   }.freeze
 end
 
-property :option_name, String,
-          name_property: true
+property :type, [String, Symbol],
+          equal_to: %w(LLT EN LL),
+          coerce: proc { |p| p.to_s.upcase }
 
-property :code, Integer
+property :htype, Integer
 
-property :type, String
+property :identifier, String
 
-property :space, String
+property :time, Integer
 
-property :csv_format, [true, false]
+property :enterprise_id, Integer
 
-property :data, [String, Integer]
-
-property :always_send, [true, false]
+property :persist, [true, false]
