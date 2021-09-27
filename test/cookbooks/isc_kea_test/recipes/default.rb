@@ -1,5 +1,5 @@
 #
-# Cookbook:: ics_kea_test
+# Cookbook:: isc_kea_test
 # Recipe:: default
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
@@ -22,7 +22,64 @@ isc_kea_install 'kea' do
 end
 
 isc_kea_config_dhcp4 'test' do
-  config_file 'kea-dhcp4.conf.test'
+  config_file 'kea-dhcp4.conf'
 
   boot_file_name 'test'
+end
+
+isc_kea_config_dhcp4_interfaces 'eth0' do
+  interfaces 'eth0'
+end
+
+isc_kea_config_dhcp4_option_def 'foo' do
+  code 222
+  type 'uint32'
+  array false
+  space 'dhcp4'
+end
+
+isc_kea_config_dhcp4_option_data 'foo' do
+  code 222
+  csv_format true
+  space 'dhcp4'
+  data '12345'
+end
+
+isc_kea_config_dhcp4_subnet '192.0.2.0/24' do
+  id 1
+  pools [
+    { 'pool' => '192.0.2.10-192.0.2.20' },
+    { 'pool' => '192.0.2.64/26' },
+  ]
+end
+
+isc_kea_config_dhcp4_subnet '192.0.3.0/24' do
+  id 2
+  pools [
+    { 'pool' => '192.0.3.10-192.0.3.20' },
+    { 'pool' => '192.0.3.64/26' },
+  ]
+end
+
+isc_kea_config_dhcp4_subnet_host_reservation 'test_id_1' do
+  subnet_id 1
+  hw_address '1a:1b:1c:1d:1e:1f'
+  ip_address '192.0.2.202'
+end
+
+isc_kea_config_dhcp4_subnet_host_reservation 'test_id_2' do
+  subnet_id 2
+  hw_address '1a:1b:1c:1d:1e:99'
+  ip_address '192.0.3.202'
+end
+
+isc_kea_config_dhcp4_global_host_reservation 'test_id_2' do
+  hw_address '1a:1b:1c:1d:1e:98'
+  ip_address '192.0.3.210'
+end
+
+isc_kea_service 'kea-dhcp4' do
+  config_file '/etc/kea/kea-dhcp4.conf'
+  action %i(enable start)
+  subscribes :restart, 'template[/etc/kea/kea-dhcp4.conf]', :delayed
 end
