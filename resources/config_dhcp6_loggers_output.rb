@@ -24,12 +24,21 @@ use 'partial/_config_parameters_common'
 
 def auto_accumulator_options_override
   {
-    config_path_override: %w(Dhcp6 loggers output_options),
-    config_path_type: :array,
-    config_path_match_key: 'output',
-    config_path_match_value: output,
+    config_properties_skip: %i(logger_name),
+    config_path_override: %w(Dhcp6 loggers),
+    config_path_type: :array_contained,
+    config_path_match_key: 'name',
+    config_path_match_value: logger_name,
+    config_path_contained_key: 'output_options',
+    config_match_key: 'output',
+    config_match_value: output,
+    property_name_gsub: nil,
   }.freeze
 end
+
+property :logger_name, String,
+          required: true,
+          desired_state: false
 
 property :output, String,
           name_property: true

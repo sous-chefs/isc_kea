@@ -32,13 +32,13 @@ property :enable_updates, [true, false]
 
 property :max_queue_size, Integer
 
-property :ncr_protocol, String,
+property :ncr_protocol, [String, Symbol],
           equal_to: %w(UDP),
-          coerce: proc { |p| p.upcase }
+          coerce: proc { |p| p.to_s.upcase }
 
-property :ncr_format, String,
+property :ncr_format, [String, Symbol],
           equal_to: %w(JSON),
-          coerce: proc { |p| p.upcase }
+          coerce: proc { |p| p.to_s.upcase }
 
 property :sender_ip, String
 

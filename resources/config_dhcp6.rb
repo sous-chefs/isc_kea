@@ -77,7 +77,7 @@ property :max_valid_lifetime, Integer
 
 property :parked_packet_limit, Integer
 
-property :preferred_lifetime, String
+property :preferred_lifetime, Integer
 
 property :rapid_commit, String
 
