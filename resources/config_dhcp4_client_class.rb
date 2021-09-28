@@ -44,3 +44,17 @@ property :option_def, [Array, Hash],
 
 property :option_data, [Array, Hash],
           coerce: proc { |p| p.is_a?(Array) ? p : [p] }
+
+property :valid_lifetime, Integer
+
+property :min_valid_lifetime, Integer
+
+property :max_valid_lifetime, Integer
+
+property :only_if_required, [true, false]
+
+property :boot_file_name, String
+
+property :next_server, String
+
+property :server_hostname, String

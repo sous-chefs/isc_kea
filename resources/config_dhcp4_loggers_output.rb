@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4_interfaces
+# Resource:: config_dhcp4_loggers_output
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -23,18 +23,20 @@ use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
 
 def auto_accumulator_options_override
-  { config_path_override: %w(Dhcp4 interfaces-config) }.freeze
+  {
+    config_path_override: %w(Dhcp4 loggers output_options),
+    config_path_type: :array,
+    config_path_match_key: 'output',
+    config_path_match_value: output,
+  }.freeze
 end
 
-property :interfaces, [String, Array],
-          coerce: proc { |p| p.is_a?(String) ? p.split(',') : p }
+property :output, String
 
-property :dhcp_socket_type, [String, Symbol],
-          equal_to: %w(raw udp),
-          coerce: proc { |p| p.to_s }
+property :flush, [true, false]
 
-property :outbound_interface, [String, Symbol],
-          equal_to: %w(use-routing same-as-inbound),
-          coerce: proc { |p| p.to_s }
+property :maxsize, Integer
 
-property :re_detect, [true, false]
+property :maxver, Integer
+
+property :pattern, String

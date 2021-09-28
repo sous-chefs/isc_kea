@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4_interfaces
+# Resource:: config_dhcp4_loggers
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -23,18 +23,18 @@ use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
 
 def auto_accumulator_options_override
-  { config_path_override: %w(Dhcp4 interfaces-config) }.freeze
+  {
+    config_path_override: %w(Dhcp4 loggers),
+    property_translation_matrix: {
+      logger_name: 'name',
+    },
+  }.freeze
 end
 
-property :interfaces, [String, Array],
-          coerce: proc { |p| p.is_a?(String) ? p.split(',') : p }
+property :debuglevel, Integer
 
-property :dhcp_socket_type, [String, Symbol],
-          equal_to: %w(raw udp),
-          coerce: proc { |p| p.to_s }
+property :logger_name, String
 
-property :outbound_interface, [String, Symbol],
-          equal_to: %w(use-routing same-as-inbound),
-          coerce: proc { |p| p.to_s }
-
-property :re_detect, [true, false]
+property :severity, [String, Symbol],
+          equal_to: %w(ERROR WARN INFO DEBUG),
+          coerce: proc { |p | p.to_s.upcase }

@@ -79,8 +79,6 @@ property :reservations_out_of_pool, [true, false]
 
 property :require_client_classes, Array
 
-property :reservation_mode, String
-
 property :store_extended_info, [true, false]
 
 property :t1_percent, [Integer, Float]

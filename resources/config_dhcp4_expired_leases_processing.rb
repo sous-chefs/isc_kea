@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4_interfaces
+# Resource:: config_dhcp4_expired_leases_processing
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -23,18 +23,19 @@ use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
 
 def auto_accumulator_options_override
-  { config_path_override: %w(Dhcp4 interfaces-config) }.freeze
+  {
+    config_path_override: %w(Dhcp4 expired-leases-processing),
+  }.freeze
 end
 
-property :interfaces, [String, Array],
-          coerce: proc { |p| p.is_a?(String) ? p.split(',') : p }
+property :flush_reclaimed_timer_wait_time, Integer
 
-property :dhcp_socket_type, [String, Symbol],
-          equal_to: %w(raw udp),
-          coerce: proc { |p| p.to_s }
+property :hold_reclaimed_time, Integer
 
-property :outbound_interface, [String, Symbol],
-          equal_to: %w(use-routing same-as-inbound),
-          coerce: proc { |p| p.to_s }
+property :max_reclaim_leases, Integer
 
-property :re_detect, [true, false]
+property :max_reclaim_time, Integer
+
+property :reclaim_timer_wait_time, Integer
+
+property :unwarned_reclaim_cycles, Integer

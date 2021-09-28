@@ -40,5 +40,5 @@ property :network_name, String,
 
 property :interface, String
 
-property :subnets, [Array, Hash],
+property :subnet4, [Array, Hash],
           coerce: proc { |p| p.is_a?(Array) ? p : [p] }

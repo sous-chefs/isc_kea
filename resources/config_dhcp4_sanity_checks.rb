@@ -28,4 +28,6 @@ def auto_accumulator_options_override
   }.freeze
 end
 
-property :lease_checks, String
+property :lease_checks, [String, Symbol],
+          equal_to: %w(none warn fix fix-del del),
+          coerce: proc { |p| p.to_s }

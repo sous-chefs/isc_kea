@@ -29,6 +29,11 @@ def auto_accumulator_options_override
     config_path_type: :array,
     config_path_match_key: 'subnet',
     config_path_match_value: subnet,
+    property_translation_matrix: {
+      subnet_4o6_interface: '4o6_interface',
+      subnet_4o6_interface_id: '4o6_interface_id',
+      subnet_4o6_subnet: '4o6_subnet',
+    },
   }.freeze
 end
 
@@ -45,7 +50,3 @@ property :pools, [Array, Hash],
 
 property :option_data, [Array, Hash],
           coerce: proc { |p| p.is_a?(Array) ? p : [p] }
-
-property :client_class, String
-
-property :require_client_classes, String

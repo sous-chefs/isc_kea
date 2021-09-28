@@ -21,10 +21,89 @@ unified_mode true
 
 use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
-use 'partial/_config_dhcp4_parameters_global'
 
 def auto_accumulator_options_override
   { config_path_override: %w(Dhcp4) }.freeze
 end
 
+property :authoritative, [true, false]
+
+property :boot_file_name, String
+
+property :cache_threshold, Integer
+
+property :cache_max_age, Integer
+
+property :calculate_tee_times, String
+
+property :ddns_generated_prefix, String
+
+property :ddns_override_client_update, [true, false]
+
+property :ddns_override_no_update, [true, false]
+
+property :ddns_replace_client_name, [String, Symbol],
+          equal_to: %w(never always when-present when-not-present),
+          coerce: proc { |p| p.to_s }
+
+property :ddns_qualifying_suffix, String
+
+property :ddns_send_updates, [true, false]
+
+property :ddns_update_on_renew, [true, false]
+
+property :ddns_use_conflict_resolution, [true, false]
+
+property :decline_probation_period, Integer
+
+property :dhcp4o6_port, Integer
+
+property :echo_client_id, [true, false]
+
+property :host_reservation_identifiers, Array
+
+property :hostname_char_set, String
+
+property :hostname_char_replacement, String
+
+property :ip_reservations_unique, [true, false]
+
+property :match_client_id, [true, false]
+
+property :min_preferred_lifetime, Integer
+
+property :min_valid_lifetime, Integer
+
+property :max_preferred_lifetime, Integer
+
+property :max_valid_lifetime, Integer
+
+property :next_server, String
+
+property :parked_packet_limit, Integer
+
+property :rebind_timer, Integer
+
+property :renew_timer, Integer
+
+property :reservations_global, [true, false]
+
+property :reservations_in_subnet, [true, false]
+
+property :reservations_out_of_pool, [true, false]
+
+property :server_hostname, String
+
+property :server_tag, String
+
+property :statistic_default_sample_count, Integer
+
+property :statistic_default_sample_age, Integer
+
 property :store_extended_info, [true, false]
+
+property :t1_percent, [Integer, Float]
+
+property :t2_percent, [Integer, Float]
+
+property :valid_lifetime, Integer

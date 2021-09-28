@@ -23,47 +23,76 @@ property :subnet_4o6_interface_id, String
 
 property :subnet_4o6_subnet, String
 
+property :authoritative, [true, false]
+
 property :boot_file_name, String
 
-property :calculate_tee_times, String
+property :cache_threshold, Integer
+
+property :cache_max_age, Integer
+
+property :calculate_tee_times, [true, false]
 
 property :client_class, String
 
-property :ddns_send_update, String
-
-property :ddns_override_no_update, String
-
-property :ddns_override_client_update, String
-
-property :ddns_replace_client_name, String
-
 property :ddns_generated_prefix, String
 
+property :ddns_override_client_update, [true, false]
+
+property :ddns_override_no_update, [true, false]
+
+property :ddns_replace_client_name, [String, Symbol],
+          equal_to: %w(never always when-present when-not-present),
+          coerce: proc { |p| p.to_s }
+
 property :ddns_qualifying_suffix, String
+
+property :ddns_send_updates, [true, false]
+
+property :ddns_update_on_renew, [true, false]
+
+property :ddns_use_conflict_resolution, [true, false]
+
+property :hostname_char_set, String
+
+property :hostname_char_replacement, String
 
 property :interface, String
 
 property :match_client_id, [true, false]
 
+property :min_valid_lifetime, Integer
+
+property :max_valid_lifetime, Integer
+
 property :next_server, String
 
-property :option_data, String
+property :option_data, Array
 
-property :rebind_timer, String
+property :rebind_timer, Integer
 
-property :renew_timer, String
+property :renew_timer, Integer
 
 property :server_hostname, String
 
 property :valid_lifetime, String
 
-property :relay, String
+property :relay, Hash
 
-property :require_client_classes, String
+property :require_client_classes, Array
 
-property :reservation_mode, String,
-          equal_to: %w(all out-of-pool global disabled)
+property :reservations_global, [true, false]
 
-property :t1_percent, String
+property :reservations_in_subnet, [true, false]
 
-property :t2_percent, String
+property :reservations_out_of_pool, [true, false]
+
+property :server_hostname, String
+
+property :store_extended_info, [true, false]
+
+property :t1_percent, [Integer, Float]
+
+property :t2_percent, [Integer, Float]
+
+property :valid_lifetime, Integer
