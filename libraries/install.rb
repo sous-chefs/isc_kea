@@ -34,7 +34,7 @@ module IscKea
       end
 
       def debian_key_url
-        case new_resource.install_version
+        case install_version
         when '1-6'
           'https://dl.cloudsmith.io/public/isc/kea-1-6/gpg.0607E2621F1564A6.key'
         when '1-7'
@@ -44,7 +44,7 @@ module IscKea
         when '1-9'
           'https://dl.cloudsmith.io/public/isc/kea-1-9/gpg.5DC67B0A74E30739.key'
         else
-          raise ArgumentError, "Unsupported version #{new_resource.install_version}"
+          raise ArgumentError, "Unsupported version #{install_version}"
         end
       end
 

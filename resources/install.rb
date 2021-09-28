@@ -112,12 +112,12 @@ action :install do
     end
 
     notify_group 'Post APT repo install actions' do
-      notifies :create, 'remote_file[get-kea-remote-apt-key]', :immediately
+      notifies :create, 'remote_file[isc-kea-remote-apt-key]', :immediately
       notifies :run, "execute[apt-key add #{Chef::Config[:file_cache_path]}/isc-kea-repo.key]", :immediately
       notifies :run, 'execute[sudo apt-get update]', :immediately
     end
 
-    remote_file 'get-kea-remote-apt-key' do
+    remote_file 'isc-kea-remote-apt-key' do
       source new_resource.apt_repo_key_url
       path "#{Chef::Config[:file_cache_path]}/isc-kea-repo.key"
 
