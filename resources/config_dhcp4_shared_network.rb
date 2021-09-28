@@ -27,7 +27,7 @@ def auto_accumulator_options_override
   {
     config_path_override: %w(Dhcp4 shared-networks),
     config_path_type: :array,
-    config_path_match_field: 'name',
+    config_path_match_key: 'name',
     config_path_match_value: network_name,
     property_translation_matrix: {
       network_name: 'name',

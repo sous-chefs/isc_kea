@@ -37,4 +37,4 @@ property :logger_name, String
 
 property :severity, [String, Symbol],
           equal_to: %w(ERROR WARN INFO DEBUG),
-          coerce: proc { |p | p.to_s.upcase }
+          coerce: proc { |p| p.to_s.upcase }
