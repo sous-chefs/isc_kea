@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea_test
-# Recipe:: default
+# Recipe:: config_dhcp6
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -17,11 +17,35 @@
 # limitations under the License.
 #
 
-include_recipe '::install'
+isc_kea_config_dhcp6 'test' do
+  preferred_lifetime 3000
+  valid_lifetime 4000
+  renew_timer 1000
+  rebind_timer 2000
+end
 
-include_recipe '::config_dhcp4'
-include_recipe '::config_dhcp6'
-include_recipe '::config_ddns'
-include_recipe '::config_ctrl_agent'
+isc_kea_config_dhcp6_interfaces 'dhcp6_interfaces' do
+  interfaces 'eth0'
+end
 
-include_recipe '::service'
+isc_kea_config_dhcp6_lease_database 'lease_database' do
+  type 'memfile'
+  lfc_interval 3600
+end
+
+isc_kea_config_dhcp6_subnet '2001:db8:1::/64' do
+  interface 'eth0'
+  pools [
+    { 'pool' => '2001:db8:1::/80' },
+  ]
+end
+
+isc_kea_config_dhcp6_loggers 'kea-dhcp6' do
+  debuglevel 0
+  severity :info
+end
+
+isc_kea_config_dhcp6_loggers_output 'logger_stdout' do
+  logger_name 'kea-dhcp6'
+  output 'stdout'
+end
