@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea_test
-# Recipe:: default
+# Recipe:: service
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -17,8 +17,9 @@
 # limitations under the License.
 #
 
-include_recipe '::install'
+dhcp4_service_name = platform_family?('debian') ? 'isc-kea-dhcp4-server' : 'kea-dhcp4'
 
-include_recipe '::config_dhcp4'
-
-include_recipe '::service'
+isc_kea_service dhcp4_service_name do
+  action %i(enable start)
+  subscribes :restart, 'template[/etc/kea/kea-dhcp4.conf]', :delayed
+end

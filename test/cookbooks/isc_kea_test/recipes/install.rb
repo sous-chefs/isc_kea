@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea_test
-# Recipe:: default
+# Recipe:: install
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe '::install'
-
-include_recipe '::config_dhcp4'
-
-include_recipe '::service'
+isc_kea_install 'kea' do
+  action :install
+end
