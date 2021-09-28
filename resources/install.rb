@@ -36,10 +36,13 @@ property :clear_default_config, [true, false],
           default: true,
           description: 'Clear default configuration on install'
 
+property :apt_repo_key_url, String,
+          default: lazy { debian_key_url }
+
 unified_mode true
 
 action_class do
-  include IscKea::Cookbook::InstallHelpers
+  # include IscKea::Cookbook::InstallHelpers
 
   def do_package_action(action)
     package 'isc-kea' do
@@ -78,12 +81,24 @@ action :install do
       mode '0644'
 
       action :create
+      notifies :run, 'notify_group[Post yum repo install actions]', :immediately
     end
 
-    yum_repository "isc-kea-#{new_resource.install_version}" do
-      action :nothing
-      subscribes :makecache, "remote_file[/etc/yum.repos.d/isc-kea-#{new_resource.install_version}.repo]", :immediately
+    notify_group 'Post yum repo install actions' do
+      notifies :run, 'execute[yum makecache -y]', :immediately
+      notifies :makecache, "yum_repository[isc-kea-#{new_resource.install_version}]", :immediately
+      notifies :makecache, "yum_repository[isc-kea-#{new_resource.install_version}-noarch]", :immediately
+      notifies :makecache, "yum_repository[isc-kea-#{new_resource.install_version}-source]", :immediately
     end
+
+    execute 'yum makecache -y' do
+      action :nothing
+      only_if { distro_name.eql?('el') && distro_version.eql?(7) }
+    end
+
+    declare_resource(:yum_repository, "isc-kea-#{new_resource.install_version}") { action :nothing }
+    declare_resource(:yum_repository, "isc-kea-#{new_resource.install_version}-noarch") { action :nothing }
+    declare_resource(:yum_repository, "isc-kea-#{new_resource.install_version}-source") { action :nothing }
   when 'debian'
     remote_file "/etc/apt/sources.list.d/isc-kea-#{new_resource.install_version}.list" do
       source "https://dl.cloudsmith.io/public/isc/kea-#{new_resource.install_version}/config.deb.txt?distro=#{node['platform']}&codename=#{node['os_release']['version_codename']}"
@@ -103,7 +118,7 @@ action :install do
     end
 
     remote_file 'get-kea-remote-apt-key' do
-      source debian_key_url
+      source new_resource.apt_repo_key_url
       path "#{Chef::Config[:file_cache_path]}/isc-kea-repo.key"
 
       owner 'root'
