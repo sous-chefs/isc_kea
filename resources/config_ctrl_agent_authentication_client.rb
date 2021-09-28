@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_control_agent
+# Resource:: config_ctrl_agent_authentication_client
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -23,9 +23,16 @@ use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
 
 def auto_accumulator_options_override
-  { config_path_override: %w(Control-agent) }.freeze
+  {
+    config_properties_skip: %i(logger_name),
+    config_path_override: %w(Control-agent authentication clients),
+    config_path_type: :array,
+    config_path_match_key: 'user',
+    config_path_match_value: user,
+  }.freeze
 end
 
-property :http_host, String
+property :user, String,
+          name_property: true
 
-property :http_port, Integer
+property :password, String

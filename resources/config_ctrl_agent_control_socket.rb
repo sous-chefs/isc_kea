@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_control_agent_logger
+# Resource:: config_ctrl_agent_control_socket
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -24,17 +24,15 @@ use 'partial/_config_parameters_common'
 
 def auto_accumulator_options_override
   {
-    config_path_override: %w(Control-agent loggers),
-    config_path_type: :array,
-    config_path_match_key: 'name',
-    config_path_match_value: logger_name,
-    property_translation_matrix: {
-      logger_name: 'name',
-    },
+    # config_properties_skip: %i(),
+    config_path_override: %w(Control-agent control-sockets),
+    config_path_type: :hash_contained,
+    config_path_contained_key: name,
   }.freeze
 end
 
-property :logger_name, String,
-          name_property: true
+property :socket_type, [String, Symbol],
+          equal_to: %w(unix),
+          coerce: proc { |p| p.to_s.downcase }
 
-property :severity, String
+property :socket_name, String

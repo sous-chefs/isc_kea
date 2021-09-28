@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_control_agent_control_socket
+# Resource:: config_ctrl_agent
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -23,13 +23,9 @@ use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
 
 def auto_accumulator_options_override
-  {
-    config_path_override: %w(Control-agent control-sockets),
-  }.freeze
+  { config_path_override: %w(Control-agent) }.freeze
 end
 
-property :dhcp4, Hash
+property :http_host, String
 
-property :dhcp6, Hash
-
-property :d2, Hash
+property :http_port, Integer
