@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp_ddns_tsig_key
+# Resource:: config_dhcp_ddns_control_socket
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -24,23 +24,11 @@ use 'partial/_config_parameters_common'
 
 def auto_accumulator_options_override
   {
-    config_path_override: %w(DhcpDdns tsig-keys),
-    config_path_type: :array,
-    config_path_match_key: 'name',
-    config_path_match_value: key_name,
-    property_translation_matrix: {
-      key_name: 'name',
-    },
+    config_path_override: %w(DhcpDdns control-socket),
   }.freeze
 end
 
-property :key_name, String,
-          name_property: true
+property :socket_type, String,
+          equal_to: %w(unix)
 
-property :algorithm, String,
-          equal_to: %w(HMAC-MD5 HMAC-SHA1 HMAC-SHA224 HMAC-SHA256 HMAC-SHA386 HMAC-SHA512),
-          coerce: proc { |p| p.upcase }
-
-property :digest_bits, Integer
-
-property :secret, String
+property :socket_name, String

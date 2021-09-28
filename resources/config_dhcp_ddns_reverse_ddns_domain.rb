@@ -24,9 +24,9 @@ use 'partial/_config_parameters_common'
 
 def auto_accumulator_options_override
   {
-    config_path_override: %w(DhcpDdns reverse-dns ddns-domains),
+    config_path_override: %w(DhcpDdns reverse-ddns ddns-domains),
     config_path_type: :array,
-    config_path_match_field: 'name',
+    config_path_match_key: 'name',
     config_path_match_value: zone_name,
     property_translation_matrix: {
       zone_name: 'name',
@@ -34,8 +34,10 @@ def auto_accumulator_options_override
   }.freeze
 end
 
-property :zone_name, String
+property :zone_name, String,
+          name_property: true
 
 property :key_name, String
 
-property :dns_servers, Hash
+property :dns_servers, [Hash, Array],
+          coerce: proc { |p| p.is_a?(Array) ? p : [p] }

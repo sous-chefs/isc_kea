@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp_ddns_tsig_key
+# Resource:: config_dhcp_ddns_loggers
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -24,23 +24,21 @@ use 'partial/_config_parameters_common'
 
 def auto_accumulator_options_override
   {
-    config_path_override: %w(DhcpDdns tsig-keys),
+    config_path_override: %w(DhcpDdns loggers),
     config_path_type: :array,
     config_path_match_key: 'name',
-    config_path_match_value: key_name,
+    config_path_match_value: logger_name,
     property_translation_matrix: {
-      key_name: 'name',
+      logger_name: 'name',
     },
   }.freeze
 end
 
-property :key_name, String,
+property :logger_name, String,
           name_property: true
 
-property :algorithm, String,
-          equal_to: %w(HMAC-MD5 HMAC-SHA1 HMAC-SHA224 HMAC-SHA256 HMAC-SHA386 HMAC-SHA512),
-          coerce: proc { |p| p.upcase }
+property :debuglevel, Integer
 
-property :digest_bits, Integer
-
-property :secret, String
+property :severity, [String, Symbol],
+          equal_to: %w(ERROR WARN INFO DEBUG),
+          coerce: proc { |p| p.to_s.upcase }
