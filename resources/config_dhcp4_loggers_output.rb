@@ -31,7 +31,8 @@ def auto_accumulator_options_override
   }.freeze
 end
 
-property :output, String
+property :output, String,
+          name_property: true
 
 property :flush, [true, false]
 
