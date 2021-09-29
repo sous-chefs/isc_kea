@@ -26,6 +26,21 @@ The following platforms are supported and tested with Test Kitchen:
 
 ## Resources
 
+### Partials
+
+- [isc_kea__config_auto_accumulator](documentation/partial/isc_kea__config_auto_accumulator.md)
+- [isc_kea__config_database](documentation/partial/isc_kea__config_database.md)
+- [isc_kea__config_dhcp4_parameters_pool](documentation/partial/isc_kea__config_dhcp4_parameters_pool.md)
+- [isc_kea__config_dhcp4_parameters_shared_network](documentation/partial/isc_kea__config_dhcp4_parameters_shared_network.md)
+- [isc_kea__config_dhcp4_parameters_subnet](documentation/partial/isc_kea__config_dhcp4_parameters_subnet.md)
+- [isc_kea__config_dhcp6_parameters_pd_pool](documentation/partial/isc_kea__config_dhcp6_parameters_pd_pool.md)
+- [isc_kea__config_dhcp6_parameters_pool](documentation/partial/isc_kea__config_dhcp6_parameters_pool.md)
+- [isc_kea__config_dhcp6_parameters_shared_network](documentation/partial/isc_kea__config_dhcp6_parameters_shared_network.md)
+- [isc_kea__config_dhcp6_parameters_subnet](documentation/partial/isc_kea__config_dhcp6_parameters_subnet.md)
+- [isc_kea__config_parameters_common](documentation/partial/isc_kea__config_parameters_common.md)
+
+Note: All resources get their actions and base properties from the partial [_config_auto_accumulator](documentation/partial/isc_kea__config_auto_accumulator.md)
+
 - [isc_kea_config_ctrl_agent](documentation/isc_kea_config_ctrl_agent.md)
 - [isc_kea_config_ctrl_agent_authentication](documentation/isc_kea_config_ctrl_agent_authentication.md)
 - [isc_kea_config_ctrl_agent_authentication_client](documentation/isc_kea_config_ctrl_agent_authentication_client.md)
@@ -91,16 +106,3 @@ The following platforms are supported and tested with Test Kitchen:
 - [isc_kea_config_dhcp_ddns_tsig_key](documentation/isc_kea_config_dhcp_ddns_tsig_key.md)
 - [isc_kea_install](documentation/isc_kea_install.md)
 - [isc_kea_service](documentation/isc_kea_service.md)
-
-### Partials
-
-- [isc_kea__config_auto_accumulator](documentation/partial/isc_kea__config_auto_accumulator.md)
-- [isc_kea__config_database](documentation/partial/isc_kea__config_database.md)
-- [isc_kea__config_dhcp4_parameters_pool](documentation/partial/isc_kea__config_dhcp4_parameters_pool.md)
-- [isc_kea__config_dhcp4_parameters_shared_network](documentation/partial/isc_kea__config_dhcp4_parameters_shared_network.md)
-- [isc_kea__config_dhcp4_parameters_subnet](documentation/partial/isc_kea__config_dhcp4_parameters_subnet.md)
-- [isc_kea__config_dhcp6_parameters_pd_pool](documentation/partial/isc_kea__config_dhcp6_parameters_pd_pool.md)
-- [isc_kea__config_dhcp6_parameters_pool](documentation/partial/isc_kea__config_dhcp6_parameters_pool.md)
-- [isc_kea__config_dhcp6_parameters_shared_network](documentation/partial/isc_kea__config_dhcp6_parameters_shared_network.md)
-- [isc_kea__config_dhcp6_parameters_subnet](documentation/partial/isc_kea__config_dhcp6_parameters_subnet.md)
-- [isc_kea__config_parameters_common](documentation/partial/isc_kea__config_parameters_common.md)
