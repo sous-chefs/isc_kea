@@ -25,23 +25,18 @@ use 'partial/_config_dhcp4_parameters_subnet'
 
 def auto_accumulator_options_override
   {
-    config_properties_skip: %i(subnet_id),
+    config_properties_skip: %i(subnet),
     config_path_override: %w(Dhcp4 subnet4),
     config_path_type: :array_contained,
-    config_path_match_key: 'id',
-    config_path_match_value: subnet_id,
+    config_path_match_key: 'subnet',
+    config_path_match_value: subnet,
     config_path_contained_key: 'reservations',
     config_match_key: 'ip_address',
     config_match_value: ip_address,
   }.freeze
 end
 
-property :subnet_id, [Integer, Symbol, String],
-          callbacks: {
-            'should be greater than 0 and less than 4294967295' => ->(p) { p.is_a?(Symbol) || (p > 0 && p < 4294967295) },
-            'if not integer must be :global or "global"' => ->(p) { p.is_a?(Integer) || p.eql?('global') || p.eql?(:global) },
-          },
-          coerce: proc { |p| p.is_a?(Symbol) ? p.to_s : p },
+property :subnet, String,
           desired_state: false
 
 property :hw_address, String
