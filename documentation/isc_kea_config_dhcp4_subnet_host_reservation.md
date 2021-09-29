@@ -8,9 +8,9 @@
 
 ## Properties
 
-| Name         | Type                    | Default | Description | Allowed Values |
-| ------------ | ----------------------- | ------- | ----------- | -------------- |
-| `hostname`   | String                  |         |             |                |
-| `hw_address` | String                  |         |             |                |
-| `ip_address` | String                  |         |             |                |
-| `subnet_id`  | Integer, Symbol, String |         |             |                |
+| Name         | Type   | Default | Description | Allowed Values |
+| ------------ | ------ | ------- | ----------- | -------------- |
+| `hostname`   | String |         |             |                |
+| `hw_address` | String |         |             |                |
+| `ip_address` | String |         |             |                |
+| `subnet`     | String |         |             |                |

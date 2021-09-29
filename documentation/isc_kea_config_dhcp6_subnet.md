@@ -12,8 +12,6 @@
 | ------------------------ | ----------- | ------- | ----------- | -------------- |
 | `client_class`           | String      |         |             |                |
 | `id`                     | Integer     |         |             |                |
-| `option_data`            | Array, Hash |         |             |                |
 | `pd_pools`               | Array, Hash |         |             |                |
-| `pools`                  | Array, Hash |         |             |                |
 | `require_client_classes` | String      |         |             |                |
 | `subnet`                 | String      |         |             |                |

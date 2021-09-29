@@ -8,9 +8,7 @@
 
 ## Properties
 
-| Name          | Type        | Default | Description | Allowed Values |
-| ------------- | ----------- | ------- | ----------- | -------------- |
-| `id`          | Integer     |         |             |                |
-| `option_data` | Array, Hash |         |             |                |
-| `pools`       | Array, Hash |         |             |                |
-| `subnet`      | String      |         |             |                |
+| Name     | Type    | Default | Description | Allowed Values |
+| -------- | ------- | ------- | ----------- | -------------- |
+| `id`     | Integer |         |             |                |
+| `subnet` | String  |         |             |                |
