@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4_subnet
+# Resource:: config_dhcp4_subnet_pool
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -21,26 +21,23 @@ unified_mode true
 
 use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
-use 'partial/_config_dhcp4_parameters_subnet'
+use 'partial/_config_dhcp4_parameters_pool'
 
 def auto_accumulator_options_override
   {
+    config_properties_skip: %i(subnet),
     config_path_override: %w(Dhcp4 subnet4),
-    config_path_type: :array,
+    config_path_type: :array_contained,
     config_path_match_key: 'subnet',
     config_path_match_value: subnet,
-    property_translation_matrix: {
-      subnet_4o6_interface: '4o6_interface',
-      subnet_4o6_interface_id: '4o6_interface_id',
-      subnet_4o6_subnet: '4o6_subnet',
-    },
+    config_path_contained_key: 'pools',
+    config_match_key: 'pool',
+    config_match_value: pool,
   }.freeze
 end
 
-property :id, Integer,
-          callbacks: {
-            'should be greater than 0 and less than 4294967295' => ->(p) { p > 0 && p < 4294967295 },
-          }
-
 property :subnet, String,
+          desired_state: false
+
+property :pool, String,
           name_property: true

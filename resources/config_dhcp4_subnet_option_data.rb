@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4_subnet
+# Resource:: config_dhcp4_subnet_option_data
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -21,26 +21,37 @@ unified_mode true
 
 use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
-use 'partial/_config_dhcp4_parameters_subnet'
 
 def auto_accumulator_options_override
   {
+    config_properties_skip: %i(subnet),
     config_path_override: %w(Dhcp4 subnet4),
-    config_path_type: :array,
+    config_path_type: :array_contained,
     config_path_match_key: 'subnet',
     config_path_match_value: subnet,
+    config_path_contained_key: 'option-data',
+    config_match_key: 'name',
+    config_match_value: option_name,
     property_translation_matrix: {
-      subnet_4o6_interface: '4o6_interface',
-      subnet_4o6_interface_id: '4o6_interface_id',
-      subnet_4o6_subnet: '4o6_subnet',
+      option_name: 'name',
     },
   }.freeze
 end
 
-property :id, Integer,
-          callbacks: {
-            'should be greater than 0 and less than 4294967295' => ->(p) { p > 0 && p < 4294967295 },
-          }
-
 property :subnet, String,
+          desired_state: false
+
+property :option_name, String,
           name_property: true
+
+property :code, Integer
+
+property :type, String
+
+property :space, String
+
+property :csv_format, [true, false]
+
+property :data, [String, Integer]
+
+property :always_send, [true, false]
