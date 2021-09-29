@@ -43,28 +43,36 @@ end
 
 isc_kea_config_dhcp4_subnet '192.0.2.0/24' do
   id 1
-  pools [
-    { 'pool' => '192.0.2.10-192.0.2.20' },
-    { 'pool' => '192.0.2.64/26' },
-  ]
+end
+
+isc_kea_config_dhcp4_subnet_pool '192.0.2.10-192.0.2.20' do
+  subnet '192.0.2.0/24'
+end
+
+isc_kea_config_dhcp4_subnet_pool '192.0.2.64/26' do
+  subnet '192.0.2.0/24'
 end
 
 isc_kea_config_dhcp4_subnet '192.0.3.0/24' do
   id 2
-  pools [
-    { 'pool' => '192.0.3.10-192.0.3.20' },
-    { 'pool' => '192.0.3.64/26' },
-  ]
+end
+
+isc_kea_config_dhcp4_subnet_pool '192.0.3.10-192.0.3.20' do
+  subnet '192.0.3.0/24'
+end
+
+isc_kea_config_dhcp4_subnet_pool '192.0.3.64/26' do
+  subnet '192.0.3.0/24'
 end
 
 isc_kea_config_dhcp4_subnet_host_reservation 'test_id_1' do
-  subnet_id 1
+  subnet '192.0.2.0/24'
   hw_address '1a:1b:1c:1d:1e:1f'
   ip_address '192.0.2.202'
 end
 
 isc_kea_config_dhcp4_subnet_host_reservation 'test_id_2' do
-  subnet_id 2
+  subnet '192.0.3.0/24'
   hw_address '1a:1b:1c:1d:1e:99'
   ip_address '192.0.3.202'
   # action :delete

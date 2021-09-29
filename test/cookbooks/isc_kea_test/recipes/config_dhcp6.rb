@@ -35,9 +35,10 @@ end
 
 isc_kea_config_dhcp6_subnet '2001:db8:1::/64' do
   interface 'eth0'
-  pools [
-    { 'pool' => '2001:db8:1::/80' },
-  ]
+end
+
+isc_kea_config_dhcp6_subnet_pool '2001:db8:1::/80' do
+  subnet '2001:db8:1::/64'
 end
 
 isc_kea_config_dhcp6_loggers 'kea-dhcp6' do
