@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp6_shared_network
+# Resource:: config_dhcp6_shared_network_subnet
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -21,19 +21,34 @@ unified_mode true
 
 use 'partial/_config_auto_accumulator'
 use 'partial/_config_parameters_common'
-use 'partial/_config_dhcp6_parameters_shared_network'
+use 'partial/_config_dhcp6_parameters_subnet'
 
 def auto_accumulator_options_override
   {
+    config_properties_skip: %i(shared_network_name),
     config_path_override: %w(Dhcp6 shared-networks),
-    config_path_type: :array,
+    config_path_type: :array_contained,
     config_path_match_key: 'name',
-    config_path_match_value: network_name,
-    property_translation_matrix: {
-      network_name: 'name',
-    },
+    config_path_match_value: shared_network_name,
+    config_path_contained_key: 'subnet4',
+    config_match_key: 'subnet',
+    config_match_value: subnet,
   }.freeze
 end
 
-property :network_name, String,
+property :shared_network_name, String,
+          desired_state: false
+
+property :id, Integer,
+          callbacks: {
+            'should be greater than 0 and less than 4294967295' => ->(p) { p > 0 && p < 4294967295 },
+          }
+
+property :subnet, String,
           name_property: true
+
+property :pools, [Array, Hash],
+          coerce: proc { |p| p.is_a?(Array) ? p : [p] }
+
+property :option_data, [Array, Hash],
+          coerce: proc { |p| p.is_a?(Array) ? p : [p] }
