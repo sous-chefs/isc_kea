@@ -24,7 +24,6 @@ use 'partial/_config_parameters_common'
 
 def auto_accumulator_options_override
   {
-    # config_properties_skip: %i(),
     config_path_override: %w(Control-agent control-sockets),
     config_path_type: :hash_contained,
     config_path_contained_key: name,

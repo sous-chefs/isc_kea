@@ -42,6 +42,7 @@ def auto_accumulator_options_override
 end
 
 property :shared_network_name, String,
+          required: true,
           desired_state: false
 
 property :id, Integer,
