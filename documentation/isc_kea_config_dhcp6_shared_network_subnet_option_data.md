@@ -1,4 +1,4 @@
-# isc_kea_config_dhcp4_shared_network_option_data
+# isc_kea_config_dhcp6_shared_network_subnet_option_data
 
 [Back to resource list](../README.md#resources)
 
@@ -16,6 +16,7 @@
 | Name                  | Name? | Type            | Default | Description | Allowed Values |
 | --------------------- | ----- | --------------- | ------- | ----------- | -------------- |
 | `shared_network_name` |       | String          |         |             |                |
+| `subnet`              |       | String          |         |             |                |
 | `option_name`         | ✓     | String          |         |             |                |
 | `code`                |       | Integer         |         |             |                |
 | `type`                |       | String          |         |             |                |

@@ -6,13 +6,19 @@
 
 - `:install`
 - `:delete`
+- `:upgrade`
+- `:remove`
 
 ## Properties
 
-| Name                    | Type          | Default | Description | Allowed Values |
-| ----------------------- | ------------- | ------- | ----------- | -------------- |
-| `apt_repo_key_url`      | String        |         |             |                |
-| `clear_default_config`  | true, false   |         |             |                |
-| `install_version`       | String        |         |             |                |
-| `packages`              | String, Array |         |             |                |
-| `repo_support_packages` | Array         |         |             |                |
+| Name                    | Name? | Type          | Default | Description | Allowed Values |
+| ----------------------- | ----- | ------------- | ------- | ----------- | -------------- |
+| `install_version`       |       | String        |         |             |                |
+| `repo_support_packages` |       | Array         |         |             |                |
+| `packages`              |       | String, Array |         |             |                |
+| `clear_default_config`  |       | true, false   |         |             |                |
+| `apt_repo_key_url`      |       | String        |         |             |                |
+
+## Libraries
+
+- `IscKea::Cookbook::InstallHelpers`

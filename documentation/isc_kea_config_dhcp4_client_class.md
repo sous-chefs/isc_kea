@@ -2,22 +2,27 @@
 
 [Back to resource list](../README.md#resources)
 
+## Uses
+
+- [partial/_config_auto_accumulator](partial/isc_kea__config_auto_accumulator.md)
+- [partial/_config_parameters_common](partial/isc_kea__config_parameters_common.md)
+
 ## Actions
 
 - None
 
 ## Properties
 
-| Name                 | Type        | Default | Description | Allowed Values |
-| -------------------- | ----------- | ------- | ----------- | -------------- |
-| `boot_file_name`     | String      |         |             |                |
-| `class_name`         | String      |         |             |                |
-| `max_valid_lifetime` | Integer     |         |             |                |
-| `min_valid_lifetime` | Integer     |         |             |                |
-| `next_server`        | String      |         |             |                |
-| `only_if_required`   | true, false |         |             |                |
-| `option_data`        | Array, Hash |         |             |                |
-| `option_def`         | Array, Hash |         |             |                |
-| `server_hostname`    | String      |         |             |                |
-| `test`               | String      |         |             |                |
-| `valid_lifetime`     | Integer     |         |             |                |
+| Name                 | Name? | Type        | Default | Description | Allowed Values |
+| -------------------- | ----- | ----------- | ------- | ----------- | -------------- |
+| `class_name`         | ✓     | String      |         |             |                |
+| `test`               |       | String      |         |             |                |
+| `option_def`         |       | Array, Hash |         |             |                |
+| `option_data`        |       | Array, Hash |         |             |                |
+| `valid_lifetime`     |       | Integer     |         |             |                |
+| `min_valid_lifetime` |       | Integer     |         |             |                |
+| `max_valid_lifetime` |       | Integer     |         |             |                |
+| `only_if_required`   |       | true, false |         |             |                |
+| `boot_file_name`     |       | String      |         |             |                |
+| `next_server`        |       | String      |         |             |                |
+| `server_hostname`    |       | String      |         |             |                |

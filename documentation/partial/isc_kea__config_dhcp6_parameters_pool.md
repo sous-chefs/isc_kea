@@ -8,8 +8,8 @@
 
 ## Properties
 
-| Name                     | Type   | Default | Description | Allowed Values |
-| ------------------------ | ------ | ------- | ----------- | -------------- |
-| `client_class`           | String |         |             |                |
-| `option_data`            | String |         |             |                |
-| `require_client_classes` | String |         |             |                |
+| Name                     | Name? | Type   | Default | Description | Allowed Values |
+| ------------------------ | ----- | ------ | ------- | ----------- | -------------- |
+| `client_class`           |       | String |         |             |                |
+| `option_data`            |       | String |         |             |                |
+| `require_client_classes` |       | String |         |             |                |

@@ -8,26 +8,26 @@
 
 ## Properties
 
-| Name                  | Type           | Default | Description | Allowed Values |
-| --------------------- | -------------- | ------- | ----------- | -------------- |
-| `connect_timeout`     | Integer        |         |             |                |
-| `consistency`         | String         |         |             |                |
-| `contact_points`      | String         |         |             |                |
-| `database_name`       | String         |         |             |                |
-| `host`                | String         |         |             |                |
-| `keyspace`            | String         |         |             |                |
-| `lfc_interval`        | Integer        |         |             |                |
-| `max_reconnect_tries` | Integer        |         |             |                |
-| `max_row_errors`      | Integer        |         |             |                |
-| `on_fail`             | String         |         |             |                |
-| `password`            | String         |         |             |                |
-| `persist`             | true, false    |         |             |                |
-| `port`                | Integer        |         |             |                |
-| `readonly`            | true, false    |         |             |                |
-| `reconnect_wait_time` | Integer        |         |             |                |
-| `request_timeout`     | Integer        |         |             |                |
-| `serial_consistency`  | String         |         |             |                |
-| `tcp_keepalive`       | Integer        |         |             |                |
-| `tcp_nodelay`         | true, false    |         |             |                |
-| `type`                | String, Symbol |         |             |                |
-| `user`                | String         |         |             |                |
+| Name                  | Name? | Type           | Default | Description | Allowed Values                                                                                |
+| --------------------- | ----- | -------------- | ------- | ----------- | --------------------------------------------------------------------------------------------- |
+| `type`                |       | String, Symbol |         |             | memfile, mysql, postgresql, cdl                                                               |
+| `persist`             |       | true, false    |         |             |                                                                                               |
+| `database_name`       |       | String         |         |             |                                                                                               |
+| `host`                |       | String         |         |             |                                                                                               |
+| `port`                |       | Integer        |         |             |                                                                                               |
+| `user`                |       | String         |         |             |                                                                                               |
+| `password`            |       | String         |         |             |                                                                                               |
+| `contact_points`      |       | String         |         |             |                                                                                               |
+| `keyspace`            |       | String         |         |             |                                                                                               |
+| `connect_timeout`     |       | Integer        |         |             |                                                                                               |
+| `max_reconnect_tries` |       | Integer        |         |             |                                                                                               |
+| `reconnect_wait_time` |       | Integer        |         |             |                                                                                               |
+| `on_fail`             |       | String         |         |             | stop-retry-exit, serve-retry-exit, serve-retry-continue                                       |
+| `lfc_interval`        |       | Integer        |         |             |                                                                                               |
+| `max_row_errors`      |       | Integer        |         |             |                                                                                               |
+| `request_timeout`     |       | Integer        |         |             |                                                                                               |
+| `tcp_keepalive`       |       | Integer        |         |             |                                                                                               |
+| `tcp_nodelay`         |       | true, false    |         |             |                                                                                               |
+| `consistency`         |       | String         |         |             | any, one, two, three, quorum, all, local-quorum, each-quorum, serial, local-serial, local-one |
+| `serial_consistency`  |       | String         |         |             | any, one, two, three, quorum, all, local-quorum, each-quorum, serial, local-serial, local-one |
+| `readonly`            |       | true, false    |         |             |                                                                                               |

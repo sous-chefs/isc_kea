@@ -8,7 +8,7 @@
 
 ## Properties
 
-| Name           | Type   | Default | Description | Allowed Values |
-| -------------- | ------ | ------- | ----------- | -------------- |
-| `comment`      | String |         |             |                |
-| `user_context` | Hash   |         |             |                |
+| Name           | Name? | Type   | Default | Description | Allowed Values |
+| -------------- | ----- | ------ | ------- | ----------- | -------------- |
+| `comment`      |       | String |         |             |                |
+| `user_context` |       | Hash   |         |             |                |

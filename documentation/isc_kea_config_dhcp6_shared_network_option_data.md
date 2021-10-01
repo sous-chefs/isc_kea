@@ -2,19 +2,24 @@
 
 [Back to resource list](../README.md#resources)
 
+## Uses
+
+- [partial/_config_auto_accumulator](partial/isc_kea__config_auto_accumulator.md)
+- [partial/_config_parameters_common](partial/isc_kea__config_parameters_common.md)
+
 ## Actions
 
 - None
 
 ## Properties
 
-| Name                  | Type            | Default | Description | Allowed Values |
-| --------------------- | --------------- | ------- | ----------- | -------------- |
-| `always_send`         | true, false     |         |             |                |
-| `code`                | Integer         |         |             |                |
-| `csv_format`          | true, false     |         |             |                |
-| `data`                | String, Integer |         |             |                |
-| `option_name`         | String          |         |             |                |
-| `shared_network_name` | String          |         |             |                |
-| `space`               | String          |         |             |                |
-| `type`                | String          |         |             |                |
+| Name                  | Name? | Type            | Default | Description | Allowed Values |
+| --------------------- | ----- | --------------- | ------- | ----------- | -------------- |
+| `shared_network_name` |       | String          |         |             |                |
+| `option_name`         | ✓     | String          |         |             |                |
+| `code`                |       | Integer         |         |             |                |
+| `type`                |       | String          |         |             |                |
+| `space`               |       | String          |         |             |                |
+| `csv_format`          |       | true, false     |         |             |                |
+| `data`                |       | String, Integer |         |             |                |
+| `always_send`         |       | true, false     |         |             |                |

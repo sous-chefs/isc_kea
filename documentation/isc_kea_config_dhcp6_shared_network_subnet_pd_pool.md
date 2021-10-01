@@ -1,4 +1,4 @@
-# isc_kea_config_dhcp6_subnet_pd_pool
+# isc_kea_config_dhcp6_shared_network_subnet_pd_pool
 
 [Back to resource list](../README.md#resources)
 

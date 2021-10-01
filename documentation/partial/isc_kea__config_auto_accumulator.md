@@ -9,15 +9,20 @@
 
 ## Properties
 
-| Name                        | Type           | Default | Description | Allowed Values                    |
-| --------------------------- | -------------- | ------- | ----------- | --------------------------------- |
-| `config_file`               | String         |         |             |                                   |
-| `cookbook`                  | String         |         |             |                                   |
-| `extra_options`             | Hash           |         |             |                                   |
-| `filemode`                  | String         |         |             |                                   |
-| `filetype`                  | Symbol, String |         |             | `:json`, `:ini`, `:toml`, `:yaml` |
-| `group`                     | String         |         |             |                                   |
-| `load_existing_config_file` | true           |         |             |                                   |
-| `owner`                     | String         |         |             |                                   |
-| `sensitive`                 | true, false    |         |             |                                   |
-| `source`                    | String         |         |             |                                   |
+| Name                        | Name? | Type           | Default | Description | Allowed Values        |
+| --------------------------- | ----- | -------------- | ------- | ----------- | --------------------- |
+| `sensitive`                 |       | true, false    |         |             |                       |
+| `config_file`               |       | String         |         |             |                       |
+| `load_existing_config_file` |       | true           |         |             |                       |
+| `cookbook`                  |       | String         |         |             |                       |
+| `source`                    |       | String         |         |             |                       |
+| `owner`                     |       | String         |         |             |                       |
+| `group`                     |       | String         |         |             |                       |
+| `filemode`                  |       | String         |         |             |                       |
+| `filetype`                  |       | Symbol, String |         |             | json, ini, toml, yaml |
+| `extra_options`             |       | Hash           |         |             |                       |
+
+## Libraries
+
+- `ChefAutoAccumulator::Resource`
+- `IscKea::Cookbook::Helpers`

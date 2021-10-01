@@ -2,19 +2,24 @@
 
 [Back to resource list](../README.md#resources)
 
+## Uses
+
+- [partial/_config_auto_accumulator](partial/isc_kea__config_auto_accumulator.md)
+- [partial/_config_parameters_common](partial/isc_kea__config_parameters_common.md)
+
 ## Actions
 
 - None
 
 ## Properties
 
-| Name             | Type           | Default | Description | Allowed Values |
-| ---------------- | -------------- | ------- | ----------- | -------------- |
-| `enable_updates` | true, false    |         |             |                |
-| `max_queue_size` | Integer        |         |             |                |
-| `ncr_format`     | String, Symbol |         |             | `JSON`         |
-| `ncr_protocol`   | String, Symbol |         |             | `UDP`          |
-| `sender_ip`      | String         |         |             |                |
-| `sender_port`    | Integer        |         |             |                |
-| `server_ip`      | String         |         |             |                |
-| `server_port`    | Integer        |         |             |                |
+| Name             | Name? | Type           | Default | Description | Allowed Values |
+| ---------------- | ----- | -------------- | ------- | ----------- | -------------- |
+| `enable_updates` |       | true, false    |         |             |                |
+| `max_queue_size` |       | Integer        |         |             |                |
+| `ncr_protocol`   |       | String, Symbol |         |             | UDP            |
+| `ncr_format`     |       | String, Symbol |         |             | JSON           |
+| `sender_ip`      |       | String         |         |             |                |
+| `sender_port`    |       | Integer        |         |             |                |
+| `server_ip`      |       | String         |         |             |                |
+| `server_port`    |       | Integer        |         |             |                |
