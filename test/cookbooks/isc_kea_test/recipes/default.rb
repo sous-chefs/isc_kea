@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+include_recipe '::net_setup'
+
 include_recipe '::install'
 
 include_recipe '::config_dhcp4'
