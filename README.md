@@ -28,6 +28,8 @@ The following platforms are supported and tested with Test Kitchen:
 
 Note: All resources get their actions and base properties from the partial [_config_auto_accumulator](documentation/partial/isc_kea__config_auto_accumulator.md)
 
+### Control Agent
+
 - [isc_kea_config_ctrl_agent](documentation/isc_kea_config_ctrl_agent.md)
 - [isc_kea_config_ctrl_agent_authentication](documentation/isc_kea_config_ctrl_agent_authentication.md)
 - [isc_kea_config_ctrl_agent_authentication_client](documentation/isc_kea_config_ctrl_agent_authentication_client.md)
@@ -35,6 +37,9 @@ Note: All resources get their actions and base properties from the partial [_con
 - [isc_kea_config_ctrl_agent_hooks_library](documentation/isc_kea_config_ctrl_agent_hooks_library.md)
 - [isc_kea_config_ctrl_agent_loggers](documentation/isc_kea_config_ctrl_agent_loggers.md)
 - [isc_kea_config_ctrl_agent_loggers_output](documentation/isc_kea_config_ctrl_agent_loggers_output.md)
+
+### Dhcp4
+
 - [isc_kea_config_dhcp4](documentation/isc_kea_config_dhcp4.md)
 - [isc_kea_config_dhcp4_client_class](documentation/isc_kea_config_dhcp4_client_class.md)
 - [isc_kea_config_dhcp4_compatibility](documentation/isc_kea_config_dhcp4_compatibility.md)
@@ -64,6 +69,9 @@ Note: All resources get their actions and base properties from the partial [_con
 - [isc_kea_config_dhcp4_subnet_host_reservation](documentation/isc_kea_config_dhcp4_subnet_host_reservation.md)
 - [isc_kea_config_dhcp4_subnet_option_data](documentation/isc_kea_config_dhcp4_subnet_option_data.md)
 - [isc_kea_config_dhcp4_subnet_pool](documentation/isc_kea_config_dhcp4_subnet_pool.md)
+
+### Dhcp6
+
 - [isc_kea_config_dhcp6](documentation/isc_kea_config_dhcp6.md)
 - [isc_kea_config_dhcp6_client_class](documentation/isc_kea_config_dhcp6_client_class.md)
 - [isc_kea_config_dhcp6_compatibility](documentation/isc_kea_config_dhcp6_compatibility.md)
@@ -97,6 +105,9 @@ Note: All resources get their actions and base properties from the partial [_con
 - [isc_kea_config_dhcp6_subnet_pd_pool](documentation/isc_kea_config_dhcp6_subnet_pd_pool.md)
 - [isc_kea_config_dhcp6_subnet_pool](documentation/isc_kea_config_dhcp6_subnet_pool.md)
 - [isc_kea_config_dhcp6_subnet_prefix_delegation](documentation/isc_kea_config_dhcp6_subnet_prefix_delegation.md)
+
+### DhcpDdns
+
 - [isc_kea_config_dhcp_ddns](documentation/isc_kea_config_dhcp_ddns.md)
 - [isc_kea_config_dhcp_ddns_control_socket](documentation/isc_kea_config_dhcp_ddns_control_socket.md)
 - [isc_kea_config_dhcp_ddns_forward_ddns_domain](documentation/isc_kea_config_dhcp_ddns_forward_ddns_domain.md)
@@ -105,6 +116,9 @@ Note: All resources get their actions and base properties from the partial [_con
 - [isc_kea_config_dhcp_ddns_loggers_output](documentation/isc_kea_config_dhcp_ddns_loggers_output.md)
 - [isc_kea_config_dhcp_ddns_reverse_ddns_domain](documentation/isc_kea_config_dhcp_ddns_reverse_ddns_domain.md)
 - [isc_kea_config_dhcp_ddns_tsig_key](documentation/isc_kea_config_dhcp_ddns_tsig_key.md)
+
+## General
+
 - [isc_kea_install](documentation/isc_kea_install.md)
 - [isc_kea_service](documentation/isc_kea_service.md)
 
