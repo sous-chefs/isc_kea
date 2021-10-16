@@ -29,7 +29,7 @@ def auto_accumulator_options_override
     config_path_match_key: 'name',
     config_path_match_value: class_name,
     property_translation_matrix: {
-      option_name: 'name',
+      class_name: 'name',
     },
   }.freeze
 end
