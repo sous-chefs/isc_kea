@@ -1,5 +1,5 @@
 #
-# Cookbook:: ics_kea
+# Cookbook:: isc_kea
 # Resource:: install
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
@@ -16,6 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+unified_mode true
 
 include IscKea::Cookbook::InstallHelpers
 
@@ -39,11 +41,7 @@ property :clear_default_config, [true, false],
 property :apt_repo_key_url, String,
           default: lazy { debian_key_url }
 
-unified_mode true
-
 action_class do
-  # include IscKea::Cookbook::InstallHelpers
-
   def do_package_action(action)
     package 'isc-kea' do
       package_name new_resource.packages
