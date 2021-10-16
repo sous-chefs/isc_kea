@@ -72,7 +72,7 @@ action :install do
     distro_version = node['platform_version'].to_i
 
     remote_file "/etc/yum.repos.d/isc-kea-#{new_resource.install_version}.repo" do
-      source "https://dl.cloudsmith.io/public/isc/kea-1-9/config.rpm.txt?distro=#{distro_name}&codename=#{distro_version}"
+      source "https://dl.cloudsmith.io/public/isc/kea-#{new_resource.install_version}/config.rpm.txt?distro=#{distro_name}&codename=#{distro_version}"
 
       owner 'root'
       group 'root'
