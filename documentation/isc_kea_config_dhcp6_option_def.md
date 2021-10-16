@@ -21,4 +21,4 @@
 | `array`        |       | true, false |         |             |                |
 | `record_types` |       | String      |         |             |                |
 | `space`        |       | String      |         |             |                |
-| `escapsulate`  |       | String      |         |             |                |
+| `encapsulate`  |       | String      |         |             |                |

@@ -47,4 +47,4 @@ property :record_types, String
 
 property :space, String
 
-property :escapsulate, String
+property :encapsulate, String
