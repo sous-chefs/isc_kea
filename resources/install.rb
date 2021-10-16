@@ -22,7 +22,7 @@ unified_mode true
 include IscKea::Cookbook::InstallHelpers
 
 property :install_version, String,
-          default: '1.9',
+          required: true,
           coerce: proc { |p| p.gsub('.', '-') },
           description: 'Version of Kea to install'
 
