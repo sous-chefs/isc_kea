@@ -19,6 +19,4 @@
 
 property :client_class, String
 
-property :option_data, String
-
-property :require_client_classes, String
+property :require_client_classes, Array
