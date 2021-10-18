@@ -114,7 +114,7 @@ action :create do
     case option_config_path_type
     when :array
       map = resource_properties.map do |rp|
-        next if nil_or_empty?(new_resource.send(rp))
+        next if new_resource.send(rp).nil?
 
         [translate_property_value(rp), new_resource.send(rp)]
       end.compact.to_h
@@ -122,7 +122,7 @@ action :create do
       accumulator_config(action: :array_push, value: map)
     when :array_contained
       map = resource_properties.map do |rp|
-        next if nil_or_empty?(new_resource.send(rp))
+        next if new_resource.send(rp).nil?
 
         [translate_property_value(rp), new_resource.send(rp)]
       end.compact.to_h
@@ -131,7 +131,7 @@ action :create do
       accumulator_config(action: :key_push, key: ck, value: map)
     when :hash
       resource_properties.each do |rp|
-        next if nil_or_empty?(new_resource.send(rp))
+        next if new_resource.send(rp).nil?
 
         accumulator_config(action: :set, key: rp, value: new_resource.send(rp))
       end
@@ -139,7 +139,7 @@ action :create do
       new_resource.extra_options.each { |key, value| accumulator_config(:set, key, value) } if property_is_set?(:extra_options)
     when :hash_contained
       map = resource_properties.map do |rp|
-        next if nil_or_empty?(new_resource.send(rp))
+        next if new_resource.send(rp).nil?
 
         [translate_property_value(rp), new_resource.send(rp)]
       end.compact.to_h
