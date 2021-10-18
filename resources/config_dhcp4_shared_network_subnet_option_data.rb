@@ -51,8 +51,6 @@ property :option_name, String,
 
 property :code, Integer
 
-property :type, String
-
 property :space, String
 
 property :csv_format, [true, false]

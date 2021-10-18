@@ -19,7 +19,6 @@
 | `subnet`              |       | String          |         |             |                |
 | `option_name`         | ✓     | String          |         |             |                |
 | `code`                |       | Integer         |         |             |                |
-| `type`                |       | String          |         |             |                |
 | `space`               |       | String          |         |             |                |
 | `csv_format`          |       | true, false     |         |             |                |
 | `data`                |       | String, Integer |         |             |                |
