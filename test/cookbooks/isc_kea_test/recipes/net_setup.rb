@@ -1,5 +1,6 @@
 execute 'testing - enable ipv6' do
   command 'sysctl net.ipv6.conf.eth0.disable_ipv6=0'
+  not_if 'sysctl net.ipv6.conf.eth0.disable_ipv6 -n | grep 0'
   compile_time true
 end
 
