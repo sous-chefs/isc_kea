@@ -57,8 +57,6 @@ property :max_preferred_lifetime, Integer
 
 property :max_valid_lifetime, Integer
 
-property :option_data, Hash
-
 property :preferred_lifetime, String
 
 property :rapid_commit, [true, false]

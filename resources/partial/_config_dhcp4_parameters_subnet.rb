@@ -67,8 +67,6 @@ property :max_valid_lifetime, Integer
 
 property :next_server, String
 
-property :option_data, Array
-
 property :rebind_timer, Integer
 
 property :renew_timer, Integer
