@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-include ChefAutoAccumulator::Resource
+include ChefAutoAccumulator
 include IscKea::Cookbook::Helpers
 
 unified_mode true
@@ -106,7 +106,7 @@ def auto_accumulator_options
 end
 
 action_class do
-  include ChefAutoAccumulator::Resource
+  include ChefAutoAccumulator
 end
 
 action :create do
@@ -156,19 +156,24 @@ action :delete do
   when :array
     converge_by("Deleting configuration for #{new_resource.declared_type.to_s} #{new_resource.name}") do
       accumulator_config(action: :array_delete_match, key: option_config_path_match_key, value: option_config_path_match_value)
-    end if accumulator_config_present?
+    end if accumulator_config_array_present?
   when :array_contained
     converge_by("Deleting configuration for #{new_resource.declared_type.to_s} #{new_resource.name}") do
       accumulator_config(action: :key_delete_match, key: option_config_path_contained_key)
-    end if accumulator_config_present?
+    end if accumulator_config_array_present?
   when :hash
     set_properties = resource_properties.push(:extra_options).filter { |rp| property_is_set?(rp) }
+    Chef::Log.warn("SP: #{debug_var_output(set_properties)}")
+
     delete_properties = nil_or_empty?(set_properties) ? resource_properties : set_properties
-    diff_properties = delete_properties.filter { |dp| load_config_auto_accumulator_section(new_resource.config_file).key?(translate_property_value(dp)) }
+    Chef::Log.warn("DP: #{debug_var_output(delete_properties)}")
+
+    diff_properties = delete_properties.filter { |dp| load_config_file_section(new_resource.config_file).key?(translate_property_value(dp)) }
     diff_properties.map! { |dp| translate_property_value(dp) }
+    Chef::Log.warn("DFP: #{debug_var_output(diff_properties)}")
 
     if property_is_set?(:extra_options)
-      extra_options_diff = new_resource.extra_options.keys.filter { |eo| load_config_auto_accumulator_section(new_resource.config_file).key?(eo) }
+      extra_options_diff = new_resource.extra_options.keys.filter { |eo| load_config_file_section(new_resource.config_file).key?(eo) }
       diff_properties.concat(extra_options_diff) unless nil_or_empty?(extra_options_diff)
     end
 
@@ -178,7 +183,7 @@ action :delete do
   when :hash_contained
     converge_by("Deleting configuration for #{new_resource.declared_type.to_s} #{new_resource.name}") do
       accumulator_config(action: :delete, key: option_config_path_contained_key)
-    end if accumulator_config_present?
+    end if accumulator_config_present?(option_config_path_contained_key)
   else
     raise "Unknown config path type #{debug_var_output(option_config_path_type)}"
   end
