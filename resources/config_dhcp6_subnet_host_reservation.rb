@@ -31,8 +31,8 @@ def auto_accumulator_options_override
     config_path_match_key: 'subnet',
     config_path_match_value: subnet,
     config_path_contained_key: 'reservations',
-    config_match_key: 'prefix',
-    config_match_value: prefix,
+    config_match_key: 'ip_addresses',
+    config_match_value: ip_addresses,
   }.freeze
 end
 
@@ -41,7 +41,15 @@ property :subnet, String,
 
 property :hw_address, String
 
-property :ip_address, String,
-          name_property: true
+property :duid, String
+
+property :flex_id, String
+
+property :ip_addresses, [String, Array],
+          name_property: true,
+          coerce: proc { |p| Array(p) }
+
+property :prefixes, [String, Array],
+          coerce: proc { |p| Array(p) }
 
 property :hostname, String
