@@ -36,6 +36,7 @@ def auto_accumulator_options_override
 end
 
 property :subnet, String,
+          required: true,
           desired_state: false
 
 property :prefix, String,
