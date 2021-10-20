@@ -29,3 +29,11 @@ end
 property :http_host, String
 
 property :http_port, Integer
+
+property :trust_anchor, String
+
+property :cert_file, String
+
+property :key_file, String
+
+property :cert_required, [true, false]
