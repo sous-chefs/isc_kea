@@ -26,7 +26,7 @@ property :service_name, String,
           name_property: true
 
 property :config_file, String,
-          default: lazy { default_config_file }
+          default: lazy { default_kea_config_file }
 
 property :config_test, [true, false],
           default: true,

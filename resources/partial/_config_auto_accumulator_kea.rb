@@ -1,6 +1,6 @@
 #
 # Cookbook:: chef_auto_accumulator
-# Resource:: _config_auto_accumulator
+# Resource:: _config_auto_accumulator_kea
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #

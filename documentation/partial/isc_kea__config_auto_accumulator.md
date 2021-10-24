@@ -1,4 +1,4 @@
-# isc_kea__config_auto_accumulator
+# isc_kea__config_auto_accumulator_kea
 
 [Back to resource list](../README.md#resources)
 

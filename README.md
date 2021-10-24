@@ -26,7 +26,7 @@ The following platforms are supported and tested with Test Kitchen:
 
 ## Resources
 
-Note: All resources get their actions and base properties from the partial [_config_auto_accumulator](documentation/partial/isc_kea__config_auto_accumulator.md)
+Note: All resources get their actions and base properties from the partial [_config_auto_accumulator_kea](documentation/partial/isc_kea__config_auto_accumulator_kea.md)
 
 ### Control Agent
 
@@ -124,7 +124,7 @@ Note: All resources get their actions and base properties from the partial [_con
 
 ### Partials
 
-- [isc_kea__config_auto_accumulator](documentation/partial/isc_kea__config_auto_accumulator.md)
+- [isc_kea__config_auto_accumulator_kea](documentation/partial/isc_kea__config_auto_accumulator_kea.md)
 - [isc_kea__config_database](documentation/partial/isc_kea__config_database.md)
 - [isc_kea__config_dhcp4_parameters_pool](documentation/partial/isc_kea__config_dhcp4_parameters_pool.md)
 - [isc_kea__config_dhcp4_parameters_shared_network](documentation/partial/isc_kea__config_dhcp4_parameters_shared_network.md)

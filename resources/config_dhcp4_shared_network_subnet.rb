@@ -19,7 +19,7 @@
 
 unified_mode true
 
-use 'partial/_config_auto_accumulator'
+use 'partial/_config_auto_accumulator_kea'
 use 'partial/_config_parameters_common'
 use 'partial/_config_dhcp4_parameters_subnet'
 
