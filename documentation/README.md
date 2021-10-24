@@ -81,5 +81,8 @@
 - [isc_kea_config_dhcp_ddns_loggers_output](isc_kea_config_dhcp_ddns_loggers_output.md)
 - [isc_kea_config_dhcp_ddns_reverse_ddns_domain](isc_kea_config_dhcp_ddns_reverse_ddns_domain.md)
 - [isc_kea_config_dhcp_ddns_tsig_key](isc_kea_config_dhcp_ddns_tsig_key.md)
+- [isc_kea_config_stork_agent](isc_kea_config_stork_agent.md)
+- [isc_kea_config_stork_server](isc_kea_config_stork_server.md)
 - [isc_kea_install](isc_kea_install.md)
+- [isc_kea_install_stork](isc_kea_install_stork.md)**
 - [isc_kea_service](isc_kea_service.md)

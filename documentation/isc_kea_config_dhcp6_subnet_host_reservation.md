@@ -4,9 +4,9 @@
 
 ## Uses
 
-- [partial/_config_auto_accumulator_kea](partial/isc_kea__config_auto_accumulator_kea.md)
-- [partial/_config_parameters_common](partial/isc_kea__config_parameters_common.md)
-- [partial/_config_dhcp6_parameters_subnet](partial/isc_kea__config_dhcp6_parameters_subnet.md)
+- [partial/isc_kea__config_auto_accumulator_kea](partial/isc_kea__config_auto_accumulator_kea.md)
+- [partial/isc_kea__config_parameters_common](partial/isc_kea__config_parameters_common.md)
+- [partial/isc_kea__config_dhcp6_parameters_subnet](partial/isc_kea__config_dhcp6_parameters_subnet.md)
 
 ## Actions
 
@@ -14,9 +14,12 @@
 
 ## Properties
 
-| Name         | Name? | Type   | Default | Description | Allowed Values |
-| ------------ | ----- | ------ | ------- | ----------- | -------------- |
-| `subnet`     |       | String |         |             |                |
-| `hw_address` |       | String |         |             |                |
-| `ip_address` | ✓     | String |         |             |                |
-| `hostname`   |       | String |         |             |                |
+| Name           | Name? | Type          | Default | Description | Allowed Values |
+| -------------- | ----- | ------------- | ------- | ----------- | -------------- |
+| `subnet`       |       | String        |         |             |                |
+| `hw_address`   |       | String        |         |             |                |
+| `duid`         |       | String        |         |             |                |
+| `flex_id`      |       | String        |         |             |                |
+| `ip_addresses` | ✓     | String, Array |         |             |                |
+| `prefixes`     |       | String, Array |         |             |                |
+| `hostname`     |       | String        |         |             |                |

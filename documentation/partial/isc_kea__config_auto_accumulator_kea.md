@@ -1,4 +1,4 @@
-# isc_kea__config_auto_accumulator_kea
+# isc_kea_isc_kea__config_auto_accumulator_kea
 
 [Back to resource list](../README.md#resources)
 
@@ -24,5 +24,5 @@
 
 ## Libraries
 
-- `ChefAutoAccumulator::Resource`
+- `ChefAutoAccumulator`
 - `IscKea::Cookbook::Helpers`

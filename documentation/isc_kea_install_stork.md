@@ -1,4 +1,4 @@
-# isc_kea_install
+# isc_kea_install_stork
 
 [Back to resource list](../README.md#resources)
 
@@ -13,7 +13,6 @@
 
 | Name                    | Name? | Type          | Default | Description                                                 | Allowed Values |
 | ----------------------- | ----- | ------------- | ------- | ----------------------------------------------------------- | -------------- |
-| `install_version`       |       | String        |         | Version of Kea to install                                   |                |
 | `repo_support_packages` |       | Array         |         |                                                             |                |
 | `packages`              |       | String, Array |         | Override the default installation packages for the platform |                |
 | `clear_default_config`  |       | true, false   |         | Clear default configuration on install                      |                |

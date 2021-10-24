@@ -4,9 +4,9 @@
 
 ## Uses
 
-- [partial/_config_auto_accumulator_kea](partial/isc_kea__config_auto_accumulator_kea.md)
-- [partial/_config_parameters_common](partial/isc_kea__config_parameters_common.md)
-- [partial/_config_database](partial/isc_kea__config_database.md)
+- [partial/isc_kea__config_auto_accumulator_kea](partial/isc_kea__config_auto_accumulator_kea.md)
+- [partial/isc_kea__config_parameters_common](partial/isc_kea__config_parameters_common.md)
+- [partial/isc_kea__config_database](partial/isc_kea__config_database.md)
 
 ## Actions
 

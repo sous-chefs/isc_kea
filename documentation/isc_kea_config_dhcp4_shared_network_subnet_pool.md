@@ -4,9 +4,9 @@
 
 ## Uses
 
-- [partial/_config_auto_accumulator_kea](partial/isc_kea__config_auto_accumulator_kea.md)
-- [partial/_config_parameters_common](partial/isc_kea__config_parameters_common.md)
-- [partial/_config_dhcp4_parameters_pool](partial/isc_kea__config_dhcp4_parameters_pool.md)
+- [partial/isc_kea__config_auto_accumulator_kea](partial/isc_kea__config_auto_accumulator_kea.md)
+- [partial/isc_kea__config_parameters_common](partial/isc_kea__config_parameters_common.md)
+- [partial/isc_kea__config_dhcp4_parameters_pool](partial/isc_kea__config_dhcp4_parameters_pool.md)
 
 ## Actions
 

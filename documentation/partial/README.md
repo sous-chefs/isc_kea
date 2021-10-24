@@ -5,6 +5,7 @@
 ## Resources
 
 - [isc_kea__config_auto_accumulator_kea](isc_kea__config_auto_accumulator_kea.md)
+- [isc_kea__config_auto_accumulator_stork](isc_kea__config_auto_accumulator_stork.md)
 - [isc_kea__config_database](isc_kea__config_database.md)
 - [isc_kea__config_dhcp4_parameters_pool](isc_kea__config_dhcp4_parameters_pool.md)
 - [isc_kea__config_dhcp4_parameters_shared_network](isc_kea__config_dhcp4_parameters_shared_network.md)

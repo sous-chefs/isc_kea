@@ -34,7 +34,6 @@
 | `min_valid_lifetime`           |       | Integer        |         |             |                                               |
 | `max_valid_lifetime`           |       | Integer        |         |             |                                               |
 | `next_server`                  |       | String         |         |             |                                               |
-| `option_data`                  |       | Array          |         |             |                                               |
 | `rebind_timer`                 |       | Integer        |         |             |                                               |
 | `renew_timer`                  |       | Integer        |         |             |                                               |
 | `server_hostname`              |       | String         |         |             |                                               |

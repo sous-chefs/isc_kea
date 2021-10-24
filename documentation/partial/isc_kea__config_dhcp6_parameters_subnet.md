@@ -29,7 +29,6 @@
 | `min_valid_lifetime`           |       | Integer        |         |             |                                               |
 | `max_preferred_lifetime`       |       | Integer        |         |             |                                               |
 | `max_valid_lifetime`           |       | Integer        |         |             |                                               |
-| `option_data`                  |       | Hash           |         |             |                                               |
 | `preferred_lifetime`           |       | String         |         |             |                                               |
 | `rapid_commit`                 |       | true, false    |         |             |                                               |
 | `rebind_timer`                 |       | Integer        |         |             |                                               |

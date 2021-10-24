@@ -13,12 +13,12 @@
 
 ## Properties
 
-| Name                      | Name? | Type        | Default | Description | Allowed Values                                                                                                                                |
-| ------------------------- | ----- | ----------- | ------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `service_name`            | ✓     | String      |         |             | kea-ctrl-agent, isc-kea-ctrl-agent, kea-dhcp-ddns, isc-kea-dhcp-ddns-server, kea-dhcp4, isc-kea-dhcp4-server, kea-dhcp6, isc-kea-dhcp6-server |
-| `config_file`             |       | String      |         |             |                                                                                                                                               |
-| `config_test`             |       | true, false |         |             |                                                                                                                                               |
-| `config_test_fail_action` |       | Symbol      |         |             | raise, log                                                                                                                                    |
+| Name                      | Name? | Type        | Default | Description                                                      | Allowed Values                                                                                                                                |
+| ------------------------- | ----- | ----------- | ------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `service_name`            | ✓     | String      |         |                                                                  | kea-ctrl-agent, isc-kea-ctrl-agent, kea-dhcp-ddns, isc-kea-dhcp-ddns-server, kea-dhcp4, isc-kea-dhcp4-server, kea-dhcp6, isc-kea-dhcp6-server |
+| `config_file`             |       | String      |         |                                                                  |                                                                                                                                               |
+| `config_test`             |       | true, false |         | Perform configuration file test before performing service action |                                                                                                                                               |
+| `config_test_fail_action` |       | Symbol      |         | Action to perform upon configuration test failure.               | raise, log                                                                                                                                    |
 
 ## Libraries
 
