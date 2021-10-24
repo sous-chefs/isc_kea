@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea_test
-# Recipe:: default
+# Recipe:: install_stork
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -17,15 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe '::net_setup'
-
-include_recipe '::install'
-include_recipe '::install_stork'
-
-include_recipe '::config_dhcp4'
-include_recipe '::config_dhcp6'
-include_recipe '::config_ddns'
-include_recipe '::config_ctrl_agent'
-include_recipe '::config_stork'
-
-include_recipe '::service'
+isc_kea_install_stork 'stork' do
+  action :install
+end

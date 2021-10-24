@@ -44,3 +44,13 @@ isc_kea_service ctrl_agent_service_name do
   action %i(enable start)
   subscribes :restart, 'template[/etc/kea/kea-ctrl-agent.conf]', :delayed
 end
+
+isc_kea_service_stork 'isc-stork-agent' do
+  action %i(enable)
+  subscribes :restart, 'template[/etc/stork/agent.env]', :delayed
+end
+
+isc_kea_service_stork 'isc-stork-server' do
+  action %i(enable)
+  subscribes :restart, 'template[/etc/stork/server.env]', :delayed
+end

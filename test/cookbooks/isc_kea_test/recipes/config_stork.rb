@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea_test
-# Recipe:: default
+# Recipe:: config_stork
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -17,15 +17,13 @@
 # limitations under the License.
 #
 
-include_recipe '::net_setup'
+isc_kea_config_stork_server 'test' do
+  stork_database_host 'localhost'
+  stork_database_port 5432
+  stork_database_name 'stork'
+  stork_database_user_name 'stork'
+  stork_database_password 'storkdbpwd123'
 
-include_recipe '::install'
-include_recipe '::install_stork'
-
-include_recipe '::config_dhcp4'
-include_recipe '::config_dhcp6'
-include_recipe '::config_ddns'
-include_recipe '::config_ctrl_agent'
-include_recipe '::config_stork'
-
-include_recipe '::service'
+  stork_rest_host 'localhost'
+  stork_rest_port 8080
+end

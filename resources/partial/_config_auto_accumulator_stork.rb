@@ -1,6 +1,6 @@
 #
 # Cookbook:: chef_auto_accumulator
-# Resource:: _config_auto_accumulator_kea
+# Resource:: _config_auto_accumulator_stork
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -28,7 +28,7 @@ property :sensitive, [true, false],
 
 property :config_file, String,
           required: true,
-          default: lazy { default_kea_config_file },
+          default: lazy { default_stork_config_file(declared_type) },
           desired_state: false
 
 property :load_existing_config_file, true,
@@ -51,10 +51,6 @@ property :group, String,
 
 property :filemode, String,
           default: '0644'
-
-property :filetype, [Symbol, String],
-          equal_to: %i(json ini toml yaml),
-          coerce: proc { |p| p.to_sym }
 
 property :extra_options, Hash,
           coerce: proc { |p| p.transform_keys(&:to_s) }
@@ -99,9 +95,7 @@ end
 
 def auto_accumulator_options
   {
-    config_file_type: :json,
-    config_base_path: 'isc_kea_config_',
-    property_name_gsub: %w(_ -),
+    config_file_type: :ini,
   }.freeze
 end
 

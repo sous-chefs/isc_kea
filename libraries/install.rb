@@ -33,7 +33,7 @@ module IscKea
         packages
       end
 
-      def debian_key_url
+      def default_kea_debian_key_url
         case install_version
         when '1-6'
           'https://dl.cloudsmith.io/public/isc/kea-1-6/gpg.0607E2621F1564A6.key'
@@ -50,7 +50,7 @@ module IscKea
         end
       end
 
-      def default_install_packages
+      def default_kea_install_packages
         case node['platform_family']
         when 'amazon', 'fedora', 'rhel'
           %w(isc-kea isc-kea-devel isc-kea-hooks isc-kea-libs isc-kea-shell)
@@ -59,6 +59,14 @@ module IscKea
         else
           raise ArgumentError, "Unsupported platform family #{node['platform_family']}"
         end
+      end
+
+      def default_stork_install_packages
+        %w(isc-stork-agent isc-stork-server)
+      end
+
+      def default_stork_debian_key_url
+        'https://dl.cloudsmith.io/public/isc/stork/gpg.77F64EC28053D1FB.key'
       end
     end
   end

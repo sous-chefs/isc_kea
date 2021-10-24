@@ -1,15 +1,18 @@
-case os.family
-when 'redhat', 'linux'
-  describe service('kea-dhcp4') do
-    it { should be_installed }
-    it { should be_enabled }
-    it { should be_running }
-  end
-when 'debian'
-  describe service('isc-kea-dhcp4-server') do
-    it { should be_installed }
-    it { should be_enabled }
-    it { should be_running }
+%w(dhcp4 dhcp6 ctrl-agent dhcp-ddns).each do |srv|
+  case os.family
+  when 'redhat', 'linux'
+    describe service("kea-#{srv}") do
+      it { should be_installed }
+      it { should be_enabled }
+      it { should be_running }
+    end
+  when 'debian'
+    srv.concat('-server') unless srv.eql?('ctrl-agent')
+    describe service("isc-kea-#{srv}") do
+      it { should be_installed }
+      it { should be_enabled }
+      it { should be_running }
+    end
   end
 end
 
@@ -39,4 +42,12 @@ describe port(8000) do
   it { should be_listening }
   its('protocols') { should cmp 'tcp' }
   its('processes') { should include 'kea-ctrl-agent' }
+end
+
+%w(agent server).each do |srv|
+  describe service("isc-stork-#{srv}") do
+    it { should be_installed }
+    it { should be_enabled }
+    # it { should be_running }
+  end
 end

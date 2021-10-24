@@ -1,6 +1,6 @@
 #
-# Cookbook:: isc_kea_test
-# Recipe:: default
+# Cookbook:: isc_kea
+# Resource:: service_stork
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -17,15 +17,20 @@
 # limitations under the License.
 #
 
-include_recipe '::net_setup'
+unified_mode true
 
-include_recipe '::install'
-include_recipe '::install_stork'
+property :service_name, String,
+          equal_to: %w(isc-stork-agent isc-stork-server),
+          name_property: true
 
-include_recipe '::config_dhcp4'
-include_recipe '::config_dhcp6'
-include_recipe '::config_ddns'
-include_recipe '::config_ctrl_agent'
-include_recipe '::config_stork'
+action_class do
+  def do_service_action(resource_action)
+    with_run_context(:root) do
+      declare_resource(:service, new_resource.service_name) { delayed_action(resource_action) }
+    end
+  end
+end
 
-include_recipe '::service'
+%i(start stop restart reload enable disable).each do |action_type|
+  send(:action, action_type) { do_service_action(action) }
+end

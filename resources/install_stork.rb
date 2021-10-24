@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: install
+# Resource:: install_stork
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -21,16 +21,11 @@ unified_mode true
 
 include IscKea::Cookbook::InstallHelpers
 
-property :install_version, String,
-          required: true,
-          coerce: proc { |p| p.gsub('.', '-') },
-          description: 'Version of Kea to install'
-
 property :repo_support_packages, Array,
           default: lazy { default_repo_support_packages }
 
 property :packages, [String, Array],
-          default: lazy { default_kea_install_packages },
+          default: lazy { default_stork_install_packages },
           coerce: proc { |p| Array(p) },
           description: 'Override the default installation packages for the platform'
 
@@ -39,22 +34,14 @@ property :clear_default_config, [true, false],
           description: 'Clear default configuration on install'
 
 property :apt_repo_key_url, String,
-          default: lazy { default_kea_debian_key_url }
+          default: lazy { default_stork_debian_key_url }
 
 action_class do
   def do_package_action(action)
-    package 'isc-kea' do
+    package 'isc-stork' do
       package_name new_resource.packages
       action action
     end
-
-    %w(ctrl-agent dhcp4 dhcp6 dhcp-ddns).each do |cfg_file|
-      file "/etc/kea/kea-#{cfg_file}.conf" do
-        content '{}'
-        action(:nothing)
-        subscribes :create, 'package[isc-kea]', :immediately
-      end
-    end if new_resource.clear_default_config
   end
 end
 
@@ -71,22 +58,22 @@ action :install do
     distro_name = platform?('fedora') ? 'fedora' : 'el'
     distro_version = node['platform_version'].to_i
 
-    remote_file "/etc/yum.repos.d/isc-kea-#{new_resource.install_version}.repo" do
-      source "https://dl.cloudsmith.io/public/isc/kea-#{new_resource.install_version}/config.rpm.txt?distro=#{distro_name}&codename=#{distro_version}"
+    remote_file '/etc/yum.repos.d/isc-stork.repo' do
+      source "https://dl.cloudsmith.io/public/isc/stork/config.rpm.txt?distro=#{distro_name}&codename=#{distro_version}"
 
       owner 'root'
       group 'root'
       mode '0644'
 
       action :create
-      notifies :run, 'notify_group[Post Kea yum repo install actions]', :immediately
+      notifies :run, 'notify_group[Post Stork yum repo install actions]', :immediately
     end
 
-    notify_group 'Post Kea yum repo install actions' do
+    notify_group 'Post Stork yum repo install actions' do
       notifies :run, 'execute[yum makecache -y]', :immediately
-      notifies :makecache, "yum_repository[isc-kea-#{new_resource.install_version}]", :immediately
-      notifies :makecache, "yum_repository[isc-kea-#{new_resource.install_version}-noarch]", :immediately
-      notifies :makecache, "yum_repository[isc-kea-#{new_resource.install_version}-source]", :immediately
+      notifies :makecache, 'yum_repository[isc-stork]', :immediately
+      notifies :makecache, 'yum_repository[isc-stork-noarch]', :immediately
+      notifies :makecache, 'yum_repository[isc-stork-source]', :immediately
     end
 
     execute 'yum makecache -y' do
@@ -94,30 +81,30 @@ action :install do
       only_if { distro_name.eql?('el') && distro_version.eql?(7) }
     end
 
-    declare_resource(:yum_repository, "isc-kea-#{new_resource.install_version}") { action :nothing }
-    declare_resource(:yum_repository, "isc-kea-#{new_resource.install_version}-noarch") { action :nothing }
-    declare_resource(:yum_repository, "isc-kea-#{new_resource.install_version}-source") { action :nothing }
+    declare_resource(:yum_repository, 'isc-stork') { action :nothing }
+    declare_resource(:yum_repository, 'isc-stork-noarch') { action :nothing }
+    declare_resource(:yum_repository, 'isc-stork-source') { action :nothing }
   when 'debian'
-    remote_file "/etc/apt/sources.list.d/isc-kea-#{new_resource.install_version}.list" do
-      source "https://dl.cloudsmith.io/public/isc/kea-#{new_resource.install_version}/config.deb.txt?distro=#{node['platform']}&codename=#{node['os_release']['version_codename']}"
+    remote_file '/etc/apt/sources.list.d/isc-stork.list' do
+      source "https://dl.cloudsmith.io/public/isc/stork/config.deb.txt?distro=#{node['platform']}&codename=#{node['os_release']['version_codename']}"
 
       owner 'root'
       group 'root'
       mode '0644'
 
       action :create
-      notifies :run, 'notify_group[Post Kea APT repo install actions]', :immediately
+      notifies :run, 'notify_group[Post Stork APT repo install actions]', :immediately
     end
 
-    notify_group 'Post Kea APT repo install actions' do
-      notifies :create, 'remote_file[isc-kea-remote-apt-key]', :immediately
-      notifies :run, "execute[apt-key add #{Chef::Config[:file_cache_path]}/isc-kea-repo.key]", :immediately
+    notify_group 'Post Stork APT repo install actions' do
+      notifies :create, 'remote_file[isc-stork-remote-apt-key]', :immediately
+      notifies :run, "execute[apt-key add #{Chef::Config[:file_cache_path]}/isc-stork-repo.key]", :immediately
       notifies :run, 'execute[sudo apt-get update]', :immediately
     end
 
-    remote_file 'isc-kea-remote-apt-key' do
+    remote_file 'isc-stork-remote-apt-key' do
       source new_resource.apt_repo_key_url
-      path "#{Chef::Config[:file_cache_path]}/isc-kea-repo.key"
+      path "#{Chef::Config[:file_cache_path]}/isc-stork-repo.key"
 
       owner 'root'
       group 'root'
@@ -126,7 +113,7 @@ action :install do
       action :nothing
     end
 
-    execute "apt-key add #{Chef::Config[:file_cache_path]}/isc-kea-repo.key" do
+    execute "apt-key add #{Chef::Config[:file_cache_path]}/isc-stork-repo.key" do
       action :nothing
     end
 
@@ -144,10 +131,10 @@ end
 action :delete do
   case node['platform_family']
   when 'rhel', 'fedora'
-    yum_repository "isc-kea-#{new_resource.install_version}" do
+    yum_repository 'isc-stork' do
       action :remove
     end
-  when "isc-kea-#{new_resource.install_version}"
+  when 'isc-stork'
     apt_repository 'name' do
       action :remove
     end
