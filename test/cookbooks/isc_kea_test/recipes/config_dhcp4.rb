@@ -71,6 +71,13 @@ isc_kea_config_dhcp4_subnet_host_reservation 'test_id_1' do
   ip_address '192.0.2.202'
 end
 
+isc_kea_config_dhcp4_subnet_host_reservation_option_data 'test_id_1_vivso-suboptions' do
+  subnet '192.0.2.0/24'
+  ip_address '192.0.2.202'
+  option_name 'vivso-suboptions'
+  data '4491'
+end
+
 isc_kea_config_dhcp4_shared_network 'shared_network_test' do
   authoritative false
 end

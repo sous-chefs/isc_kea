@@ -41,6 +41,20 @@ isc_kea_config_dhcp6_subnet_pool '2001:db8:1::/80' do
   subnet '2001:db8:1::/64'
 end
 
+isc_kea_config_dhcp6_subnet_host_reservation 'test_id_1_vivso' do
+  subnet '2001:db8:1::/64'
+  duid '01:02:03:04:05:06:07:08:09:0A'
+  ip_addresses '2001:db8:1::cafe:1'
+  hostname 'foo.example.com'
+end
+
+isc_kea_config_dhcp6_subnet_host_reservation_option_data 'test_id_1_vivso-suboptions' do
+  subnet '2001:db8:1::/64'
+  ip_addresses '2001:db8:1::cafe:1'
+  option_name 'vendor-opts'
+  data '4491'
+end
+
 isc_kea_config_dhcp6_loggers 'kea-dhcp6' do
   debuglevel 0
   severity :info
