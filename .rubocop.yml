@@ -1,0 +1,7 @@
+# This is set because the name property doesn't trigger converge_if_changed by default
+# And we want to be able to update the subnet when the resource name changes
+# Yes, it's a bit horrible ish
+Chef/RedundantCode/UnnecessaryDesiredState:
+  Exclude:
+    - 'resources/config_dhcp4_subnet.rb'
+    - 'resources/config_dhcp6_subnet.rb'

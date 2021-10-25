@@ -21,7 +21,7 @@ unified_mode true
 
 use 'partial/_config_auto_accumulator_kea'
 use 'partial/_config_parameters_common'
-use 'partial/_config_dhcp4_parameters_subnet'
+use 'partial/_config_dhcp4_reservation'
 
 def auto_accumulator_options_override
   {
@@ -30,19 +30,17 @@ def auto_accumulator_options_override
     config_path_type: :array_contained,
     config_path_match_key: 'subnet',
     config_path_match_value: subnet,
+    config_path_match: {
+      'subnet' => subnet,
+    },
     config_path_contained_key: 'reservations',
-    config_match_key: 'ip_address',
-    config_match_value: ip_address,
+    config_match: {
+      'ip_address' => ip_address,
+      'hw_address' => hw_address,
+    },
   }.freeze
 end
 
 property :subnet, String,
           required: true,
           desired_state: false
-
-property :hw_address, String
-
-property :ip_address, String,
-          name_property: true
-
-property :hostname, String

@@ -26,8 +26,9 @@ def auto_accumulator_options_override
   {
     config_path_override: %w(DhcpDdns forward-ddns ddns-domains),
     config_path_type: :array,
-    config_path_match_key: 'name',
-    config_path_match_value: zone_name,
+    config_match: {
+      'name' => zone_name,
+    },
     property_translation_matrix: {
       zone_name: 'name',
     },

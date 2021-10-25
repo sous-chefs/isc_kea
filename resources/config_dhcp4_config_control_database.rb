@@ -27,8 +27,9 @@ def auto_accumulator_options_override
   {
     config_path_override: %w(Dhcp4 config-config config-databases),
     config_path_type: :array,
-    config_path_match_key: 'name',
-    config_path_match_value: database_name,
+    config_match: {
+      'name' => database_name,
+    },
     property_translation_matrix: {
       option_name: 'name',
     },

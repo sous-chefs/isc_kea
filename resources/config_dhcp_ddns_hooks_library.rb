@@ -26,8 +26,9 @@ def auto_accumulator_options_override
   {
     config_path_override: %w(DhcpDdns hooks-libraries),
     config_path_type: :array,
-    config_path_match_key: 'library',
-    config_path_match_value: library,
+    config_match: {
+      'library' => library,
+    },
   }.freeze
 end
 

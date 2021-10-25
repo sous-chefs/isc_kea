@@ -21,7 +21,7 @@ unified_mode true
 
 use 'partial/_config_auto_accumulator_kea'
 use 'partial/_config_parameters_common'
-use 'partial/_config_dhcp6_parameters_subnet'
+use 'partial/_config_dhcp6_reservation'
 
 def auto_accumulator_options_override
   {
@@ -31,26 +31,13 @@ def auto_accumulator_options_override
     config_path_match_key: 'subnet',
     config_path_match_value: subnet,
     config_path_contained_key: 'reservations',
-    config_match_key: 'ip_addresses',
-    config_match_value: ip_addresses,
+    config_match: {
+      'ip_addresses' => ip_addresses,
+      'duid' => duid,
+    },
   }.freeze
 end
 
 property :subnet, String,
           required: true,
           desired_state: false
-
-property :hw_address, String
-
-property :duid, String
-
-property :flex_id, String
-
-property :ip_addresses, [String, Array],
-          name_property: true,
-          coerce: proc { |p| Array(p) }
-
-property :prefixes, [String, Array],
-          coerce: proc { |p| Array(p) }
-
-property :hostname, String

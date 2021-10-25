@@ -31,8 +31,9 @@ def auto_accumulator_options_override
     config_path_match_key: 'name',
     config_path_match_value: shared_network_name,
     config_path_contained_key: 'subnet4',
-    config_match_key: 'subnet',
-    config_match_value: subnet,
+    config_match: {
+      'subnet' => subnet,
+    },
     property_translation_matrix: {
       subnet_4o6_interface: '4o6_interface',
       subnet_4o6_interface_id: '4o6_interface_id',

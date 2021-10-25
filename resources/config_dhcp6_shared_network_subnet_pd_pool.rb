@@ -31,8 +31,9 @@ def auto_accumulator_options_override
     config_path_match_key: %w(name subnet),
     config_path_match_value: [ shared_network_name, subnet ],
     config_path_contained_key: %w(subnet6 pd-pools),
-    config_match_key: 'prefix',
-    config_match_value: prefix,
+    config_match: {
+      'prefix' => prefix,
+    },
   }.freeze
 end
 

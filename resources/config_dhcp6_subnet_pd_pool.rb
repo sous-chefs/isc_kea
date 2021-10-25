@@ -31,8 +31,9 @@ def auto_accumulator_options_override
     config_path_match_key: 'subnet',
     config_path_match_value: subnet,
     config_path_contained_key: 'pd-pools',
-    config_match_key: 'prefix',
-    config_match_value: prefix,
+    config_match: {
+      'prefix' => prefix,
+    },
   }.freeze
 end
 

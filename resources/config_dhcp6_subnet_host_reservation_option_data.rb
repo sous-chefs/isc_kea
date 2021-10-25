@@ -30,11 +30,12 @@ def auto_accumulator_options_override
     config_path_match_key: %w(subnet ip-addresses),
     config_path_match_value: [ subnet, ip_addresses ],
     config_path_contained_key: %w(reservations option-data),
-    config_match_key: 'name',
-    config_match_value: option_name,
+    config_match: {
+      'name' => option_name,
+    },
     property_translation_matrix: {
       option_name: 'name',
-    },
+    }.freeze,
   }.freeze
 end
 

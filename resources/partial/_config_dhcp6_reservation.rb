@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_ctrl_agent_hooks_library
+# Resource:: _config_dhcp6_reservation
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -17,22 +17,18 @@
 # limitations under the License.
 #
 
-unified_mode true
+property :hw_address, String
 
-use 'partial/_config_auto_accumulator_kea'
-use 'partial/_config_parameters_common'
+property :duid, String,
+          identity: true
 
-def auto_accumulator_options_override
-  {
-    config_path_override: %w(Control-agent hooks-libraries),
-    config_path_type: :array,
-    config_match: {
-      'library' => library,
-    },
-  }.freeze
-end
+property :flex_id, String
 
-property :library, String,
-          name_property: true
+property :ip_addresses, [Array, String],
+          coerce: proc { |p| Array(p) },
+          identity: true
 
-property :parameters, Hash
+property :prefixes, [Array, String],
+          coerce: proc { |p| Array(p) }
+
+property :hostname, String

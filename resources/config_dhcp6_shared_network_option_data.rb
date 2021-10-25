@@ -30,8 +30,10 @@ def auto_accumulator_options_override
     config_path_match_key: 'name',
     config_path_match_value: shared_network_name,
     config_path_contained_key: 'option-data',
-    config_match_key: 'name',
-    config_match_value: option_name,
+    config_match: {
+      'name' => option_name,
+      'code' => code,
+    },
     property_translation_matrix: {
       option_name: 'name',
     },
@@ -45,7 +47,8 @@ property :shared_network_name, String,
 property :option_name, String,
           name_property: true
 
-property :code, Integer
+property :code, Integer,
+          identity: true
 
 property :space, String
 

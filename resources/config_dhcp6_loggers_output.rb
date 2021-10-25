@@ -30,8 +30,9 @@ def auto_accumulator_options_override
     config_path_match_key: 'name',
     config_path_match_value: logger_name,
     config_path_contained_key: 'output_options',
-    config_match_key: 'output',
-    config_match_value: output,
+    config_match: {
+      'output' => output,
+    },
     property_name_gsub: nil,
   }.freeze
 end

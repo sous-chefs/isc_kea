@@ -31,8 +31,9 @@ def auto_accumulator_options_override
     config_path_match_key: 'subnet',
     config_path_match_value: subnet,
     config_path_contained_key: 'pools',
-    config_match_key: 'pool',
-    config_match_value: pool,
+    config_match: {
+      'pool' => pool,
+    },
   }.freeze
 end
 

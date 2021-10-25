@@ -27,8 +27,10 @@ def auto_accumulator_options_override
   {
     config_path_override: %w(Dhcp4 subnet4),
     config_path_type: :array,
-    config_path_match_key: 'subnet',
-    config_path_match_value: subnet,
+    config_match: {
+      'subnet' => subnet,
+      'id' => id,
+    },
     property_translation_matrix: {
       subnet_4o6_interface: '4o6_interface',
       subnet_4o6_interface_id: '4o6_interface_id',
@@ -38,9 +40,12 @@ def auto_accumulator_options_override
 end
 
 property :id, Integer,
+          required: true,
+          identity: true,
           callbacks: {
             'should be greater than 0 and less than 4294967295' => ->(p) { p > 0 && p < 4294967295 },
           }
 
 property :subnet, String,
-          name_property: true
+          name_property: true,
+          desired_state: true

@@ -66,15 +66,15 @@ load_current_value do |new_resource|
   end
 
   current_config = case option_config_path_type
+                   when :array
+                     load_config_file_section_item(new_resource.config_file)
+                   when :array_contained
+                     load_config_file_section_contained_item(new_resource.config_file)
                    when :hash
                      load_config_file_section(new_resource.config_file)
                    when :hash_contained
                      section = load_config_file_section(new_resource.config_file)
                      section.fetch(option_config_path_contained_key, nil) if section.is_a?(Hash)
-                   when :array
-                     load_config_file_section_item(new_resource.config_file)
-                   when :array_contained
-                     load_config_file_section_contained_item(new_resource.config_file)
                    end
 
   current_value_does_not_exist! if nil_or_empty?(current_config)
@@ -127,7 +127,7 @@ action :create do
         [translate_property_value(rp), new_resource.send(rp)]
       end.compact.to_h
 
-      ck = accumulator_config_path_contained_nested? ? option_config_path_contained_key.last : option_config_path_contained_key
+      ck = accumulator_config_path_containing_key
       accumulator_config(action: :key_push, key: ck, value: map)
     when :hash
       resource_properties.each do |rp|
@@ -155,22 +155,17 @@ action :delete do
   case option_config_path_type
   when :array
     converge_by("Deleting configuration for #{new_resource.declared_type.to_s} #{new_resource.name}") do
-      accumulator_config(action: :array_delete_match, key: option_config_path_match_key, value: option_config_path_match_value)
-    end if accumulator_config_array_present?
+      accumulator_config(action: :array_delete)
+    end if config_file_config_present?
   when :array_contained
     converge_by("Deleting configuration for #{new_resource.declared_type.to_s} #{new_resource.name}") do
-      accumulator_config(action: :key_delete_match, key: option_config_path_contained_key)
-    end if accumulator_config_array_present?
+      accumulator_config(action: :key_delete_match_self, key: accumulator_config_path_containing_key)
+    end if config_file_config_present?
   when :hash
     set_properties = resource_properties.push(:extra_options).filter { |rp| property_is_set?(rp) }
-    Chef::Log.warn("SP: #{debug_var_output(set_properties)}")
-
     delete_properties = nil_or_empty?(set_properties) ? resource_properties : set_properties
-    Chef::Log.warn("DP: #{debug_var_output(delete_properties)}")
-
     diff_properties = delete_properties.filter { |dp| load_config_file_section(new_resource.config_file).key?(translate_property_value(dp)) }
     diff_properties.map! { |dp| translate_property_value(dp) }
-    Chef::Log.warn("DFP: #{debug_var_output(diff_properties)}")
 
     if property_is_set?(:extra_options)
       extra_options_diff = new_resource.extra_options.keys.filter { |eo| load_config_file_section(new_resource.config_file).key?(eo) }
@@ -183,7 +178,7 @@ action :delete do
   when :hash_contained
     converge_by("Deleting configuration for #{new_resource.declared_type.to_s} #{new_resource.name}") do
       accumulator_config(action: :delete, key: option_config_path_contained_key)
-    end if accumulator_config_present?(option_config_path_contained_key)
+    end if config_file_config_present?
   else
     raise "Unknown config path type #{debug_var_output(option_config_path_type)}"
   end

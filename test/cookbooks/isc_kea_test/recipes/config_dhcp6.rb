@@ -43,9 +43,11 @@ end
 
 isc_kea_config_dhcp6_subnet_host_reservation 'test_id_1_vivso' do
   subnet '2001:db8:1::/64'
-  duid '01:02:03:04:05:06:07:08:09:0A'
-  ip_addresses '2001:db8:1::cafe:1'
+  duid '01:02:03:04:05:06:07:08:09:0C'
+  # ip_addresses '2001:db8:1::dead:beef'
+  ip_addresses '2001:db8:1::dead:1'
   hostname 'foo.example.com'
+  action :delete
 end
 
 isc_kea_config_dhcp6_subnet_host_reservation_option_data 'test_id_1_vivso-suboptions' do

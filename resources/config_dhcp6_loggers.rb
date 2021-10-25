@@ -26,8 +26,9 @@ def auto_accumulator_options_override
   {
     config_path_override: %w(Dhcp6 loggers),
     config_path_type: :array,
-    config_path_match_key: 'name',
-    config_path_match_value: logger_name,
+    config_match: {
+      'name' => logger_name,
+    },
     property_translation_matrix: {
       logger_name: 'name',
     },

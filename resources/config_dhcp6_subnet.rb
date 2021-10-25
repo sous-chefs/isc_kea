@@ -27,18 +27,23 @@ def auto_accumulator_options_override
   {
     config_path_override: %w(Dhcp6 subnet6),
     config_path_type: :array,
-    config_path_match_key: 'subnet',
-    config_path_match_value: subnet,
+    config_match: {
+      'subnet' => subnet,
+      'id' => id,
+    },
   }.freeze
 end
 
 property :id, Integer,
+          required: true,
+          identity: true,
           callbacks: {
             'should be greater than 0 and less than 4294967295' => ->(p) { p > 0 && p < 4294967295 },
           }
 
 property :subnet, String,
-          name_property: true
+          name_property: true,
+          desired_state: true
 
 property :pd_pools, [Array, Hash],
           coerce: proc { |p| p.is_a?(Array) ? p : [p] }

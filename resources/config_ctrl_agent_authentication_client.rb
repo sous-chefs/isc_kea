@@ -27,8 +27,9 @@ def auto_accumulator_options_override
     config_properties_skip: %i(logger_name),
     config_path_override: %w(Control-agent authentication clients),
     config_path_type: :array,
-    config_path_match_key: 'user',
-    config_path_match_value: user,
+    config_match: {
+      'user' => user,
+    },
   }.freeze
 end
 
