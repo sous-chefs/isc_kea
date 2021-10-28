@@ -34,6 +34,7 @@ isc_kea_config_dhcp6_lease_database 'lease_database' do
 end
 
 isc_kea_config_dhcp6_subnet '2001:db8:1::/64' do
+  id 1
   interface 'eth0'
 end
 
@@ -41,13 +42,20 @@ isc_kea_config_dhcp6_subnet_pool '2001:db8:1::/80' do
   subnet '2001:db8:1::/64'
 end
 
+isc_kea_config_dhcp6_subnet '2001:db8:2::/64' do
+  id 2
+end
+
+isc_kea_config_dhcp6_subnet_pool '2001:db8:2::/112' do
+  subnet '2001:db8:2::/64'
+  action :delete
+end
+
 isc_kea_config_dhcp6_subnet_host_reservation 'test_id_1_vivso' do
   subnet '2001:db8:1::/64'
   duid '01:02:03:04:05:06:07:08:09:0C'
-  # ip_addresses '2001:db8:1::dead:beef'
-  ip_addresses '2001:db8:1::dead:1'
+  ip_addresses '2001:db8:1::cafe:1'
   hostname 'foo.example.com'
-  action :delete
 end
 
 isc_kea_config_dhcp6_subnet_host_reservation_option_data 'test_id_1_vivso-suboptions' do
@@ -55,6 +63,23 @@ isc_kea_config_dhcp6_subnet_host_reservation_option_data 'test_id_1_vivso-subopt
   ip_addresses '2001:db8:1::cafe:1'
   option_name 'vendor-opts'
   data '4491'
+  action :delete
+end
+
+isc_kea_config_dhcp6_subnet_host_reservation 'test_id_2_vivso' do
+  subnet '2001:db8:1::/64'
+  duid '01:02:03:04:05:06:07:08:09:0D'
+  ip_addresses '2001:db8:1::dead:beef'
+  hostname 'foo.example.com'
+  action :delete
+end
+
+isc_kea_config_dhcp6_subnet_host_reservation_option_data 'test_id_2_vivso-suboptions' do
+  subnet '2001:db8:1::/64'
+  ip_addresses '2001:db8:1::dead:beef'
+  option_name 'vendor-opts'
+  data '4491'
+  action :delete
 end
 
 isc_kea_config_dhcp6_loggers 'kea-dhcp6' do
