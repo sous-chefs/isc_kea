@@ -75,7 +75,7 @@ load_current_value do |new_resource|
                    when :hash_contained
                      section = load_config_file_section(new_resource.config_file)
                      section.fetch(option_config_path_contained_key, nil) if section.is_a?(Hash)
-                   end
+                   end.dup
 
   current_value_does_not_exist! if nil_or_empty?(current_config)
 
@@ -85,13 +85,15 @@ load_current_value do |new_resource|
     filemode ::File.stat(new_resource.config_file).mode.to_s(8)[-4..-1]
   end
 
-  extra_options_filtered = current_config.reject { |k, _| resource_properties.include?(translate_property_key(k).to_sym) }
+  current_config.transform_keys! { |k| translate_property_key(k).to_sym }
+  extra_options_filtered = current_config.reject { |k, _| resource_properties.include?(k) }
   current_config.reject! { |k, _| extra_options_filtered.keys.include?(k) }
 
   resource_properties.each do |p|
-    next if current_config.fetch(translate_property_value(p), nil).nil?
+    value = current_config.fetch(p, nil)
+    next if value.nil?
 
-    send(p, current_config.fetch(translate_property_value(p)))
+    send(p, value)
   end
 
   extra_options(extra_options_filtered) unless nil_or_empty?(extra_options_filtered)
@@ -111,22 +113,18 @@ end
 
 action :create do
   converge_if_changed do
+    # Generate configuration Hash from properties
+    map = resource_properties.map do |rp|
+      next if new_resource.send(rp).nil?
+
+      [translate_property_value(rp), new_resource.send(rp)]
+    end.compact.to_h if %i(array array_contained hash_contained).include?(option_config_path_type)
+
+    # Perform accumulator configuration action
     case option_config_path_type
     when :array
-      map = resource_properties.map do |rp|
-        next if new_resource.send(rp).nil?
-
-        [translate_property_value(rp), new_resource.send(rp)]
-      end.compact.to_h
-
       accumulator_config(action: :array_push, value: map)
     when :array_contained
-      map = resource_properties.map do |rp|
-        next if new_resource.send(rp).nil?
-
-        [translate_property_value(rp), new_resource.send(rp)]
-      end.compact.to_h
-
       ck = accumulator_config_path_containing_key
       accumulator_config(action: :key_push, key: ck, value: map)
     when :hash
@@ -138,12 +136,6 @@ action :create do
 
       new_resource.extra_options.each { |key, value| accumulator_config(:set, key, value) } if property_is_set?(:extra_options)
     when :hash_contained
-      map = resource_properties.map do |rp|
-        next if new_resource.send(rp).nil?
-
-        [translate_property_value(rp), new_resource.send(rp)]
-      end.compact.to_h
-
       accumulator_config(action: :set, key: option_config_path_contained_key, value: map)
     else
       raise "Unknown config path type #{debug_var_output(option_config_path_type)}"
