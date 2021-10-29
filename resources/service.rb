@@ -43,6 +43,11 @@ action_class do
   def do_service_action(resource_action)
     with_run_context(:root) do
       if %i(start restart reload).include?(resource_action)
+        service new_resource.service_name do
+          delayed_action resource_action
+          notifies :run, "ruby_block[Run #{new_resource.service_name} pre #{resource_action} configuration test]", :before
+        end
+
         declare_resource(:ruby_block, "Run #{new_resource.service_name} pre #{resource_action} configuration test") do
           block do
             begin
@@ -55,7 +60,7 @@ action_class do
                 Chef::Log.info("Configuration test disabled, creating #{new_resource.service_name} #{new_resource.declared_type} resource with action #{resource_action}")
               end
 
-              declare_resource(:service, new_resource.service_name) { delayed_action(resource_action) }
+              # declare_resource(:service, new_resource.service_name) { delayed_action(resource_action) }
             rescue Mixlib::ShellOut::ShellCommandFailed
               if new_resource.config_test_fail_action.eql?(:log)
                 Chef::Log.error("Configuration test failed, #{new_resource.service_name} #{resource_action} action aborted!\n\n"\
@@ -70,7 +75,7 @@ action_class do
           only_if { ::File.exist?(new_resource.config_file) }
 
           action :nothing
-          delayed_action :run
+          # delayed_action :run
         end
       else
         declare_resource(:service, new_resource.service_name) { delayed_action(resource_action) }

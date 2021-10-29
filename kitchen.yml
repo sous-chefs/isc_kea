@@ -9,8 +9,8 @@ provisioner:
   chef_license: accept-no-persist
   product_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
   install_strategy: once
-  # enforce_idempotency: true
-  # multiple_converge: 2
+  enforce_idempotency: true
+  multiple_converge: 2
   log_level: <%= ENV['CHEF_LOG_LEVEL'] || 'auto' %>
 
 verifier:
