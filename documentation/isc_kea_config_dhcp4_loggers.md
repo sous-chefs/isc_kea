@@ -15,6 +15,6 @@
 
 | Name          | Name? | Type           | Default | Description | Allowed Values           |
 | ------------- | ----- | -------------- | ------- | ----------- | ------------------------ |
+| `logger_name` | ✓     | String         |         |             |                          |
 | `debuglevel`  |       | Integer        |         |             |                          |
-| `logger_name` |       | String         |         |             |                          |
 | `severity`    |       | String, Symbol |         |             | ERROR, WARN, INFO, DEBUG |

@@ -91,3 +91,16 @@ isc_kea_config_dhcp6_loggers_output 'logger_stdout' do
   logger_name 'kea-dhcp6'
   output 'stdout'
 end
+
+isc_kea_config_dhcp6_loggers 'kea-dhcp6' do
+  debuglevel 0
+  severity :info
+end
+
+isc_kea_config_dhcp6_loggers_output 'stdout' do
+  logger_name 'kea-dhcp6'
+  flush true
+  maxsize 204800
+  maxver 4
+  pattern '%d{%y.%m.%d %H:%M:%S.%q} %-5p [%c/%i] %m\n'
+end

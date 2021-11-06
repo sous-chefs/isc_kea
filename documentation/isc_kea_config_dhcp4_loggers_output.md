@@ -13,10 +13,11 @@
 
 ## Properties
 
-| Name      | Name? | Type        | Default | Description | Allowed Values |
-| --------- | ----- | ----------- | ------- | ----------- | -------------- |
-| `output`  | ✓     | String      |         |             |                |
-| `flush`   |       | true, false |         |             |                |
-| `maxsize` |       | Integer     |         |             |                |
-| `maxver`  |       | Integer     |         |             |                |
-| `pattern` |       | String      |         |             |                |
+| Name          | Name? | Type        | Default | Description | Allowed Values |
+| ------------- | ----- | ----------- | ------- | ----------- | -------------- |
+| `logger_name` |       | String      |         |             |                |
+| `output`      | ✓     | String      |         |             |                |
+| `flush`       |       | true, false |         |             |                |
+| `maxsize`     |       | Integer     |         |             |                |
+| `maxver`      |       | Integer     |         |             |                |
+| `pattern`     |       | String      |         |             |                |

@@ -123,3 +123,16 @@ isc_kea_config_dhcp4_global_host_reservation 'test_id_2' do
   ip_address '192.0.3.210'
   hostname 'test-host-02'
 end
+
+isc_kea_config_dhcp4_loggers 'kea-dhcp4' do
+  debuglevel 0
+  severity :info
+end
+
+isc_kea_config_dhcp4_loggers_output 'stdout' do
+  logger_name 'kea-dhcp4'
+  flush true
+  maxsize 204800
+  maxver 4
+  pattern '%d{%y.%m.%d %H:%M:%S.%q} %-5p [%c/%i] %m\n'
+end
