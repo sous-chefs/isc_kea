@@ -43,7 +43,7 @@ jobs:
           - 'centos-7'
           - 'centos-8'
           - 'centos-stream-8'
-          - 'fedora-latest'
+          - 'fedora-34'
           - 'debian-10'
           - 'ubuntu-1804'
           - 'ubuntu-2004'
