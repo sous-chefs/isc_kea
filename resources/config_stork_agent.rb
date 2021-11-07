@@ -36,6 +36,7 @@ def auto_accumulator_options_override
       stork_agent_prometheus_bind9_exporter_address: 'STORK_AGENT_PROMETHEUS_BIND9_EXPORTER_ADDRESS',
       stork_agent_prometheus_bind9_exporter_port: 'STORK_AGENT_PROMETHEUS_BIND9_EXPORTER_PORT',
       stork_agent_prometheus_bind9_exporter_interval: 'STORK_AGENT_PROMETHEUS_BIND9_EXPORTER_INTERVAL',
+      stork_agent_server_url: 'STORK_AGENT_SERVER_URL',
     },
   }.freeze
 end
@@ -61,3 +62,5 @@ property :stork_agent_prometheus_bind9_exporter_address, String
 property :stork_agent_prometheus_bind9_exporter_port, String
 
 property :stork_agent_prometheus_bind9_exporter_interval, Integer
+
+property :stork_agent_server_url, String

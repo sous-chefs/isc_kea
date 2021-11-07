@@ -25,3 +25,4 @@
 | `stork_agent_prometheus_bind9_exporter_address`  |       | String      |         |             |                |
 | `stork_agent_prometheus_bind9_exporter_port`     |       | String      |         |             |                |
 | `stork_agent_prometheus_bind9_exporter_interval` |       | Integer     |         |             |                |
+| `stork_server_url`                               |       | String      |         |             |                |
