@@ -17,7 +17,8 @@
 # limitations under the License.
 #
 
-property :hw_address, String
+property :hw_address, String,
+          identity: true
 
 property :duid, String,
           identity: true

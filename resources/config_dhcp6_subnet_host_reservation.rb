@@ -33,6 +33,7 @@ def auto_accumulator_options_override
     config_path_contained_key: 'reservations',
     config_match: {
       'ip_addresses' => ip_addresses,
+      'hw_address' => hw_address,
       'duid' => duid,
     },
   }.freeze
