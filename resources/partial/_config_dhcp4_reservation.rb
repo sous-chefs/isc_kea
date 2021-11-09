@@ -29,6 +29,7 @@ property :circuit_id, String
 property :flex_id, String
 
 property :ip_address, String,
-          name_property: true
+          name_property: true,
+          desired_state: true
 
 property :hostname, String

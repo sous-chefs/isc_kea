@@ -26,7 +26,8 @@ property :flex_id, String
 
 property :ip_addresses, [Array, String],
           coerce: proc { |p| Array(p) },
-          name_property: true
+          name_property: true,
+          desired_state: true
 
 property :prefixes, [Array, String],
           coerce: proc { |p| Array(p) }
