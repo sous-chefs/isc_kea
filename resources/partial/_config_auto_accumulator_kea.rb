@@ -52,10 +52,6 @@ property :group, String,
 property :filemode, String,
           default: '0644'
 
-property :filetype, [Symbol, String],
-          equal_to: %i(json ini toml yaml),
-          coerce: proc { |p| p.to_sym }
-
 property :extra_options, Hash,
           coerce: proc { |p| p.transform_keys(&:to_s) }
 
