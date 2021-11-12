@@ -32,6 +32,7 @@ def auto_accumulator_options_override
     config_path_contained_key: %w(subnet4 option-data),
     config_match: {
       'name' => option_name,
+      'code' => code,
     },
     property_translation_matrix: {
       option_name: 'name',
@@ -50,7 +51,9 @@ property :subnet, String,
 property :option_name, String,
           name_property: true
 
-property :code, Integer
+property :code, Integer,
+          identity: true,
+          desired_state: true
 
 property :space, String
 

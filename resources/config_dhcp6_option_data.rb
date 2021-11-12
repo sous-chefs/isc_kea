@@ -40,7 +40,8 @@ property :option_name, String,
           name_property: true
 
 property :code, Integer,
-          identity: true
+          identity: true,
+          desired_state: true
 
 property :space, String
 

@@ -3,5 +3,13 @@
 # Yes, it's a bit horrible ish
 Chef/RedundantCode/UnnecessaryDesiredState:
   Exclude:
-    - 'resources/config_dhcp4_subnet.rb'
-    - 'resources/config_dhcp6_subnet.rb'
+    - resources/config_dhcp4_subnet.rb
+    - resources/config_dhcp4_option_data.rb
+    - resources/config_dhcp4_option_def.rb
+    - resources/config_dhcp4_shared_network_option_data.rb
+    - resources/config_dhcp4_shared_network_subnet_option_data.rb
+    - resources/config_dhcp6_subnet.rb
+    - resources/config_dhcp6_option_data.rb
+    - resources/config_dhcp6_option_def.rb
+    - resources/config_dhcp6_shared_network_option_data.rb
+    - resources/config_dhcp6_shared_network_subnet_option_data.rb
