@@ -110,11 +110,16 @@ end
 action :create do
   converge_if_changed do
     # Generate configuration Hash from properties
-    map = resource_properties.map do |rp|
-      next if new_resource.send(rp).nil?
+    if %i(array array_contained hash_contained).include?(option_config_path_type)
+      map = resource_properties.map do |rp|
+        next if new_resource.send(rp).nil? && !option_permit_nil_properties
 
-      [translate_property_value(rp), new_resource.send(rp)]
-    end.compact.to_h if %i(array array_contained hash_contained).include?(option_config_path_type)
+        [translate_property_value(rp), new_resource.send(rp)]
+      end
+
+      map.compact! unless option_permit_nil_properties
+      map = map.to_h
+    end
 
     # Perform accumulator configuration action
     case option_config_path_type

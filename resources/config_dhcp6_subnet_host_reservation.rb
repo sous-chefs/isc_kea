@@ -36,6 +36,7 @@ def auto_accumulator_options_override
       'hw_address' => hw_address,
       'duid' => duid,
     },
+    permit_nil_properties: true,
   }.freeze
 end
 

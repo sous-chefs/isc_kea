@@ -17,13 +17,18 @@
 # limitations under the License.
 #
 
-property :hw_address, String,
-          identity: true
+property :hw_address, [String, nil],
+          identity: true,
+          desired_state: true,
+          default: nil
 
-property :duid, String,
-          identity: true
+property :duid, [String, nil],
+          identity: true,
+          desired_state: true,
+          default: nil
 
-property :flex_id, String
+property :flex_id, [String, nil],
+          default: nil
 
 property :ip_addresses, [Array, String],
           coerce: proc { |p| Array(p) },

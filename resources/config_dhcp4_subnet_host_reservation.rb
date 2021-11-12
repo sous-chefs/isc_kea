@@ -38,6 +38,7 @@ def auto_accumulator_options_override
       'ip_address' => ip_address,
       'hw_address' => hw_address,
     },
+    permit_nil_properties: true,
   }.freeze
 end
 

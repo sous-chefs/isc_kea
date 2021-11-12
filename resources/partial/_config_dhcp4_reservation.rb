@@ -17,16 +17,22 @@
 # limitations under the License.
 #
 
-property :hw_address, String,
-          identity: true
+property :hw_address, [String, nil],
+          identity: true,
+          desired_state: true,
+          default: nil
 
-property :client_id, String
+property :client_id, [String, nil],
+          default: nil
 
-property :duid, String
+property :duid, [String, nil],
+          default: nil
 
-property :circuit_id, String
+property :circuit_id, [String, nil],
+          default: nil
 
-property :flex_id, String
+property :flex_id, [String, nil],
+          default: nil
 
 property :ip_address, String,
           name_property: true,

@@ -30,5 +30,6 @@ def auto_accumulator_options_override
     config_match: {
       'ip_address' => ip_address,
     },
+    permit_nil_properties: true,
   }.freeze
 end

@@ -53,7 +53,8 @@ end
 
 isc_kea_config_dhcp6_subnet_host_reservation 'test_id_1_vivso' do
   subnet '2001:db8:1::/64'
-  duid '01:02:03:04:05:06:07:08:09:0C'
+  duid '01:02:03:04:05:06:07:08:09:0A'
+  # hw_address '05:06:07:08:09:0A'
   ip_addresses '2001:db8:1::cafe:1'
   hostname 'foo.example.com'
 end
