@@ -34,7 +34,7 @@ property :cache_threshold, Integer
 
 property :cache_max_age, Integer
 
-property :calculate_tee_times, String
+property :calculate_tee_times, [true, false]
 
 property :ddns_generated_prefix, String
 

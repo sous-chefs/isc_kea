@@ -19,7 +19,7 @@
 | `boot_file_name`                 |       | String         |         |             |                                               |
 | `cache_threshold`                |       | Integer        |         |             |                                               |
 | `cache_max_age`                  |       | Integer        |         |             |                                               |
-| `calculate_tee_times`            |       | String         |         |             |                                               |
+| `calculate_tee_times`            |       | true, false    |         |             |                                               |
 | `ddns_generated_prefix`          |       | String         |         |             |                                               |
 | `ddns_override_client_update`    |       | true, false    |         |             |                                               |
 | `ddns_override_no_update`        |       | true, false    |         |             |                                               |
