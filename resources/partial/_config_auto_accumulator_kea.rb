@@ -55,6 +55,14 @@ property :filemode, String,
 property :extra_options, Hash,
           coerce: proc { |p| p.transform_keys(&:to_s) }
 
+property :force_replace, [true, false],
+          default: false,
+          desired_state: false
+
+property :clean_unset, [true, false],
+          default: false,
+          desired_state: false
+
 load_current_value do |new_resource|
   if resource_properties.all? { |rp| nil_or_empty?(new_resource.send(rp)) }
     Chef::Log.warn('No properties are set, skipping load_current_value. Should this resource exist?')
@@ -124,10 +132,10 @@ action :create do
     # Perform accumulator configuration action
     case option_config_path_type
     when :array
-      accumulator_config(action: :array_push, value: map)
+      accumulator_config(action: :array_push, value: map, force_replace: new_resource.force_replace, clean_unset: new_resource.clean_unset)
     when :array_contained
       ck = accumulator_config_path_containing_key
-      accumulator_config(action: :key_push, key: ck, value: map)
+      accumulator_config(action: :key_push, key: ck, value: map, force_replace: new_resource.force_replace, clean_unset: new_resource.clean_unset)
     when :hash
       resource_properties.each do |rp|
         next if new_resource.send(rp).nil?
