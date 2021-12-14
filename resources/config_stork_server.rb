@@ -36,6 +36,7 @@ def auto_accumulator_options_override
       stork_rest_tls_private_key: 'STORK_REST_TLS_PRIVATE_KEY',
       stork_rest_tls_ca_certificate: 'STORK_REST_TLS_CA_CERTIFICATE',
       stork_rest_static_files_dir: 'STORK_REST_STATIC_FILES_DIR',
+      stork_server_enable_metrics: 'STORK_SERVER_ENABLE_METRICS',
     },
   }.freeze
 end
@@ -61,3 +62,5 @@ property :stork_rest_tls_private_key, String
 property :stork_rest_tls_ca_certificate, String
 
 property :stork_rest_static_files_dir, String
+
+property :stork_server_enable_metrics, [true, false]

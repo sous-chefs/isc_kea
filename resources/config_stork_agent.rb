@@ -26,6 +26,7 @@ def auto_accumulator_options_override
     config_path_override: %w(global),
     property_translation_matrix: {
       stork_agent_address: 'STORK_AGENT_ADDRESS',
+      stork_agent_host: 'STORK_AGENT_HOST',
       stork_agent_port: 'STORK_AGENT_PORT',
       stork_agent_listen_stork_only: 'STORK_AGENT_LISTEN_STORK_ONLY',
       stork_agent_listen_prometheus_only: 'STORK_AGENT_LISTEN_PROMETHEUS_ONLY',
@@ -42,6 +43,8 @@ def auto_accumulator_options_override
 end
 
 property :stork_agent_address, String
+
+property :stork_agent_host, String
 
 property :stork_agent_port, Integer
 
