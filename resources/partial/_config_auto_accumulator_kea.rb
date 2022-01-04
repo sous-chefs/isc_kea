@@ -31,7 +31,7 @@ property :config_file, String,
           default: lazy { default_kea_config_file },
           desired_state: false
 
-property :load_existing_config_file, true,
+property :load_existing_config_file, [true, false],
           default: true,
           desired_state: false
 
@@ -81,7 +81,7 @@ load_current_value do |new_resource|
                      section.fetch(option_config_path_contained_key, nil) if section.is_a?(Hash)
                    end.dup
 
-  current_value_does_not_exist! if nil_or_empty?(current_config)
+  current_value_does_not_exist! if nil_or_empty?(current_config) || !load_existing_config_file || force_replace || clean_unset
 
   if ::File.exist?(new_resource.config_file)
     owner ::Etc.getpwuid(::File.stat(new_resource.config_file).uid).name
@@ -117,25 +117,24 @@ end
 
 action :create do
   converge_if_changed do
-    # Generate configuration Hash from properties
-    if %i(array array_contained hash_contained).include?(option_config_path_type)
-      map = resource_properties.map do |rp|
-        next if new_resource.send(rp).nil? && !option_permit_nil_properties
-
-        [translate_property_value(rp), new_resource.send(rp)]
-      end
-
-      map.compact! unless option_permit_nil_properties
-      map = map.to_h
-    end
-
     # Perform accumulator configuration action
     case option_config_path_type
     when :array
-      accumulator_config(action: :array_push, value: map, force_replace: new_resource.force_replace, clean_unset: new_resource.clean_unset)
+      accumulator_config(
+        action: :array_push,
+        value: resource_properties_map,
+        force_replace: new_resource.force_replace,
+        clean_unset: new_resource.clean_unset
+      )
     when :array_contained
       ck = accumulator_config_path_containing_key
-      accumulator_config(action: :key_push, key: ck, value: map, force_replace: new_resource.force_replace, clean_unset: new_resource.clean_unset)
+      accumulator_config(
+        action: :key_push,
+        key: ck,
+        value: resource_properties_map,
+        force_replace: new_resource.force_replace,
+        clean_unset: new_resource.clean_unset
+      )
     when :hash
       resource_properties.each do |rp|
         next if new_resource.send(rp).nil?
@@ -145,7 +144,7 @@ action :create do
 
       new_resource.extra_options.each { |key, value| accumulator_config(:set, key, value) } if property_is_set?(:extra_options)
     when :hash_contained
-      accumulator_config(action: :set, key: option_config_path_contained_key, value: map)
+      accumulator_config(action: :set, key: option_config_path_contained_key, value: resource_properties_map)
     else
       raise "Unknown config path type #{debug_var_output(option_config_path_type)}"
     end
