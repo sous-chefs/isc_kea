@@ -39,3 +39,6 @@ property :prefixes, [Array, String],
           coerce: proc { |p| Array(p) }
 
 property :hostname, String
+
+property :client_classes, [String, Array],
+          coerce: proc { |p| Array(p) }

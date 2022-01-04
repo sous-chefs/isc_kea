@@ -39,3 +39,6 @@ property :ip_address, String,
           desired_state: true
 
 property :hostname, String
+
+property :client_classes, [String, Array],
+          coerce: proc { |p| Array(p) }
