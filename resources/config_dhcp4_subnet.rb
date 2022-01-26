@@ -42,11 +42,9 @@ end
 property :id, Integer,
           required: true,
           identity: true,
-          desired_state: true,
           callbacks: {
             'should be greater than 0 and less than 4294967295' => ->(p) { p > 0 && p < 4294967295 },
           }
 
 property :subnet, String,
-          name_property: true,
-          desired_state: true
+          name_property: true
