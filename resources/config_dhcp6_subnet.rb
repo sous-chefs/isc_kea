@@ -47,7 +47,7 @@ property :subnet, String,
           desired_state: true
 
 property :pd_pools, [Array, Hash],
-          coerce: proc { |p| p.is_a?(Array) ? p : [p] }
+          coerce: proc { |p| p.is_a?(Array) ? p.deep_sort : [p.deep_sort] }
 
 property :client_class, String
 

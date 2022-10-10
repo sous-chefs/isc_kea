@@ -41,10 +41,10 @@ property :class_name, String,
 property :test, String
 
 property :option_def, [Array, Hash],
-          coerce: proc { |p| p.is_a?(Array) ? p : [p] }
+          coerce: proc { |p| p.is_a?(Array) ? p.deep_sort : [p.deep_sort] }
 
 property :option_data, [Array, Hash],
-          coerce: proc { |p| p.is_a?(Array) ? p : [p] }
+          coerce: proc { |p| p.is_a?(Array) ? p.deep_sort : [p.deep_sort] }
 
 property :valid_lifetime, Integer
 

@@ -41,4 +41,4 @@ property :zone_name, String,
 property :key_name, String
 
 property :dns_servers, [Hash, Array],
-          coerce: proc { |p| p.is_a?(Array) ? p : [p] }
+          coerce: proc { |p| p.is_a?(Array) ? p.deep_sort : [p.deep_sort] }

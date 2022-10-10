@@ -55,7 +55,7 @@ property :subnet, String,
           name_property: true
 
 property :pools, [Array, Hash],
-          coerce: proc { |p| p.is_a?(Array) ? p : [p] }
+          coerce: proc { |p| p.is_a?(Array) ? p.deep_sort : [p.deep_sort] }
 
 property :option_data, [Array, Hash],
-          coerce: proc { |p| p.is_a?(Array) ? p : [p] }
+          coerce: proc { |p| p.is_a?(Array) ? p.deep_sort : [p.deep_sort] }
