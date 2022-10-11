@@ -59,7 +59,7 @@ property :force_replace, [true, false],
           default: false,
           desired_state: false
 
-property :clean_unset, [true, false],
+property :clean_nil_values, [true, false],
           default: false,
           desired_state: false
 
@@ -81,7 +81,7 @@ load_current_value do |new_resource|
                      section.fetch(option_config_path_contained_key, nil) if section.is_a?(Hash)
                    end.dup
 
-  current_value_does_not_exist! if nil_or_empty?(current_config) || !load_existing_config_file || force_replace || clean_unset
+  current_value_does_not_exist! if nil_or_empty?(current_config) || !load_existing_config_file || force_replace
 
   if ::File.exist?(new_resource.config_file)
     owner ::Etc.getpwuid(::File.stat(new_resource.config_file).uid).name
@@ -95,7 +95,7 @@ load_current_value do |new_resource|
 
   resource_properties.each do |p|
     value = current_config.fetch(p, nil)
-    next if value.nil?
+    next if value.nil? && !resource_property(:clean_nil_values)
 
     send(p, value)
   end
@@ -123,8 +123,7 @@ action :create do
       accumulator_config(
         action: :array_push,
         value: resource_properties_map,
-        force_replace: new_resource.force_replace,
-        clean_unset: new_resource.clean_unset
+        force_replace: new_resource.force_replace
       )
     when :array_contained
       ck = accumulator_config_path_containing_key
@@ -132,8 +131,7 @@ action :create do
         action: :key_push,
         key: ck,
         value: resource_properties_map,
-        force_replace: new_resource.force_replace,
-        clean_unset: new_resource.clean_unset
+        force_replace: new_resource.force_replace
       )
     when :hash
       resource_properties.each do |rp|
