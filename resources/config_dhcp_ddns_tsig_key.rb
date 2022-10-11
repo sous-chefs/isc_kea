@@ -42,6 +42,8 @@ property :algorithm, String,
           equal_to: %w(HMAC-MD5 HMAC-SHA1 HMAC-SHA224 HMAC-SHA256 HMAC-SHA386 HMAC-SHA512),
           coerce: proc { |p| p.upcase }
 
-property :digest_bits, Integer
+property :digest_bits, Integer,
+          sensitive: true
 
-property :secret, String
+property :secret, String,
+          sensitive: true
