@@ -64,7 +64,10 @@ property :clean_nil_values, [true, false],
           desired_state: false
 
 load_current_value do |new_resource|
-  if resource_properties.all? { |rp| nil_or_empty?(new_resource.send(rp)) }
+  log_chef(:info, "Loading current value for #{resource_type_name}[#{name}]")
+  properties = resource_properties
+
+  if properties.all? { |rp| nil_or_empty?(new_resource.send(rp)) }
     Chef::Log.warn('No properties are set, skipping load_current_value. Should this resource exist?')
     return
   end
@@ -90,10 +93,10 @@ load_current_value do |new_resource|
   end
 
   current_config.transform_keys! { |k| translate_property_key(k).to_sym }
-  extra_options_filtered = current_config.reject { |k, _| resource_properties.include?(k) }
+  extra_options_filtered = current_config.reject { |k, _| properties.include?(k) }
   current_config.reject! { |k, _| extra_options_filtered.keys.include?(k) }
 
-  resource_properties.each do |p|
+  properties.each do |p|
     value = current_config.fetch(p, nil)
     next if value.nil? && !resource_property(:clean_nil_values)
 
