@@ -9,7 +9,7 @@ name: ci
 
 jobs:
   lint-unit:
-    uses: sous-chefs/.github/.github/workflows/lint-unit.yml@0.0.3
+    uses: sous-chefs/.github/.github/workflows/lint-unit.yml@2.0.1
 
   integration:
     needs: lint-unit
@@ -17,18 +17,18 @@ jobs:
     strategy:
       matrix:
         os:
-          - 'centos-7'
-          - 'centos-8'
-          - 'centos-stream-8'
-          - 'centos-stream-9'
-          - 'rockylinux-8'
-          - 'rockylinux-9'
-          - 'fedora-36'
-          - 'debian-11'
-          - 'ubuntu-2004'
-          - 'ubuntu-2204'
+          - "centos-7"
+          - "centos-8"
+          - "centos-stream-8"
+          - "centos-stream-9"
+          - "rockylinux-8"
+          - "rockylinux-9"
+          - "fedora-36"
+          - "debian-11"
+          - "ubuntu-2004"
+          - "ubuntu-2204"
         suite:
-          - 'default'
+          - "default"
       fail-fast: false
 
     steps:
