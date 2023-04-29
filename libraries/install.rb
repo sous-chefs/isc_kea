@@ -59,7 +59,11 @@ module IscKea
       def default_kea_install_packages
         case node['platform_family']
         when 'amazon', 'fedora', 'rhel'
-          %w(isc-kea isc-kea-devel isc-kea-hooks isc-kea-libs isc-kea-shell)
+          if install_version.gsub('-', '.').to_f < 2.3
+            %w(isc-kea isc-kea-devel isc-kea-hooks isc-kea-libs isc-kea-shell)
+          else
+            %w(isc-kea isc-kea-admin isc-kea-common isc-kea-ctrl-agent isc-kea-devel isc-kea-dhcp-ddns isc-kea-dhcp4 isc-kea-dhcp6 isc-kea-doc isc-kea-hooks isc-kea-perfdhcp)
+          end
         when 'debian'
           %w(isc-kea-admin isc-kea-common isc-kea-ctrl-agent isc-kea-dev isc-kea-dhcp-ddns-server isc-kea-dhcp4-server isc-kea-dhcp6-server isc-kea-doc)
         else
