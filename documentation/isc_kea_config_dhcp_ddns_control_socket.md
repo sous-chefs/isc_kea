@@ -1,6 +1,6 @@
 # isc_kea_config_dhcp_ddns_control_socket
 
-[Back to resource list](../README.md#resources)
+[Back to resource list](README.md#resources)
 
 ## Uses
 

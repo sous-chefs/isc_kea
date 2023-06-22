@@ -1,6 +1,6 @@
 # isc_kea_config_stork_agent
 
-[Back to resource list](../README.md#resources)
+[Back to resource list](README.md#resources)
 
 ## Uses
 
@@ -15,6 +15,7 @@
 | Name                                             | Name? | Type        | Default | Description | Allowed Values |
 | ------------------------------------------------ | ----- | ----------- | ------- | ----------- | -------------- |
 | `stork_agent_address`                            |       | String      |         |             |                |
+| `stork_agent_host`                               |       | String      |         |             |                |
 | `stork_agent_port`                               |       | Integer     |         |             |                |
 | `stork_agent_listen_stork_only`                  |       | true, false |         |             |                |
 | `stork_agent_listen_prometheus_only`             |       | true, false |         |             |                |
@@ -25,4 +26,4 @@
 | `stork_agent_prometheus_bind9_exporter_address`  |       | String      |         |             |                |
 | `stork_agent_prometheus_bind9_exporter_port`     |       | String      |         |             |                |
 | `stork_agent_prometheus_bind9_exporter_interval` |       | Integer     |         |             |                |
-| `stork_server_url`                               |       | String      |         |             |                |
+| `stork_agent_server_url`                         |       | String      |         |             |                |

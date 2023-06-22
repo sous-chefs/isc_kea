@@ -1,6 +1,6 @@
 # isc_kea_service
 
-[Back to resource list](../README.md#resources)
+[Back to resource list](README.md#resources)
 
 ## Actions
 
@@ -23,3 +23,4 @@
 ## Libraries
 
 - `IscKea::Cookbook::Helpers`
+- `IscKea::Cookbook::ServiceHelpers`

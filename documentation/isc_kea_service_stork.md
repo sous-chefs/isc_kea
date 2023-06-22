@@ -1,6 +1,6 @@
 # isc_kea_service_stork
 
-[Back to resource list](../README.md#resources)
+[Back to resource list](README.md#resources)
 
 ## Actions
 

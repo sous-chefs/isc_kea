@@ -1,6 +1,6 @@
 # isc_kea_config_stork_server
 
-[Back to resource list](../README.md#resources)
+[Back to resource list](README.md#resources)
 
 ## Uses
 
@@ -12,16 +12,17 @@
 
 ## Properties
 
-| Name                            | Name? | Type    | Default | Description | Allowed Values |
-| ------------------------------- | ----- | ------- | ------- | ----------- | -------------- |
-| `stork_database_host`           |       | String  |         |             |                |
-| `stork_database_port`           |       | Integer |         |             |                |
-| `stork_database_name`           |       | String  |         |             |                |
-| `stork_database_user_name`      |       | String  |         |             |                |
-| `stork_database_password`       |       | String  |         |             |                |
-| `stork_rest_host`               |       | String  |         |             |                |
-| `stork_rest_port`               |       | Integer |         |             |                |
-| `stork_rest_tls_certificate`    |       | String  |         |             |                |
-| `stork_rest_tls_private_key`    |       | String  |         |             |                |
-| `stork_rest_tls_ca_certificate` |       | String  |         |             |                |
-| `stork_rest_static_files_dir`   |       | String  |         |             |                |
+| Name                            | Name? | Type        | Default | Description | Allowed Values |
+| ------------------------------- | ----- | ----------- | ------- | ----------- | -------------- |
+| `stork_database_host`           |       | String      |         |             |                |
+| `stork_database_port`           |       | Integer     |         |             |                |
+| `stork_database_name`           |       | String      |         |             |                |
+| `stork_database_user_name`      |       | String      |         |             |                |
+| `stork_database_password`       |       | String      |         |             |                |
+| `stork_rest_host`               |       | String      |         |             |                |
+| `stork_rest_port`               |       | Integer     |         |             |                |
+| `stork_rest_tls_certificate`    |       | String      |         |             |                |
+| `stork_rest_tls_private_key`    |       | String      |         |             |                |
+| `stork_rest_tls_ca_certificate` |       | String      |         |             |                |
+| `stork_rest_static_files_dir`   |       | String      |         |             |                |
+| `stork_server_enable_metrics`   |       | true, false |         |             |                |
