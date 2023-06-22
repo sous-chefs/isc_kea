@@ -29,3 +29,9 @@ def auto_accumulator_options_override
 end
 
 property :lenient_option_parsing, [true, false]
+
+property :ignore_dhcp_server_identifier, [true, false]
+
+property :ignore_rai_link_selection, [true, false]
+
+property :exclude_first_last_24, [true, false]
