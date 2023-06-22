@@ -94,3 +94,5 @@ property :t1_percent, [Integer, Float]
 property :t2_percent, [Integer, Float]
 
 property :valid_lifetime, Integer
+
+property :offer_lifetime, Integer
