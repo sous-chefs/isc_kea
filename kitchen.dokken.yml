@@ -43,9 +43,21 @@ platforms:
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
 
+  - name: debian-12
+    driver:
+      image: dokken/debian-12
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+
   - name: fedora-36
     driver:
       image: dokken/fedora-36
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: fedora-38
+    driver:
+      image: dokken/fedora-38
       pid_one_command: /usr/lib/systemd/systemd
 
   - name: ubuntu-20.04
