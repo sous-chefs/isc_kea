@@ -6,7 +6,7 @@ when 'redhat', 'linux'
     end
   end
 when 'debian'
-  %w(isc-kea-admin isc-kea-common isc-kea-ctrl-agent isc-kea-dev isc-kea-dhcp-ddns-server isc-kea-dhcp4-server isc-kea-dhcp6-server isc-kea-doc).each do |pkg|
+  %w(isc-kea-admin isc-kea-common isc-kea-ctrl-agent isc-kea-dev isc-kea-dhcp-ddns isc-kea-dhcp4 isc-kea-dhcp6 isc-kea-doc).each do |pkg|
     describe package(pkg) do
       it { should be_installed }
     end

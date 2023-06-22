@@ -60,13 +60,19 @@ module IscKea
       def default_kea_install_packages
         case node['platform_family']
         when 'amazon', 'fedora', 'rhel'
-          if install_version.gsub('-', '.').to_f < 2.3
-            %w(isc-kea isc-kea-devel isc-kea-hooks isc-kea-libs isc-kea-shell)
-          else
+          case install_version.gsub('-', '.').to_f
+          when 2.3
             %w(isc-kea isc-kea-admin isc-kea-common isc-kea-ctrl-agent isc-kea-devel isc-kea-dhcp-ddns isc-kea-dhcp4 isc-kea-dhcp6 isc-kea-doc isc-kea-hooks isc-kea-perfdhcp)
+          else
+            %w(isc-kea isc-kea-devel isc-kea-hooks isc-kea-libs isc-kea-shell)
           end
         when 'debian'
-          %w(isc-kea-admin isc-kea-common isc-kea-ctrl-agent isc-kea-dev isc-kea-dhcp-ddns-server isc-kea-dhcp4-server isc-kea-dhcp6-server isc-kea-doc)
+          case install_version.gsub('-', '.').to_f
+          when 2.3
+            %w(isc-kea isc-kea-dev isc-kea-perfdhcp)
+          else
+            %w(isc-kea-admin isc-kea-common isc-kea-ctrl-agent isc-kea-dev isc-kea-dhcp-ddns-server isc-kea-dhcp4-server isc-kea-dhcp6-server isc-kea-doc)
+          end
         else
           raise ArgumentError, "Unsupported platform family #{node['platform_family']}"
         end
