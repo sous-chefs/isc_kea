@@ -1,6 +1,6 @@
 #
 # Cookbook:: isc_kea
-# Resource:: config_dhcp4_config_control_database
+# Resource:: config_dhcp4_config_control_config_database
 #
 # Copyright:: Ben Hughes <bmhughes@bmhughes.co.uk>
 #
@@ -25,7 +25,7 @@ use 'partial/_config_database'
 
 def auto_accumulator_options_override
   {
-    config_path_override: %w(Dhcp4 config-config config-databases),
+    config_path_override: %w(Dhcp4 config-control config-databases),
     config_path_type: :array,
     config_match: {
       'name' => database_name,

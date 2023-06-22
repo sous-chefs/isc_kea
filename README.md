@@ -44,7 +44,7 @@ Note: All resources get their actions and base properties from the partial [isc_
 - [isc_kea_config_dhcp4_client_class](documentation/isc_kea_config_dhcp4_client_class.md)
 - [isc_kea_config_dhcp4_compatibility](documentation/isc_kea_config_dhcp4_compatibility.md)
 - [isc_kea_config_dhcp4_config_control](documentation/isc_kea_config_dhcp4_config_control.md)
-- [isc_kea_config_dhcp4_config_control_database](documentation/isc_kea_config_dhcp4_config_control_database.md)
+- [isc_kea_config_dhcp4_config_control_config_database](documentation/isc_kea_config_dhcp4_config_control_config_database.md)
 - [isc_kea_config_dhcp4_control_socket](documentation/isc_kea_config_dhcp4_control_socket.md)
 - [isc_kea_config_dhcp4_ddns](documentation/isc_kea_config_dhcp4_ddns.md)
 - [isc_kea_config_dhcp4_expired_leases_processing](documentation/isc_kea_config_dhcp4_expired_leases_processing.md)

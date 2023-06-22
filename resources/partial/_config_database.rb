@@ -64,3 +64,9 @@ property :serial_consistency, String,
           equal_to: %w(any one two three quorum all local-quorum each-quorum serial local-serial local-one)
 
 property :readonly, [true, false]
+
+property :read_timeout, Integer
+
+property :write_timeout, Integer
+
+property :tcp_user_timeout, Integer

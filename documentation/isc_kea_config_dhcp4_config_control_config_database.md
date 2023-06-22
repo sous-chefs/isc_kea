@@ -1,4 +1,4 @@
-# isc_kea_config_dhcp4_config_control_database
+# isc_kea_config_dhcp4_config_control_config_database
 
 [Back to resource list](../README.md#resources)
 

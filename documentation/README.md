@@ -15,7 +15,7 @@
 - [isc_kea_config_dhcp4_client_class](isc_kea_config_dhcp4_client_class.md)
 - [isc_kea_config_dhcp4_compatibility](isc_kea_config_dhcp4_compatibility.md)
 - [isc_kea_config_dhcp4_config_control](isc_kea_config_dhcp4_config_control.md)
-- [isc_kea_config_dhcp4_config_control_database](isc_kea_config_dhcp4_config_control_database.md)
+- [isc_kea_config_dhcp4_config_control_config_database](isc_kea_config_dhcp4_config_control_config_database.md)
 - [isc_kea_config_dhcp4_control_socket](isc_kea_config_dhcp4_control_socket.md)
 - [isc_kea_config_dhcp4_ddns](isc_kea_config_dhcp4_ddns.md)
 - [isc_kea_config_dhcp4_expired_leases_processing](isc_kea_config_dhcp4_expired_leases_processing.md)
