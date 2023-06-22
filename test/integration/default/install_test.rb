@@ -1,6 +1,6 @@
 case os.family
 when 'redhat', 'linux'
-  %w(isc-kea isc-kea-devel isc-kea-hooks isc-kea-libs isc-kea-shell).each do |pkg|
+  %w(isc-kea isc-kea-devel isc-kea-hooks isc-kea-common isc-kea-admin).each do |pkg|
     describe package(pkg) do
       it { should be_installed }
     end
