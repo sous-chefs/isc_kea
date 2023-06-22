@@ -29,6 +29,7 @@ module IscKea
                    end
 
         packages.push('debian-keyring', 'debian-archive-keyring') if platform?('debian')
+        packages.push('epel-release') if platform_family?('rhel')
 
         packages
       end
