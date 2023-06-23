@@ -24,7 +24,6 @@ jobs:
       matrix:
         os:
           - 'centos-7'
-          - 'centos-8'
           - 'centos-stream-8'
           - 'centos-stream-9'
           - 'rockylinux-8'
