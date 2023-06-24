@@ -2,6 +2,8 @@
 
 This file is used to list changes made in each version of isc_kea.
 
+## Unreleased
+
 ## 1.0.0 - *2023-06-24*
 
 - Fix CI pipeline
