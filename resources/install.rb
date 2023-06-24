@@ -105,14 +105,7 @@ action :install do
       group 'root'
       mode '0644'
 
-      action :create
-      notifies :run, 'notify_group[Post Kea APT repo install actions]', :immediately
-    end
-
-    notify_group 'Post Kea APT repo install actions' do
-      notifies :create, 'remote_file[isc-kea-remote-apt-key]', :immediately
-      notifies :run, "execute[apt-key add #{Chef::Config[:file_cache_path]}/isc-kea-repo.key]", :immediately
-      notifies :run, 'execute[sudo apt-get update]', :immediately
+      action :create_if_missing
     end
 
     remote_file 'isc-kea-remote-apt-key' do
@@ -123,14 +116,20 @@ action :install do
       group 'root'
       mode '0644'
 
+      action :create
+
+      not_if { ::File.exist?("/usr/share/keyrings/isc-kea-#{new_resource.install_version}-archive-keyring.gpg") }
+
+      notifies :run, 'execute[isc-kea-remote-apt-key-dearmor]', :immediately
+      notifies :run, 'execute[apt-get-update]', :immediately
+    end
+
+    execute 'isc-kea-remote-apt-key-dearmor' do
+      command "gpg -o /usr/share/keyrings/isc-kea-#{new_resource.install_version}-archive-keyring.gpg --dearmor #{Chef::Config[:file_cache_path]}/isc-kea-repo.key"
       action :nothing
     end
 
-    execute "apt-key add #{Chef::Config[:file_cache_path]}/isc-kea-repo.key" do
-      action :nothing
-    end
-
-    execute 'sudo apt-get update' do
+    execute 'apt-get-update' do
       command 'sudo apt-get update'
       action :nothing
     end

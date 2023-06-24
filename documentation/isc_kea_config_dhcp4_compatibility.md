@@ -1,6 +1,6 @@
 # isc_kea_config_dhcp4_compatibility
 
-[Back to resource list](../README.md#resources)
+[Back to resource list](README.md#resources)
 
 ## Uses
 
@@ -13,6 +13,9 @@
 
 ## Properties
 
-| Name                     | Name? | Type        | Default | Description | Allowed Values |
-| ------------------------ | ----- | ----------- | ------- | ----------- | -------------- |
-| `lenient_option_parsing` |       | true, false |         |             |                |
+| Name                            | Name? | Type        | Default | Description | Allowed Values |
+| ------------------------------- | ----- | ----------- | ------- | ----------- | -------------- |
+| `lenient_option_parsing`        |       | true, false |         |             |                |
+| `ignore_dhcp_server_identifier` |       | true, false |         |             |                |
+| `ignore_rai_link_selection`     |       | true, false |         |             |                |
+| `exclude_first_last_24`         |       | true, false |         |             |                |

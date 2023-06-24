@@ -1,6 +1,6 @@
 # isc_kea_config_dhcp6_subnet_pool
 
-[Back to resource list](../README.md#resources)
+[Back to resource list](README.md#resources)
 
 ## Uses
 

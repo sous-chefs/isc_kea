@@ -1,6 +1,6 @@
 # isc_kea__config_dhcp4_parameters_subnet
 
-[Back to resource list](../README.md#resources)
+[Back to resource list](README.md#resources)
 
 ## Actions
 
@@ -48,3 +48,4 @@
 | `t1_percent`                   |       | Integer, Float |         |             |                                               |
 | `t2_percent`                   |       | Integer, Float |         |             |                                               |
 | `valid_lifetime`               |       | Integer        |         |             |                                               |
+| `offer_lifetime`               |       | Integer        |         |             |                                               |

@@ -1,6 +1,6 @@
 # isc_kea__config_dhcp6_parameters_pd_pool
 
-[Back to resource list](../README.md#resources)
+[Back to resource list](README.md#resources)
 
 ## Actions
 

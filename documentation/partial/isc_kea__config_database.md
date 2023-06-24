@@ -1,6 +1,6 @@
 # isc_kea__config_database
 
-[Back to resource list](../README.md#resources)
+[Back to resource list](README.md#resources)
 
 ## Actions
 
@@ -31,3 +31,6 @@
 | `consistency`         |       | String         |         |             | any, one, two, three, quorum, all, local-quorum, each-quorum, serial, local-serial, local-one |
 | `serial_consistency`  |       | String         |         |             | any, one, two, three, quorum, all, local-quorum, each-quorum, serial, local-serial, local-one |
 | `readonly`            |       | true, false    |         |             |                                                                                               |
+| `read_timeout`        |       | Integer        |         |             |                                                                                               |
+| `write_timeout`       |       | Integer        |         |             |                                                                                               |
+| `tcp_user_timeout`    |       | Integer        |         |             |                                                                                               |

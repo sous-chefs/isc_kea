@@ -1,6 +1,6 @@
 # isc_kea_config_dhcp4_multi_threading
 
-[Back to resource list](../README.md#resources)
+[Back to resource list](README.md#resources)
 
 ## Uses
 

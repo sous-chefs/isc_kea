@@ -1,6 +1,6 @@
 # isc_kea__config_dhcp4_parameters_pool
 
-[Back to resource list](../README.md#resources)
+[Back to resource list](README.md#resources)
 
 ## Actions
 

@@ -18,6 +18,6 @@
 #
 
 isc_kea_install 'kea' do
-  install_version '2.0'
+  install_version '2.3'
   action :install
 end

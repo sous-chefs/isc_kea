@@ -1,6 +1,6 @@
-# isc_kea_isc_kea__config_auto_accumulator_kea
+# isc_kea__config_auto_accumulator_kea
 
-[Back to resource list](../README.md#resources)
+[Back to resource list](README.md#resources)
 
 ## Actions
 
@@ -9,18 +9,19 @@
 
 ## Properties
 
-| Name                        | Name? | Type           | Default | Description | Allowed Values        |
-| --------------------------- | ----- | -------------- | ------- | ----------- | --------------------- |
-| `sensitive`                 |       | true, false    |         |             |                       |
-| `config_file`               |       | String         |         |             |                       |
-| `load_existing_config_file` |       | true           |         |             |                       |
-| `cookbook`                  |       | String         |         |             |                       |
-| `source`                    |       | String         |         |             |                       |
-| `owner`                     |       | String         |         |             |                       |
-| `group`                     |       | String         |         |             |                       |
-| `filemode`                  |       | String         |         |             |                       |
-| `filetype`                  |       | Symbol, String |         |             | json, ini, toml, yaml |
-| `extra_options`             |       | Hash           |         |             |                       |
+| Name                        | Name? | Type        | Default | Description | Allowed Values |
+| --------------------------- | ----- | ----------- | ------- | ----------- | -------------- |
+| `sensitive`                 |       | true, false |         |             |                |
+| `config_file`               |       | String      |         |             |                |
+| `load_existing_config_file` |       | true, false |         |             |                |
+| `cookbook`                  |       | String      |         |             |                |
+| `source`                    |       | String      |         |             |                |
+| `owner`                     |       | String      |         |             |                |
+| `group`                     |       | String      |         |             |                |
+| `filemode`                  |       | String      |         |             |                |
+| `extra_options`             |       | Hash        |         |             |                |
+| `force_replace`             |       | true, false |         |             |                |
+| `clean_nil_values`          |       | true, false |         |             |                |
 
 ## Libraries
 
