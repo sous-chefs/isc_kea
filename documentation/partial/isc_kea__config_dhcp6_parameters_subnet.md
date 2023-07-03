@@ -29,7 +29,7 @@
 | `min_valid_lifetime`           |       | Integer        |         |             |                                               |
 | `max_preferred_lifetime`       |       | Integer        |         |             |                                               |
 | `max_valid_lifetime`           |       | Integer        |         |             |                                               |
-| `preferred_lifetime`           |       | String         |         |             |                                               |
+| `preferred_lifetime`           |       | Integer        |         |             |                                               |
 | `rapid_commit`                 |       | true, false    |         |             |                                               |
 | `rebind_timer`                 |       | Integer        |         |             |                                               |
 | `relay`                        |       | Hash           |         |             |                                               |
