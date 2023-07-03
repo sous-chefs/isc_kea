@@ -4,6 +4,8 @@ This file is used to list changes made in each version of isc_kea.
 
 ## Unreleased
 
+- DHCP6 subnet preferred_lifetime should be an Integer
+
 ## 1.0.0 - *2023-06-24*
 
 - Fix CI pipeline
