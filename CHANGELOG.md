@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of isc_kea.
 
-## Unreleased
+## 1.0.1 - *2023-07-03*
 
 - DHCP6 subnet preferred_lifetime should be an Integer
 
