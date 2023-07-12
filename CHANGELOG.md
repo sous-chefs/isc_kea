@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of isc_kea.
 
-## Unreleased
+## 1.1.0 - *2023-07-12*
 
 - Update installation packages to cover versions greater than 2.2
 - Kitchen test with Kea 2.4
