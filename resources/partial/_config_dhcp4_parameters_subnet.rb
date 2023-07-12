@@ -17,6 +17,9 @@
 # limitations under the License.
 #
 
+property :allocator, String,
+          equal_to: %w(iterative random flq)
+
 property :subnet_4o6_interface, String
 
 property :subnet_4o6_interface_id, String

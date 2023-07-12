@@ -17,6 +17,9 @@
 # limitations under the License.
 #
 
+property :allocator, String,
+          equal_to: %w(iterative random)
+
 property :cache_threshold, [Integer, Float]
 
 property :cache_max_age, [Integer, Float]
@@ -56,6 +59,9 @@ property :min_valid_lifetime, Integer
 property :max_preferred_lifetime, Integer
 
 property :max_valid_lifetime, Integer
+
+property :pd_allocator, String,
+          equal_to: %w(iterative random flq)
 
 property :preferred_lifetime, Integer
 

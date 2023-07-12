@@ -26,6 +26,9 @@ def auto_accumulator_options_override
   { config_path_override: %w(Dhcp4) }.freeze
 end
 
+property :allocator, String,
+          equal_to: %w(iterative random flq)
+
 property :authoritative, [true, false]
 
 property :boot_file_name, String
