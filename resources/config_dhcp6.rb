@@ -26,6 +26,9 @@ def auto_accumulator_options_override
   { config_path_override: %w(Dhcp6) }.freeze
 end
 
+property :allocator, String,
+          equal_to: %w(iterative random)
+
 property :cache_threshold, Integer
 
 property :cache_max_age, Integer
@@ -76,6 +79,9 @@ property :max_preferred_lifetime, Integer
 property :max_valid_lifetime, Integer
 
 property :parked_packet_limit, Integer
+
+property :pd_allocator, String,
+          equal_to: %w(iterative random flq)
 
 property :preferred_lifetime, Integer
 

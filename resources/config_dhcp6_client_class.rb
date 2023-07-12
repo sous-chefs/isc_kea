@@ -40,6 +40,8 @@ property :class_name, String,
 
 property :test, String
 
+property :template_test, String
+
 property :option_def, [Array, Hash],
           coerce: proc { |p| p.is_a?(Array) ? p.deep_sort : [p.deep_sort] }
 

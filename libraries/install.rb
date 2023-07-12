@@ -52,6 +52,8 @@ module IscKea
           'https://dl.cloudsmith.io/public/isc/kea-2-2/gpg.A8CB727C62565FF8.key'
         when '2-3'
           'https://dl.cloudsmith.io/public/isc/kea-2-3/gpg.DA05D46B7BABA24A.key'
+        when '2-4'
+          'https://dl.cloudsmith.io/public/isc/kea-2-4/gpg.0D9D9A1439E23DB9.key'
         else
           raise ArgumentError, "Unsupported version #{install_version}"
         end
@@ -60,18 +62,16 @@ module IscKea
       def default_kea_install_packages
         case node['platform_family']
         when 'amazon', 'fedora', 'rhel'
-          case install_version.gsub('-', '.').to_f
-          when 2.3
-            %w(isc-kea isc-kea-admin isc-kea-common isc-kea-ctrl-agent isc-kea-devel isc-kea-dhcp-ddns isc-kea-dhcp4 isc-kea-dhcp6 isc-kea-doc isc-kea-hooks isc-kea-perfdhcp)
-          else
+          if install_version.gsub('-', '.').to_f <= 2.2
             %w(isc-kea isc-kea-devel isc-kea-hooks isc-kea-libs isc-kea-shell)
+          else
+            %w(isc-kea isc-kea-admin isc-kea-common isc-kea-ctrl-agent isc-kea-devel isc-kea-dhcp-ddns isc-kea-dhcp4 isc-kea-dhcp6 isc-kea-doc isc-kea-hooks isc-kea-perfdhcp)
           end
         when 'debian'
-          case install_version.gsub('-', '.').to_f
-          when 2.3
-            %w(isc-kea isc-kea-dev isc-kea-perfdhcp)
-          else
+          if install_version.gsub('-', '.').to_f <= 2.2
             %w(isc-kea-admin isc-kea-common isc-kea-ctrl-agent isc-kea-dev isc-kea-dhcp-ddns-server isc-kea-dhcp4-server isc-kea-dhcp6-server isc-kea-doc)
+          else
+            %w(isc-kea isc-kea-dev isc-kea-perfdhcp)
           end
         else
           raise ArgumentError, "Unsupported platform family #{node['platform_family']}"

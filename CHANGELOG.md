@@ -4,6 +4,13 @@ This file is used to list changes made in each version of isc_kea.
 
 ## Unreleased
 
+- Update installation packages to cover versions greater than 2.2
+- Kitchen test with Kea 2.4
+- Updates for Kea 2.4 release
+  - Add `allocator` property to `config_dhcp4`
+  - Add `allocator` and `pd_allocator` property to `config_dhcp6`
+  - Add `template_test` property to `config_dhcp4_client_class` and `config_dhcp6_client_class`
+
 ## 1.0.2 - *2023-07-12*
 
 ## 1.0.1 - *2023-07-03*
