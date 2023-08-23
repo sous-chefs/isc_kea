@@ -72,19 +72,8 @@ load_current_value do |new_resource|
     return
   end
 
-  current_config = case option_config_path_type
-                   when :array
-                     load_config_file_section_item(new_resource.config_file)
-                   when :array_contained
-                     load_config_file_section_contained_item(new_resource.config_file)
-                   when :hash
-                     load_config_file_section(new_resource.config_file)
-                   when :hash_contained
-                     section = load_config_file_section(new_resource.config_file)
-                     section.fetch(option_config_path_contained_key, nil) if section.is_a?(Hash)
-                   end.dup
-
-  current_value_does_not_exist! if nil_or_empty?(current_config) || !load_existing_config_file || force_replace
+  current_value_does_not_exist! if !config_file_current_resource_data?(new_resource: new_resource) || !load_existing_config_file || force_replace
+  current_config = config_file_current_resource_data(new_resource: new_resource)
 
   if ::File.exist?(new_resource.config_file)
     owner ::Etc.getpwuid(::File.stat(new_resource.config_file).uid).name
@@ -125,27 +114,30 @@ action :create do
     when :array
       accumulator_config(
         action: :array_push,
-        value: resource_properties_map,
+        value: resource_properties_mapped,
         force_replace: new_resource.force_replace
       )
     when :array_contained
-      ck = accumulator_config_path_containing_key
       accumulator_config(
         action: :key_push,
-        key: ck,
-        value: resource_properties_map,
+        key: accumulator_config_path_containing_key,
+        value: resource_properties_mapped,
         force_replace: new_resource.force_replace
       )
+    when :array_contained_hash
+      resource_properties.each do |rp|
+        next if new_resource.send(rp).nil?
+
+        accumulator_config(action: :set, key: rp, value: new_resource.send(rp))
+      end
     when :hash
       resource_properties.each do |rp|
         next if new_resource.send(rp).nil?
 
         accumulator_config(action: :set, key: rp, value: new_resource.send(rp))
       end
-
-      new_resource.extra_options.each { |key, value| accumulator_config(:set, key, value) } if property_is_set?(:extra_options)
     when :hash_contained
-      accumulator_config(action: :set, key: option_config_path_contained_key, value: resource_properties_map)
+      accumulator_config(action: :set, key: option_config_path_contained_key, value: resource_properties_mapped)
     else
       raise "Unknown config path type #{debug_var_output(option_config_path_type)}"
     end
@@ -157,29 +149,29 @@ action :delete do
   when :array
     converge_by("Deleting configuration for #{new_resource.declared_type.to_s} #{new_resource.name}") do
       accumulator_config(action: :array_delete)
-    end if config_file_config_present?
+    end if config_file_current_resource_data?
   when :array_contained
     converge_by("Deleting configuration for #{new_resource.declared_type.to_s} #{new_resource.name}") do
       accumulator_config(action: :key_delete_match_self, key: accumulator_config_path_containing_key)
-    end if config_file_config_present?
+    end if config_file_current_resource_data?
   when :hash
-    set_properties = resource_properties.push(:extra_options).filter { |rp| property_is_set?(rp) }
+    set_properties = resource_properties_mapped.keys
     delete_properties = nil_or_empty?(set_properties) ? resource_properties : set_properties
     diff_properties = delete_properties.filter { |dp| load_config_file_section(new_resource.config_file).key?(translate_property_value(dp)) }
     diff_properties.map! { |dp| translate_property_value(dp) }
 
-    if property_is_set?(:extra_options)
-      extra_options_diff = new_resource.extra_options.keys.filter { |eo| load_config_file_section(new_resource.config_file).key?(eo) }
-      diff_properties.concat(extra_options_diff) unless nil_or_empty?(extra_options_diff)
-    end
+    # if property_is_set?(:extra_options)
+    #   extra_options_diff = new_resource.extra_options.keys.filter { |eo| load_config_file_section(new_resource.config_file).key?(eo) }
+    #   diff_properties.concat(extra_options_diff) unless nil_or_empty?(extra_options_diff)
+    # end
 
     converge_by("Deleting configuration for #{diff_properties.join(', ')}") do
       diff_properties.each { |rp| accumulator_config(action: :delete, key: rp) }
     end unless diff_properties.empty?
-  when :hash_contained
+  when :hash_contained, :array_contained_hash
     converge_by("Deleting configuration for #{new_resource.declared_type.to_s} #{new_resource.name}") do
-      accumulator_config(action: :delete, key: option_config_path_contained_key)
-    end if config_file_config_present?
+      accumulator_config(action: :clear)
+    end if config_file_current_resource_data?
   else
     raise "Unknown config path type #{debug_var_output(option_config_path_type)}"
   end

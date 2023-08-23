@@ -20,12 +20,12 @@
 include_recipe '::net_setup'
 
 include_recipe '::install'
-include_recipe '::install_stork'
+# include_recipe '::install_stork'
 
 include_recipe '::config_dhcp4'
-include_recipe '::config_dhcp6'
-include_recipe '::config_ddns'
-include_recipe '::config_ctrl_agent'
-include_recipe '::config_stork'
+# include_recipe '::config_dhcp6'
+# include_recipe '::config_ddns'
+# include_recipe '::config_ctrl_agent'
+# include_recipe '::config_stork'
 
-include_recipe '::service'
+# include_recipe '::service'
