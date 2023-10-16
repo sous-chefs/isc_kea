@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of isc_kea.
 
-## Unreleased
+## 1.2.0 - *2023-10-16*
 
 - Add `ddns-ttl-percent` option to all places it can be used
 
