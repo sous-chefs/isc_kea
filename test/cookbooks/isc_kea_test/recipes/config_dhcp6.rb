@@ -42,6 +42,13 @@ isc_kea_config_dhcp6_subnet_pool '2001:db8:1::/80' do
   subnet '2001:db8:1::/64'
 end
 
+isc_kea_config_dhcp6_subnet_pool_option_data 'test_id_1_vivso-suboptions' do
+  subnet '2001:db8:1::/64'
+  pool '2001:db8:1::/80'
+  option_name 'vendor-opts'
+  data '4492'
+end
+
 isc_kea_config_dhcp6_subnet '2001:db8:2::/64' do
   id 2
 end

@@ -53,6 +53,13 @@ isc_kea_config_dhcp4_subnet_pool '192.0.2.64/26' do
   subnet '192.0.2.0/24'
 end
 
+isc_kea_config_dhcp4_subnet_pool_option_data 'test_id_1_vivso-suboptions' do
+  subnet '192.0.2.0/24'
+  pool '192.0.2.64/26'
+  option_name 'vivso-suboptions'
+  data '4492'
+end
+
 isc_kea_config_dhcp4_subnet '192.0.3.0/24' do
   id 2
 end

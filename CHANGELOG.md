@@ -4,6 +4,8 @@ This file is used to list changes made in each version of isc_kea.
 
 ## Unreleased
 
+- Add Dhcp4/6 subnet pool option data resources
+
 ## 1.2.0 - *2023-10-16*
 
 - Add `ddns-ttl-percent` option to all places it can be used

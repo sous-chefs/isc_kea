@@ -69,6 +69,7 @@ Note: All resources get their actions and base properties from the partial [isc_
 - [isc_kea_config_dhcp4_subnet_host_reservation](documentation/isc_kea_config_dhcp4_subnet_host_reservation.md)
 - [isc_kea_config_dhcp4_subnet_option_data](documentation/isc_kea_config_dhcp4_subnet_option_data.md)
 - [isc_kea_config_dhcp4_subnet_pool](documentation/isc_kea_config_dhcp4_subnet_pool.md)
+- [isc_kea_config_dhcp4_subnet_pool_option_data](documentation/isc_kea_config_dhcp4_subnet_pool_option_data.md)
 
 ### Dhcp6
 
@@ -104,6 +105,7 @@ Note: All resources get their actions and base properties from the partial [isc_
 - [isc_kea_config_dhcp6_subnet_option_data](documentation/isc_kea_config_dhcp6_subnet_option_data.md)
 - [isc_kea_config_dhcp6_subnet_pd_pool](documentation/isc_kea_config_dhcp6_subnet_pd_pool.md)
 - [isc_kea_config_dhcp6_subnet_pool](documentation/isc_kea_config_dhcp6_subnet_pool.md)
+- [isc_kea_config_dhcp6_subnet_pool_option_data](documentation/isc_kea_config_dhcp6_subnet_pool_option_data.md)
 - [isc_kea_config_dhcp6_subnet_prefix_delegation](documentation/isc_kea_config_dhcp6_subnet_prefix_delegation.md)
 
 ### DhcpDdns
