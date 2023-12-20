@@ -2,6 +2,8 @@
 
 This file is used to list changes made in each version of isc_kea.
 
+## Unreleased
+
 ## 1.4.0 - *2023-12-20*
 
 - Add `ddns_conflict_resolution_mode` property for Kea 2.5
