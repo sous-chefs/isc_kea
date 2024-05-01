@@ -47,6 +47,10 @@ property :ddns_update_on_renew, [true, false]
 
 property :ddns_use_conflict_resolution, [true, false]
 
+property :ddns_conflict_resolution_mode, [String, Symbol],
+          equal_to: %w(check-with-dhcid no-check-with-dhcid check-exists-with-dhcid no-check-without-dhcid),
+          coerce: proc { |p| p.to_s }
+
 property :hostname_char_replacement, String
 
 property :hostname_char_set, String

@@ -7,6 +7,16 @@ This file is used to list changes made in each version of isc_kea.
 - resolved cookstyle error: resources/config_dhcp4_subnet_pool_option_data.rb:56:11 refactor: `Chef/RedundantCode/UnnecessaryDesiredState`
 - resolved cookstyle error: resources/config_dhcp6_subnet_pool_option_data.rb:56:11 refactor: `Chef/RedundantCode/UnnecessaryDesiredState`
 
+## 1.4.3 - *2024-05-01*
+
+## 1.4.2 - *2024-05-01*
+
+## 1.4.1 - *2023-12-21*
+
+## 1.4.0 - *2023-12-20*
+
+- Add `ddns_conflict_resolution_mode` property for Kea 2.5
+
 ## 1.3.0 - *2023-12-19*
 
 - Add Dhcp4/6 subnet pool option data resources
