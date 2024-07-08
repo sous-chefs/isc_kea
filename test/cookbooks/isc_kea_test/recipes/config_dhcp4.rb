@@ -21,6 +21,30 @@ isc_kea_config_dhcp4 'test' do
   boot_file_name 'test.bootfile'
 end
 
+isc_kea_config_dhcp4_client_class '02_Dns_Google' do
+  test "member('VENDOR_CLASS_dns_google')"
+  only_if_required true
+  option_data [
+    {
+      'name' => 'domain-name-servers',
+      'code' => 6,
+      'data' => '8.8.8.8',
+    },
+  ]
+end
+
+isc_kea_config_dhcp4_client_class '01_Dns_Cloudflare' do
+  test "member('VENDOR_CLASS_dns_cloudflare')"
+  only_if_required true
+  option_data [
+    {
+      'name' => 'domain-name-servers',
+      'code' => 6,
+      'data' => '1.1.1.1',
+    },
+  ]
+end
+
 isc_kea_config_dhcp4_interfaces 'eth0' do
   interfaces 'eth0'
 end

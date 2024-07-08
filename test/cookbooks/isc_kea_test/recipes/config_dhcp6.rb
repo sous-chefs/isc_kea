@@ -33,6 +33,30 @@ isc_kea_config_dhcp6_lease_database 'lease_database' do
   lfc_interval 3600
 end
 
+isc_kea_config_dhcp6_client_class '02_Dns_Google' do
+  test "member('VENDOR_CLASS_dns_google')"
+  only_if_required true
+  option_data [
+    {
+      'name' => 'dns-servers',
+      'code' => 23,
+      'data' => '2001:4860:4860::8888',
+    },
+  ]
+end
+
+isc_kea_config_dhcp6_client_class '01_Dns_Cloudflare' do
+  test "member('VENDOR_CLASS_dns_cloudflare')"
+  only_if_required true
+  option_data [
+    {
+      'name' => 'dns-servers',
+      'code' => 23,
+      'data' => '2606:4700:4700::1111',
+    },
+  ]
+end
+
 isc_kea_config_dhcp6_subnet '2001:db8:1::/64' do
   id 1
   interface 'eth0'

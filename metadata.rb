@@ -17,5 +17,5 @@ supports 'redhat'
 supports 'scientific'
 supports 'ubuntu'
 
-depends 'chef_auto_accumulator', '~> 0.4'
+depends 'chef_auto_accumulator', '~> 0.5'
 depends 'yum-epel', '~> 4.1'

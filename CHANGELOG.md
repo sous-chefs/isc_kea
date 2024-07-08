@@ -4,6 +4,8 @@ This file is used to list changes made in each version of isc_kea.
 
 ## Unreleased
 
+- Add sort functions to `config_dhcp4_client_class` and `config_dhcp6_client_class`
+
 ## 1.4.4 - *2024-05-01*
 
 - resolved cookstyle error: resources/config_dhcp4_subnet_pool_option_data.rb:56:11 refactor: `Chef/RedundantCode/UnnecessaryDesiredState`
