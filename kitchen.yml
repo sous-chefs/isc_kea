@@ -20,8 +20,7 @@ platforms:
   - name: centos-7
   - name: centos-stream-8
   - name: centos-stream-9
-  - name: fedora-36
-  - name: fedora-38
+  - name: fedora-39
   - name: rockylinux-8
   - name: rockylinux-9
   - name: debian-11
