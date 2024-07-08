@@ -54,6 +54,10 @@ module IscKea
           'https://dl.cloudsmith.io/public/isc/kea-2-3/gpg.DA05D46B7BABA24A.key'
         when '2-4'
           'https://dl.cloudsmith.io/public/isc/kea-2-4/gpg.0D9D9A1439E23DB9.key'
+        when '2-5'
+          'https://dl.cloudsmith.io/public/isc/kea-2-5/gpg.D4FEAEAEFBD81FB9.key'
+        when '2-6'
+          'https://dl.cloudsmith.io/public/isc/kea-2-6/gpg.63D408891D8B8D01.key'
         else
           raise ArgumentError, "Unsupported version #{install_version}"
         end

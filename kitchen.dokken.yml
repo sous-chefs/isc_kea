@@ -57,9 +57,9 @@ platforms:
       image: dokken/debian-12
       pid_one_command: /bin/systemd
 
-  - name: fedora-38
+  - name: fedora-39
     driver:
-      image: dokken/fedora-38
+      image: dokken/fedora-39
       pid_one_command: /usr/lib/systemd/systemd
 
   - name: opensuse-leap-15
