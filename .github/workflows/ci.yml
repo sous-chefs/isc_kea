@@ -23,7 +23,6 @@ jobs:
     strategy:
       matrix:
         os:
-          - 'centos-stream-8'
           - 'centos-stream-9'
           - 'rockylinux-8'
           - 'rockylinux-9'
