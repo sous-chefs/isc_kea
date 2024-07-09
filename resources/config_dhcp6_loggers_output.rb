@@ -27,6 +27,7 @@ def auto_accumulator_options_override
     config_properties_skip: %i(logger_name),
     config_path_override: %w(Dhcp6 loggers),
     config_path_type: :array_contained,
+    config_path_sort_keys: %w(library),
     config_path_match_key: 'name',
     config_path_match_value: logger_name,
     config_path_contained_key: 'output_options',

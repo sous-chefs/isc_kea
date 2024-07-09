@@ -52,6 +52,10 @@ property :group, String,
 property :filemode, String,
           default: '0644'
 
+property :sort, [true, false],
+          default: false,
+          desired_state: false
+
 property :extra_options, Hash,
           coerce: proc { |p| p.transform_keys(&:to_s) }
 

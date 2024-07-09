@@ -28,6 +28,7 @@ def auto_accumulator_options_override
     config_properties_skip: %i(subnet shared_network_name),
     config_path_override: %w(Dhcp4 shared-networks),
     config_path_type: :array_contained,
+    config_path_sort_keys: %w(pool),
     config_path_match_key: %w(name subnet),
     config_path_match_value: [ shared_network_name, subnet ],
     config_path_contained_key: %w(subnet4 pools),

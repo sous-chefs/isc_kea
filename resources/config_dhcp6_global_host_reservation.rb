@@ -27,8 +27,9 @@ def auto_accumulator_options_override
   {
     config_path_override: %w(Dhcp6 reservations),
     config_path_type: :array,
+    config_path_sort_keys: %w(ip_addresses),
     config_match: {
-      'ip_address' => ip_address,
+      'ip_addresses' => ip_addresses,
     },
     permit_nil_properties: true,
   }.freeze
