@@ -27,6 +27,7 @@ def auto_accumulator_options_override
     config_properties_skip: %i(subnet ip_addresses),
     config_path_override: %w(Dhcp6 subnet6),
     config_path_type: :array_contained,
+    config_path_sort_keys: %w(code name),
     config_path_match_key: %w(subnet ip-addresses),
     config_path_match_value: [ subnet, ip_addresses ],
     config_path_contained_key: %w(reservations option-data),

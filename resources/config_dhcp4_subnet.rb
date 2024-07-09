@@ -27,6 +27,7 @@ def auto_accumulator_options_override
   {
     config_path_override: %w(Dhcp4 subnet4),
     config_path_type: :array,
+    config_path_sort_keys: %w(id subnet),
     config_match: {
       'subnet' => subnet,
       'id' => id,

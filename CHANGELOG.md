@@ -4,6 +4,8 @@ This file is used to list changes made in each version of isc_kea.
 
 ## Unreleased
 
+- Add per-resource sorting for all array based configuration resources
+
 ## 1.5.0 - *2024-07-08*
 
 - Add sort functions to `config_dhcp4_client_class` and `config_dhcp6_client_class`
