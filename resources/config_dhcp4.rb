@@ -106,6 +106,8 @@ property :server_hostname, String
 
 property :server_tag, String
 
+property :stash_agent_option, [true, false]
+
 property :statistic_default_sample_count, Integer
 
 property :statistic_default_sample_age, Integer
