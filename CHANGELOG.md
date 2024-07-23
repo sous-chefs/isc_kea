@@ -4,6 +4,8 @@ This file is used to list changes made in each version of isc_kea.
 
 ## Unreleased
 
+- Add `stash-agent-option` property to `config_dhcp4`
+
 ## 1.6.0 - *2024-07-09*
 
 - Add per-resource sorting for all array based configuration resources
