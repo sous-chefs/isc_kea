@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of isc_kea.
 
-## Unreleased
+## 1.7.0 - *2024-07-23*
 
 - Add `stash-agent-option` property to `config_dhcp4`
 
