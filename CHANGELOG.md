@@ -2,6 +2,8 @@
 
 This file is used to list changes made in each version of isc_kea.
 
+## Unreleased
+
 ## 1.7.1 - *2024-12-18*
 
 - Correct property attributes for `config_match` used properties
