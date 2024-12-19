@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-property :client_class, String,
-          identity: true,
-          desired_state: true
+property :client_class, String
 
 property :require_client_classes, Array
