@@ -34,7 +34,6 @@ def auto_accumulator_options_override
     config_path_contained_key: 'pools',
     config_match: {
       'pool' => pool,
-      'client_class' => client_class,
     },
   }.freeze
 end
