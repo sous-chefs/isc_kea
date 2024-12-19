@@ -4,6 +4,8 @@ This file is used to list changes made in each version of isc_kea.
 
 ## Unreleased
 
+- resolved cookstyle error: resources/config_dhcp4_subnet_pool_option_data.rb:57:11 refactor: `Chef/RedundantCode/UnnecessaryDesiredState`
+- resolved cookstyle error: resources/config_dhcp6_subnet_pool_option_data.rb:57:11 refactor: `Chef/RedundantCode/UnnecessaryDesiredState`
 ## 1.7.1 - *2024-12-18*
 
 - Correct property attributes for `config_match` used properties
