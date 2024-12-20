@@ -4,6 +4,8 @@ This file is used to list changes made in each version of isc_kea.
 
 ## Unreleased
 
+- Remove `client_class` from match configuration for pools
+
 ## 1.7.2 - *2024-12-20*
 
 ## 1.7.1 - *2024-12-18*
