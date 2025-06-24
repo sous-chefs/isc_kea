@@ -35,7 +35,7 @@ end
 
 isc_kea_config_dhcp6_client_class '02_Dns_Google' do
   test "member('VENDOR_CLASS_dns_google')"
-  only_if_required true
+  only_in_additional_list true
   option_data [
     {
       'name' => 'dns-servers',
@@ -47,7 +47,7 @@ end
 
 isc_kea_config_dhcp6_client_class '01_Dns_Cloudflare' do
   test "member('VENDOR_CLASS_dns_cloudflare')"
-  only_if_required true
+  only_in_additional_list true
   option_data [
     {
       'name' => 'dns-servers',

@@ -28,12 +28,12 @@ isc_kea_config_ctrl_agent_authentication 'kea-ctrl-agent-auth' do
 end
 
 isc_kea_config_ctrl_agent_authentication_client 'admin' do
-  password '1234'
+  password 'P@ssw0rd'
   comment 'admin is authorized'
 end
 
 isc_kea_config_ctrl_agent_control_socket 'dhcp4' do
-  socket_name '/tmp/kea4-ctrl-socket'
+  socket_name '/var/run/kea/kea4-ctrl-socket'
   socket_type 'unix'
   comment 'Socket to DHCP4 Server'
 end
@@ -41,12 +41,12 @@ end
 isc_kea_config_ctrl_agent_control_socket 'dhcp6' do
   comment 'Socket to DHCP6 Server'
   socket_type 'unix'
-  socket_name '/tmp/kea6-ctrl-socket'
+  socket_name '/var/run/kea/kea6-ctrl-socket'
 end
 
 isc_kea_config_ctrl_agent_control_socket 'd2' do
   socket_type 'unix'
-  socket_name '/tmp/kea-ddns-ctrl-socket'
+  socket_name '/var/run/kea/kea-ddns-ctrl-socket'
   user_context({ 'in-use' => false })
 end
 

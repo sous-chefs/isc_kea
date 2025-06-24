@@ -3,9 +3,9 @@ describe file('/etc/kea/kea-ctrl-agent.conf') do
 end
 
 describe json('/etc/kea/kea-ctrl-agent.conf') do
-  its(%w(Control-agent control-sockets d2 socket-name)) { should eq '/tmp/kea-ddns-ctrl-socket' }
-  its(%w(Control-agent control-sockets dhcp4 socket-name)) { should eq '/tmp/kea4-ctrl-socket' }
-  its(%w(Control-agent control-sockets dhcp6 socket-name)) { should eq '/tmp/kea6-ctrl-socket' }
+  its(%w(Control-agent control-sockets d2 socket-name)) { should eq '/var/run/kea/kea-ddns-ctrl-socket' }
+  its(%w(Control-agent control-sockets dhcp4 socket-name)) { should eq '/var/run/kea/kea4-ctrl-socket' }
+  its(%w(Control-agent control-sockets dhcp6 socket-name)) { should eq '/var/run/kea/kea6-ctrl-socket' }
   its(%w(Control-agent http-host)) { should eq '127.0.0.1' }
   its(%w(Control-agent http-port)) { should eq 8000 }
   its(['Control-agent', 'loggers', 0, 'debuglevel']) { should eq 0 }

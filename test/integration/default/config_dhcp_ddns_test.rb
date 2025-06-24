@@ -3,7 +3,7 @@ describe file('/etc/kea/kea-dhcp-ddns.conf') do
 end
 
 describe json('/etc/kea/kea-dhcp-ddns.conf') do
-  its(%w(DhcpDdns control-socket socket-name)) { should eq '/tmp/kea-ddns-ctrl-socket' }
+  its(%w(DhcpDdns control-socket socket-name)) { should eq '/var/run/kea/kea-ddns-ctrl-socket' }
   its(%w(DhcpDdns control-socket socket-type)) { should eq 'unix' }
   its(%w(DhcpDdns ip-address)) { should eq '127.0.0.1' }
   its(%w(DhcpDdns ncr-format)) { should eq 'JSON' }
