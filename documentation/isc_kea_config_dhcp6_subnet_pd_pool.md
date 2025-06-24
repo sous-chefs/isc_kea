@@ -25,3 +25,4 @@
 | `excluded_prefix_len`    |       | Integer |         |             |                |
 | `option_data`            |       | Array   |         |             |                |
 | `require_client_classes` |       | Array   |         |             |                |
+| `evaluate_additional_classes` |       | Array   |         |             |                |

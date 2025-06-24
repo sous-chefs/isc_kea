@@ -41,10 +41,10 @@
 | `reservations_in_subnet`        |       | true, false            |         |             |                                                                                       |
 | `reservations_out_of_pool`      |       | true, false            |         |             |                                                                                       |
 | `require_client_classes`        |       | Array                  |         |             |                                                                                       |
+| `evaluate_additional_classes`   |       | Array                  |         |             |                                                                                       |
 | `server_hostname`               |       | String                 |         |             |                                                                                       |
 | `valid_lifetime`                |       | String                 |         |             |                                                                                       |
 | `relay`                         |       | String                 |         |             |                                                                                       |
-| `require_client_classes`        |       | String                 |         |             |                                                                                       |
 | `server_hostname`               |       | String                 |         |             |                                                                                       |
 | `store_extended_info`           |       | true, false            |         |             |                                                                                       |
 | `t1_percent`                    |       | Integer, Float         |         |             |                                                                                       |

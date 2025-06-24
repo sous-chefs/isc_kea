@@ -13,16 +13,17 @@
 
 ## Properties
 
-| Name                 | Name? | Type        | Default | Description | Allowed Values |
-| -------------------- | ----- | ----------- | ------- | ----------- | -------------- |
-| `class_name`         | ✓     | String      |         |             |                |
-| `test`               |       | String      |         |             |                |
-| `option_def`         |       | Array, Hash |         |             |                |
-| `option_data`        |       | Array, Hash |         |             |                |
-| `valid_lifetime`     |       | Integer     |         |             |                |
-| `min_valid_lifetime` |       | Integer     |         |             |                |
-| `max_valid_lifetime` |       | Integer     |         |             |                |
-| `only_if_required`   |       | true, false |         |             |                |
-| `boot_file_name`     |       | String      |         |             |                |
-| `next_server`        |       | String      |         |             |                |
-| `server_hostname`    |       | String      |         |             |                |
+| Name                      | Name? | Type        | Default | Description | Allowed Values |
+| ------------------------- | ----- | ----------- | ------- | ----------- | -------------- |
+| `class_name`              | ✓     | String      |         |             |                |
+| `test`                    |       | String      |         |             |                |
+| `option_def`              |       | Array, Hash |         |             |                |
+| `option_data`             |       | Array, Hash |         |             |                |
+| `valid_lifetime`          |       | Integer     |         |             |                |
+| `min_valid_lifetime`      |       | Integer     |         |             |                |
+| `max_valid_lifetime`      |       | Integer     |         |             |                |
+| `only_if_required`        |       | true, false |         |             |                |
+| `only_in_additional_list` |       | true, false |         |             |                |
+| `boot_file_name`          |       | String      |         |             |                |
+| `next_server`             |       | String      |         |             |                |
+| `server_hostname`         |       | String      |         |             |                |

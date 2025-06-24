@@ -21,3 +21,4 @@
 | `pd_pools`               |       | Array, Hash |         |             |                |
 | `client_class`           |       | String      |         |             |                |
 | `require_client_classes` |       | String      |         |             |                |
+| `evaluate_additional_classes` |       | Array   |         |             |                |

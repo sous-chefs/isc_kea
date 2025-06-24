@@ -24,7 +24,11 @@ property :cache_threshold, [Integer, Float]
 
 property :cache_max_age, [Integer, Float]
 
-property :client_class, String
+property :client_class, String,
+          deprecated: 'The client_class option has been renamed to client_classes starting from Kea 2.7.5'
+
+property :client_classes, [String, Array],
+          coerce: proc { |p| Array(p) }
 
 property :ddns_generated_prefix, String
 
@@ -80,7 +84,10 @@ property :relay, Hash
 
 property :renew_timer, Integer
 
-property :require_client_classes, Array
+property :require_client_classes, Array,
+          deprecated: 'The require_client_classes option has been renamed to evaluate_additional_classes starting from Kea 2.7.4'
+
+property :evaluate_additional_classes, Array
 
 property :reservations_global, [true, false]
 

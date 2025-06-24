@@ -61,4 +61,7 @@ property :min_preferred_lifetime, Integer
 
 property :max_preferred_lifetime, Integer
 
-property :only_if_required, [true, false]
+property :only_if_required, [true, false],
+          deprecated: 'The only_if_required options has been renamed to only_in_additional_list starting from Kea 2.7.4'
+
+property :only_in_additional_list, [true, false]

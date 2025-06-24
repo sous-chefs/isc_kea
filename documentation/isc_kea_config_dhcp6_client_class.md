@@ -26,3 +26,4 @@
 | `min_preferred_lifetime` |       | Integer     |         |             |                |
 | `max_preferred_lifetime` |       | Integer     |         |             |                |
 | `only_if_required`       |       | true, false |         |             |                |
+| `only_in_additional_list` |       | true, false |         |             |                |

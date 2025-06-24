@@ -37,6 +37,7 @@
 | `relay`                         |       | Hash                   |         |             |                                                                                       |
 | `renew_timer`                   |       | Integer                |         |             |                                                                                       |
 | `require_client_classes`        |       | Array                  |         |             |                                                                                       |
+| `evaluate_additional_classes`   |       | Array                  |         |             |                                                                                       |
 | `reservations_global`           |       | true, false            |         |             |                                                                                       |
 | `reservations_in_subnet`        |       | true, false            |         |             |                                                                                       |
 | `reservations_out_of_pool`      |       | true, false            |         |             |                                                                                       |

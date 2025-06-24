@@ -8,7 +8,8 @@
 
 ## Properties
 
-| Name                     | Name? | Type   | Default | Description | Allowed Values |
-| ------------------------ | ----- | ------ | ------- | ----------- | -------------- |
-| `client_class`           |       | String |         |             |                |
-| `require_client_classes` |       | Array  |         |             |                |
+| Name                          | Name? | Type   | Default | Description | Allowed Values |
+| ----------------------------- | ----- | ------ | ------- | ----------- | -------------- |
+| `client_class`                |       | String |         |             |                |
+| `require_client_classes`      |       | Array  |         |             |                |
+| `evaluate_additional_classes` |       | Array  |         |             |                |

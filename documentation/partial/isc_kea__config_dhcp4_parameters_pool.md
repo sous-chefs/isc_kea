@@ -12,3 +12,4 @@
 | ------------------------ | ----- | ------ | ------- | ----------- | -------------- |
 | `client_class`           |       | String |         |             |                |
 | `require_client_classes` |       | Array  |         |             |                |
+| `evaluate_additional_classes` |       | Array   |         |             |                |

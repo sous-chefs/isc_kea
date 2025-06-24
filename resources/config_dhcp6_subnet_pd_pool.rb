@@ -47,7 +47,11 @@ property :prefix, String,
 
 property :prefix_len, Integer
 
-property :client_class, String
+property :client_class, String,
+          deprecated: 'The client_class option has been renamed to client_classes starting from Kea 2.7.5'
+
+property :client_classes, [String, Array],
+          coerce: proc { |p| Array(p) }
 
 property :delegated_len, Integer
 
@@ -57,4 +61,7 @@ property :excluded_prefix_len, Integer
 
 property :option_data, Array
 
-property :require_client_classes, Array
+property :require_client_classes, Array,
+          deprecated: 'The require_client_classes option has been renamed to evaluate_additional_classes starting from Kea 2.7.4'
+
+property :evaluate_additional_classes, Array

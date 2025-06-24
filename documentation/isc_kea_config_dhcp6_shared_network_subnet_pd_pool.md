@@ -14,15 +14,16 @@
 
 ## Properties
 
-| Name                     | Name? | Type    | Default | Description | Allowed Values |
-| ------------------------ | ----- | ------- | ------- | ----------- | -------------- |
-| `shared_network_name`    |       | String  |         |             |                |
-| `subnet`                 |       | String  |         |             |                |
-| `prefix`                 | ✓     | String  |         |             |                |
-| `prefix_len`             |       | Integer |         |             |                |
-| `client_class`           |       | String  |         |             |                |
-| `delegated_len`          |       | Integer |         |             |                |
-| `excluded_prefix`        |       | String  |         |             |                |
-| `excluded_prefix_len`    |       | Integer |         |             |                |
-| `option_data`            |       | Array   |         |             |                |
-| `require_client_classes` |       | Array   |         |             |                |
+| Name                          | Name? | Type    | Default | Description | Allowed Values |
+| ----------------------------- | ----- | ------- | ------- | ----------- | -------------- |
+| `shared_network_name`         |       | String  |         |             |                |
+| `subnet`                      |       | String  |         |             |                |
+| `prefix`                      | ✓     | String  |         |             |                |
+| `prefix_len`                  |       | Integer |         |             |                |
+| `client_class`                |       | String  |         |             |                |
+| `delegated_len`               |       | Integer |         |             |                |
+| `excluded_prefix`             |       | String  |         |             |                |
+| `excluded_prefix_len`         |       | Integer |         |             |                |
+| `option_data`                 |       | Array   |         |             |                |
+| `require_client_classes`      |       | Array   |         |             |                |
+| `evaluate_additional_classes` |       | Array   |         |             |                |

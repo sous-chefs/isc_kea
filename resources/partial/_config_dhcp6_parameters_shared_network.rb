@@ -23,7 +23,11 @@ property :cache_max_age, [Integer, Float]
 
 property :calculate_tee_times, [true, false]
 
-property :client_class, String
+property :client_class, String,
+          deprecated: 'The client_class option has been renamed to client_classes starting from Kea 2.7.5'
+
+property :client_classes, [String, Array],
+          coerce: proc { |p| Array(p) }
 
 property :ddns_generated_prefix, String
 
@@ -84,7 +88,10 @@ property :reservations_in_subnet, [true, false]
 
 property :reservations_out_of_pool, [true, false]
 
-property :require_client_classes, Array
+property :require_client_classes, Array,
+          deprecated: 'The require_client_classes option has been renamed to evaluate_additional_classes starting from Kea 2.7.4'
+
+property :evaluate_additional_classes, Array
 
 property :store_extended_info, [true, false]
 
