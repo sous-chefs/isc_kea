@@ -1,6 +1,6 @@
 # isc_kea_config_dhcp4_queue_control
 
-[Back to resource list](README.md#resources)
+[Back to resource list](../README.md#resources)
 
 ## Uses
 

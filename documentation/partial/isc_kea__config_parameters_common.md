@@ -1,6 +1,6 @@
 # isc_kea__config_parameters_common
 
-[Back to resource list](README.md#resources)
+[Back to resource list](../README.md#resources)
 
 ## Actions
 

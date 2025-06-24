@@ -26,7 +26,7 @@ isc_kea_config_dhcp_ddns 'ddns' do
 end
 
 isc_kea_config_dhcp_ddns_control_socket 'ddns' do
-  socket_name '/tmp/kea-ddns-ctrl-socket'
+  socket_name '/var/run/kea/kea-ddns-ctrl-socket'
   socket_type 'unix'
 end
 

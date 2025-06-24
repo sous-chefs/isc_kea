@@ -21,6 +21,11 @@ unified_mode true
 
 include IscKea::Cookbook::InstallHelpers
 
+property :install_version, String,
+          default: 'stork',
+          equal_to: %w(stork stork-dev),
+          description: 'Version of Stork to install'
+
 property :repo_support_packages, Array,
           default: lazy { default_repo_support_packages }
 
@@ -59,7 +64,7 @@ action :install do
     distro_version = node['platform_version'].to_i
 
     remote_file '/etc/yum.repos.d/isc-stork.repo' do
-      source "https://dl.cloudsmith.io/public/isc/stork/config.rpm.txt?distro=#{distro_name}&codename=#{distro_version}"
+      source "https://dl.cloudsmith.io/public/isc/#{new_resource.install_version}/config.rpm.txt?distro=#{distro_name}&codename=#{distro_version}"
 
       owner 'root'
       group 'root'
@@ -86,7 +91,7 @@ action :install do
     declare_resource(:yum_repository, 'isc-stork-source') { action :nothing }
   when 'debian'
     remote_file '/etc/apt/sources.list.d/isc-stork.list' do
-      source "https://dl.cloudsmith.io/public/isc/stork/config.deb.txt?distro=#{node['platform']}&codename=#{node['os_release']['version_codename']}"
+      source "https://dl.cloudsmith.io/public/isc/#{new_resource.install_version}/config.deb.txt?distro=#{node['platform']}&codename=#{node['os_release']['version_codename']}"
 
       owner 'root'
       group 'root'

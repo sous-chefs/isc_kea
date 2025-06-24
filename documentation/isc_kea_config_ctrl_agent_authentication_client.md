@@ -1,6 +1,6 @@
 # isc_kea_config_ctrl_agent_authentication_client
 
-[Back to resource list](README.md#resources)
+[Back to resource list](../README.md#resources)
 
 ## Uses
 

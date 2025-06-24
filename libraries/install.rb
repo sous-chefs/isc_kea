@@ -58,24 +58,28 @@ module IscKea
           'https://dl.cloudsmith.io/public/isc/kea-2-5/gpg.D4FEAEAEFBD81FB9.key'
         when '2-6'
           'https://dl.cloudsmith.io/public/isc/kea-2-6/gpg.63D408891D8B8D01.key'
+        when 'dev'
+          'https://dl.cloudsmith.io/public/isc/kea-dev/gpg.98CB594EC0EC6D3A.key'
         else
           raise ArgumentError, "Unsupported version #{install_version}"
         end
       end
 
       def default_kea_install_packages
+        version = install_version.gsub('-', '.').to_f
+
         case node['platform_family']
         when 'amazon', 'fedora', 'rhel'
-          if install_version.gsub('-', '.').to_f <= 2.2
+          if version >= 1.6 && version <= 2.2
             %w(isc-kea isc-kea-devel isc-kea-hooks isc-kea-libs isc-kea-shell)
           else
             %w(isc-kea isc-kea-admin isc-kea-common isc-kea-ctrl-agent isc-kea-devel isc-kea-dhcp-ddns isc-kea-dhcp4 isc-kea-dhcp6 isc-kea-doc isc-kea-hooks isc-kea-perfdhcp)
           end
         when 'debian'
-          if install_version.gsub('-', '.').to_f <= 2.2
+          if version >= 1.6 && version <= 2.2
             %w(isc-kea-admin isc-kea-common isc-kea-ctrl-agent isc-kea-dev isc-kea-dhcp-ddns-server isc-kea-dhcp4-server isc-kea-dhcp6-server isc-kea-doc)
           else
-            %w(isc-kea isc-kea-dev isc-kea-perfdhcp)
+            %w(isc-kea isc-kea-ctrl-agent isc-kea-dev isc-kea-perfdhcp)
           end
         else
           raise ArgumentError, "Unsupported platform family #{node['platform_family']}"
@@ -87,7 +91,14 @@ module IscKea
       end
 
       def default_stork_debian_key_url
-        'https://dl.cloudsmith.io/public/isc/stork/gpg.77F64EC28053D1FB.key'
+        case install_version
+        when 'stork'
+          'https://dl.cloudsmith.io/public/isc/stork/gpg.77F64EC28053D1FB.key'
+        when 'stork-dev'
+          'https://dl.cloudsmith.io/public/isc/stork-dev/gpg.7885B43C1E71563A.key'
+        else
+          raise ArgumentError, "Unsupported version #{install_version}"
+        end
       end
     end
   end

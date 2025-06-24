@@ -17,7 +17,11 @@
 # limitations under the License.
 #
 
-property :client_class, String
+property :client_class, String,
+          deprecated: 'The client_class option has been renamed to client_classes starting from Kea 2.7.5'
+
+property :client_classes, [String, Array],
+          coerce: proc { |p| Array(p) }
 
 property :delegated_len, String
 

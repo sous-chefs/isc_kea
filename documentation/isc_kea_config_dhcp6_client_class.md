@@ -1,6 +1,6 @@
 # isc_kea_config_dhcp6_client_class
 
-[Back to resource list](README.md#resources)
+[Back to resource list](../README.md#resources)
 
 ## Uses
 
@@ -13,16 +13,18 @@
 
 ## Properties
 
-| Name                     | Name? | Type        | Default | Description | Allowed Values |
-| ------------------------ | ----- | ----------- | ------- | ----------- | -------------- |
-| `class_name`             | ✓     | String      |         |             |                |
-| `test`                   |       | String      |         |             |                |
-| `option_def`             |       | Array, Hash |         |             |                |
-| `option_data`            |       | Array, Hash |         |             |                |
-| `valid_lifetime`         |       | Integer     |         |             |                |
-| `min_valid_lifetime`     |       | Integer     |         |             |                |
-| `max_valid_lifetime`     |       | Integer     |         |             |                |
-| `preferred_lifetime`     |       | Integer     |         |             |                |
-| `min_preferred_lifetime` |       | Integer     |         |             |                |
-| `max_preferred_lifetime` |       | Integer     |         |             |                |
-| `only_if_required`       |       | true, false |         |             |                |
+| Name                      | Name? | Type        | Default | Description | Allowed Values |
+| ------------------------- | ----- | ----------- | ------- | ----------- | -------------- |
+| `class_name`              | ✓     | String      |         |             |                |
+| `test`                    |       | String      |         |             |                |
+| `template_test`           |       | String      |         |             |                |
+| `option_def`              |       | Array, Hash |         |             |                |
+| `option_data`             |       | Array, Hash |         |             |                |
+| `valid_lifetime`          |       | Integer     |         |             |                |
+| `min_valid_lifetime`      |       | Integer     |         |             |                |
+| `max_valid_lifetime`      |       | Integer     |         |             |                |
+| `preferred_lifetime`      |       | Integer     |         |             |                |
+| `min_preferred_lifetime`  |       | Integer     |         |             |                |
+| `max_preferred_lifetime`  |       | Integer     |         |             |                |
+| `only_if_required`        |       | true, false |         |             |                |
+| `only_in_additional_list` |       | true, false |         |             |                |

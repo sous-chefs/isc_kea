@@ -9,7 +9,9 @@ Chef/RedundantCode/UnnecessaryDesiredState:
     - resources/config_dhcp4_shared_network_option_data.rb
     - resources/config_dhcp4_shared_network_subnet_option_data.rb
     - resources/config_dhcp6_subnet.rb
+    - resources/config_dhcp4_subnet_pool_option_data.rb
     - resources/config_dhcp6_option_data.rb
     - resources/config_dhcp6_option_def.rb
     - resources/config_dhcp6_shared_network_option_data.rb
     - resources/config_dhcp6_shared_network_subnet_option_data.rb
+    - resources/config_dhcp6_subnet_pool_option_data.rb

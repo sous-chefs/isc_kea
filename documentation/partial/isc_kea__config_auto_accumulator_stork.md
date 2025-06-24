@@ -1,6 +1,6 @@
 # isc_kea__config_auto_accumulator_stork
 
-[Back to resource list](README.md#resources)
+[Back to resource list](../README.md#resources)
 
 ## Actions
 
@@ -19,6 +19,7 @@
 | `owner`                     |       | String      |         |             |                |
 | `group`                     |       | String      |         |             |                |
 | `filemode`                  |       | String      |         |             |                |
+| `sort`                      |       | true, false |         |             |                |
 | `extra_options`             |       | Hash        |         |             |                |
 
 ## Libraries
