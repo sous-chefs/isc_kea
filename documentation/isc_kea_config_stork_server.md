@@ -1,6 +1,6 @@
 # isc_kea_config_stork_server
 
-[Back to resource list](README.md#resources)
+[Back to resource list](../README.md#resources)
 
 ## Uses
 

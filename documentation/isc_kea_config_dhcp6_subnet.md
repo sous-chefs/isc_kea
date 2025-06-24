@@ -1,6 +1,6 @@
 # isc_kea_config_dhcp6_subnet
 
-[Back to resource list](README.md#resources)
+[Back to resource list](../README.md#resources)
 
 ## Uses
 
@@ -14,11 +14,11 @@
 
 ## Properties
 
-| Name                     | Name? | Type        | Default | Description | Allowed Values |
-| ------------------------ | ----- | ----------- | ------- | ----------- | -------------- |
-| `id`                     |       | Integer     |         |             |                |
-| `subnet`                 | ✓     | String      |         |             |                |
-| `pd_pools`               |       | Array, Hash |         |             |                |
-| `client_class`           |       | String      |         |             |                |
-| `require_client_classes` |       | String      |         |             |                |
-| `evaluate_additional_classes` |       | Array   |         |             |                |
+| Name                     | Name? | Type          | Default | Description | Allowed Values |
+| ------------------------ | ----- | ------------- | ------- | ----------- | -------------- |
+| `id`                     |       | Integer       |         |             |                |
+| `subnet`                 | ✓     | String        |         |             |                |
+| `pd_pools`               |       | Array, Hash   |         |             |                |
+| `client_class`           |       | String        |         |             |                |
+| `client_classes`         |       | String, Array |         |             |                |
+| `require_client_classes` |       | String        |         |             |                |

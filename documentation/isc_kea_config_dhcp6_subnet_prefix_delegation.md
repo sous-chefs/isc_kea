@@ -1,6 +1,6 @@
 # isc_kea_config_dhcp6_subnet_prefix_delegation
 
-[Back to resource list](README.md#resources)
+[Back to resource list](../README.md#resources)
 
 ## Uses
 

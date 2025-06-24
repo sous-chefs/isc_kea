@@ -1,6 +1,6 @@
 # isc_kea_config_ctrl_agent_loggers_output
 
-[Back to resource list](README.md#resources)
+[Back to resource list](../README.md#resources)
 
 ## Uses
 

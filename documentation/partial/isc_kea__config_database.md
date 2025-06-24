@@ -1,6 +1,6 @@
 # isc_kea__config_database
 
-[Back to resource list](README.md#resources)
+[Back to resource list](../README.md#resources)
 
 ## Actions
 

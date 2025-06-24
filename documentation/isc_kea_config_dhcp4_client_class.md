@@ -1,6 +1,6 @@
 # isc_kea_config_dhcp4_client_class
 
-[Back to resource list](README.md#resources)
+[Back to resource list](../README.md#resources)
 
 ## Uses
 
@@ -17,6 +17,7 @@
 | ------------------------- | ----- | ----------- | ------- | ----------- | -------------- |
 | `class_name`              | ✓     | String      |         |             |                |
 | `test`                    |       | String      |         |             |                |
+| `template_test`           |       | String      |         |             |                |
 | `option_def`              |       | Array, Hash |         |             |                |
 | `option_data`             |       | Array, Hash |         |             |                |
 | `valid_lifetime`          |       | Integer     |         |             |                |
