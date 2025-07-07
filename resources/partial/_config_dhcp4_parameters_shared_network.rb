@@ -50,6 +50,12 @@ property :ddns_send_updates, [true, false]
 property :ddns_ttl_percent, [Float, Integer, String],
           coerce: proc { |p| p.to_f }
 
+property :ddns_ttl, Integer
+
+property :ddns_ttl_min, Integer
+
+property :ddns_ttl_max, Integer
+
 property :ddns_update_on_renew, [true, false]
 
 property :ddns_use_conflict_resolution, [true, false]
