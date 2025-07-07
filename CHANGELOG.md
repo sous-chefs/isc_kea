@@ -4,6 +4,8 @@ This file is used to list changes made in each version of isc_kea.
 
 ## Unreleased
 
+- Add `ddns`, `ddns-min` and `ddns-max` to `config_dhcp4` and `config_dhcp6` resources
+
 ## 1.8.0 - *2025-07-06*
 
 - Update cookbook for support of Kea version >= v2.7
