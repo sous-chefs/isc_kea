@@ -58,6 +58,8 @@ module IscKea
           'https://dl.cloudsmith.io/public/isc/kea-2-5/gpg.D4FEAEAEFBD81FB9.key'
         when '2-6'
           'https://dl.cloudsmith.io/public/isc/kea-2-6/gpg.63D408891D8B8D01.key'
+        when '3-0'
+          'https://dl.cloudsmith.io/public/isc/kea-3-0/gpg.B16C44CD45514C3C.key'
         when 'dev'
           'https://dl.cloudsmith.io/public/isc/kea-dev/gpg.98CB594EC0EC6D3A.key'
         else
