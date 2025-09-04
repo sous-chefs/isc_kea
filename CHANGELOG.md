@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of isc_kea.
 
-## Unreleased
+## 1.9.2 - *2025-09-04*
 
 ## 1.9.1 - *2025-07-07*
 
