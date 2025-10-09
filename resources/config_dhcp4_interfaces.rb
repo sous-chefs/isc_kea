@@ -31,10 +31,10 @@ property :interfaces, [String, Array],
 
 property :dhcp_socket_type, [String, Symbol],
           equal_to: %w(raw udp),
-          coerce: proc { |p| p.to_s }
+          coerce: proc(&:to_s)
 
 property :outbound_interface, [String, Symbol],
           equal_to: %w(use-routing same-as-inbound),
-          coerce: proc { |p| p.to_s }
+          coerce: proc(&:to_s)
 
 property :re_detect, [true, false]
