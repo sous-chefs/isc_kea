@@ -18,4 +18,4 @@ supports 'scientific'
 supports 'ubuntu'
 
 depends 'chef_auto_accumulator', '~> 0.7'
-depends 'yum-epel', '~> 4.1'
+depends 'yum-epel', '>= 4.1'
