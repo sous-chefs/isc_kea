@@ -45,14 +45,14 @@ property :ddns_override_no_update, [true, false]
 
 property :ddns_replace_client_name, [String, Symbol],
           equal_to: %w(never always when-present when-not-present),
-          coerce: proc { |p| p.to_s }
+          coerce: proc(&:to_s)
 
 property :ddns_qualifying_suffix, String
 
 property :ddns_send_updates, [true, false]
 
 property :ddns_ttl_percent, [Float, Integer, String],
-          coerce: proc { |p| p.to_f }
+          coerce: proc(&:to_f)
 
 property :ddns_ttl, Integer
 
@@ -66,7 +66,7 @@ property :ddns_use_conflict_resolution, [true, false]
 
 property :ddns_conflict_resolution_mode, [String, Symbol],
           equal_to: %w(check-with-dhcid no-check-with-dhcid check-exists-with-dhcid no-check-without-dhcid),
-          coerce: proc { |p| p.to_s }
+          coerce: proc(&:to_s)
 
 property :decline_probation_period, Integer
 
