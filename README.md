@@ -20,9 +20,9 @@ This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of
 
 The following platforms are supported and tested with Test Kitchen:
 
-- RHEL/CentOS 7+
-- Ubuntu 18.04+
-- Debian 9+
+- RHEL/CentOS 8+
+- Ubuntu 22.04+
+- Debian 11+
 
 ## Resources
 
