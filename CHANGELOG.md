@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of isc_kea.
 
+## [1.9.3](https://github.com/sous-chefs/isc_kea/compare/1.9.2...v1.9.3) (2025-10-15)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#42](https://github.com/sous-chefs/isc_kea/issues/42)) ([08e67a7](https://github.com/sous-chefs/isc_kea/commit/08e67a79c72cbfcb9f878094ce58667ca02dfe65))
+
 ## 1.9.1 - *2025-07-07*
 
 * Add `ddns`, `ddns-min` and `ddns-max` to relevant partial resources

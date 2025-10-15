@@ -6,7 +6,7 @@ description 'Installs/Configures isc_kea'
 source_url 'https://github.com/sous-chefs/isc_kea'
 issues_url 'https://github.com/sous-chefs/isc_kea/issues'
 chef_version '>= 16.0'
-version '1.9.2'
+version '1.9.3'
 
 supports 'amazon'
 supports 'centos'
