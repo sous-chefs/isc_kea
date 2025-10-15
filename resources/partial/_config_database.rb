@@ -20,7 +20,7 @@
 property :type, [String, Symbol],
           required: true,
           equal_to: %w(memfile mysql postgresql cdl),
-          coerce: proc { |p| p.to_s }
+          coerce: proc(&:to_s)
 
 property :persist, [true, false]
 

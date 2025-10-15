@@ -33,19 +33,19 @@ end
 isc_kea_config_dhcp_ddns_forward_ddns_domain 'example.com.' do
   key_name 'd2.md5.key'
   dns_servers({
-    'ip-address' => '2001:db8:1::10',
-    'port' => 7802,
-    'key-name' => 'd2.sha1.key',
-  })
+                'ip-address' => '2001:db8:1::10',
+                'port' => 7802,
+                'key-name' => 'd2.sha1.key',
+              })
 end
 
 isc_kea_config_dhcp_ddns_reverse_ddns_domain '2.0.192.in-addr.arpa.' do
   key_name 'd2.sha1.key'
   dns_servers({
-    'ip-address' => '172.16.1.1',
-    'port' => 5301,
-    'key-name' => 'd2.md5.key',
-  })
+                'ip-address' => '172.16.1.1',
+                'port' => 5301,
+                'key-name' => 'd2.md5.key',
+              })
 end
 
 isc_kea_config_dhcp_ddns_tsig_key 'd2.md5.key' do

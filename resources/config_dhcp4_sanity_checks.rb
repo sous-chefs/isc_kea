@@ -30,4 +30,4 @@ end
 
 property :lease_checks, [String, Symbol],
           equal_to: %w(none warn fix fix-del del),
-          coerce: proc { |p| p.to_s }
+          coerce: proc(&:to_s)
