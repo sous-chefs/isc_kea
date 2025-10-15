@@ -2,8 +2,6 @@
 
 This file is used to list changes made in each version of isc_kea.
 
-## 1.9.2 - *2025-09-04*
-
 ## 1.9.1 - *2025-07-07*
 
 * Add `ddns`, `ddns-min` and `ddns-max` to relevant partial resources
@@ -15,15 +13,13 @@ This file is used to list changes made in each version of isc_kea.
 ## 1.8.0 - *2025-07-06*
 
 * Update cookbook for support of Kea version >= v2.7
-  - `dev` repo install support
-  - Resource client classification property changes for Kea 2.7
-  - Multiple control socket support
+  * `dev` repo install support
+  * Resource client classification property changes for Kea 2.7
+  * Multiple control socket support
 
 ## 1.7.3 - *2024-12-20*
 
 * Remove `client_class` from match configuration for pools
-
-## 1.7.2 - *2024-12-20*
 
 ## 1.7.1 - *2024-12-18*
 
@@ -43,14 +39,8 @@ This file is used to list changes made in each version of isc_kea.
 
 ## 1.4.4 - *2024-05-01*
 
-* resolved cookstyle error: resources/config_dhcp4_subnet_pool_option_data.rb:56:11 refactor: `Chef/RedundantCode/UnnecessaryDesiredState`
-* resolved cookstyle error: resources/config_dhcp6_subnet_pool_option_data.rb:56:11 refactor: `Chef/RedundantCode/UnnecessaryDesiredState`
-
-## 1.4.3 - *2024-05-01*
-
-## 1.4.2 - *2024-05-01*
-
-## 1.4.1 - *2023-12-21*
+* Resolved cookstyle error in `config_dhcp4_subnet_pool_option_data` resource
+* Resolved cookstyle error in `config_dhcp6_subnet_pool_option_data` resource
 
 ## 1.4.0 - *2023-12-20*
 
@@ -69,11 +59,9 @@ This file is used to list changes made in each version of isc_kea.
 * Update installation packages to cover versions greater than 2.2
 * Kitchen test with Kea 2.4
 * Updates for Kea 2.4 release
-  - Add `allocator` property to `config_dhcp4`
-  - Add `allocator` and `pd_allocator` property to `config_dhcp6`
-  - Add `template_test` property to `config_dhcp4_client_class` and `config_dhcp6_client_class`
-
-## 1.0.2 - *2023-07-12*
+  * Add `allocator` property to `config_dhcp4`
+  * Add `allocator` and `pd_allocator` property to `config_dhcp6`
+  * Add `template_test` property to `config_dhcp4_client_class` and `config_dhcp6_client_class`
 
 ## 1.0.1 - *2023-07-03*
 
@@ -84,7 +72,7 @@ This file is used to list changes made in each version of isc_kea.
 * Fix CI pipeline
 * Initial release to supermarket
 
-## 0.1.0 (2022-01-04)
+## 0.1.0 - *2022-01-04*
 
 * Initial release
 * Configuration of most Kea and Stork features
