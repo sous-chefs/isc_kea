@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of isc_kea.
 
+## [1.9.4](https://github.com/sous-chefs/isc_kea/compare/v1.9.3...v1.9.4) (2025-10-15)
+
+
+### Bug Fixes
+
+* **cookstyle:** Run cookstyle on the codebase ([#45](https://github.com/sous-chefs/isc_kea/issues/45)) ([b3cc155](https://github.com/sous-chefs/isc_kea/commit/b3cc155ed91452e172d143525a7ba5b0e660c285))
+
 ## [1.9.3](https://github.com/sous-chefs/isc_kea/compare/1.9.2...v1.9.3) (2025-10-15)
 
 
