@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of isc_kea.
 
+## [1.9.5](https://github.com/sous-chefs/isc_kea/compare/v1.9.4...v1.9.5) (2025-10-16)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#47](https://github.com/sous-chefs/isc_kea/issues/47)) ([d11a3f3](https://github.com/sous-chefs/isc_kea/commit/d11a3f32391452e8d0050390afb3bfafa14ee998))
+
 ## [1.9.4](https://github.com/sous-chefs/isc_kea/compare/v1.9.3...v1.9.4) (2025-10-15)
 
 ### Bug Fixes
