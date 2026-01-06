@@ -2,6 +2,16 @@
 
 This file is used to list changes made in each version of isc_kea.
 
+## [1.9.6](https://github.com/sous-chefs/isc_kea/compare/v1.9.5...v1.9.6) (2026-01-06)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#42](https://github.com/sous-chefs/isc_kea/issues/42)) ([08e67a7](https://github.com/sous-chefs/isc_kea/commit/08e67a79c72cbfcb9f878094ce58667ca02dfe65))
+* **ci:** Update workflows to use release pipeline ([#47](https://github.com/sous-chefs/isc_kea/issues/47)) ([d11a3f3](https://github.com/sous-chefs/isc_kea/commit/d11a3f32391452e8d0050390afb3bfafa14ee998))
+* **cookstyle:** Run cookstyle on the codebase ([#45](https://github.com/sous-chefs/isc_kea/issues/45)) ([b3cc155](https://github.com/sous-chefs/isc_kea/commit/b3cc155ed91452e172d143525a7ba5b0e660c285))
+* force a release ([#32](https://github.com/sous-chefs/isc_kea/issues/32)) of ([#31](https://github.com/sous-chefs/isc_kea/issues/31)) ([b1c5cb8](https://github.com/sous-chefs/isc_kea/commit/b1c5cb8f9f688bb468b6269f2f19942772e2e270))
+
 ## [1.9.5](https://github.com/sous-chefs/isc_kea/compare/v1.9.4...v1.9.5) (2025-10-16)
 
 
