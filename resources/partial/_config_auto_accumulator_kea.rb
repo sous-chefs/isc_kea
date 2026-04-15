@@ -102,7 +102,7 @@ load_current_value do |new_resource|
 
   properties.each do |p|
     value = current_config.fetch(p, nil)
-    next if value.nil? && !resource_property(:clean_nil_values)
+    next if value.nil? && (!resource_property(:clean_nil_values) || self.class.properties(false).fetch(p).options.fetch(:deprecated, false))
 
     send(p, value)
   end
