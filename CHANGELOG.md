@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of isc_kea.
 
+## [1.9.7](https://github.com/sous-chefs/isc_kea/compare/v1.9.6...v1.9.7) (2026-04-15)
+
+
+### Bug Fixes
+
+* skip deprecated properties in load_current_value if nil ([#53](https://github.com/sous-chefs/isc_kea/issues/53)) ([9d85ed1](https://github.com/sous-chefs/isc_kea/commit/9d85ed1274716bcaed6ced743542b0870041e400))
+
 ## [1.9.6](https://github.com/sous-chefs/isc_kea/compare/v1.9.5...v1.9.6) (2026-01-06)
 
 
