@@ -48,3 +48,6 @@ property :digest_bits, Integer,
 
 property :secret, String,
           sensitive: true
+
+property :secret_file, String,
+          sensitive: true

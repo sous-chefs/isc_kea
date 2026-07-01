@@ -59,7 +59,7 @@ action_class do
 end
 
 action :install do
-  include_recipe 'yum-epel' if platform?('amazon', 'centos', 'redhat', 'scientific')
+  yum_epel 'default' if platform?('amazon', 'centos', 'redhat', 'scientific')
 
   package 'repo-supporting-packages' do
     package_name new_resource.repo_support_packages

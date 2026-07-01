@@ -27,8 +27,15 @@ isc_kea_config_ctrl_agent_authentication 'kea-ctrl-agent-auth' do
   realm 'kea-control-agent'
 end
 
+file '/etc/kea/ctrl-agent-admin.password' do
+  content 'P@ssw0rd'
+  owner 'root'
+  group 'root'
+  mode '0600'
+end
+
 isc_kea_config_ctrl_agent_authentication_client 'admin' do
-  password 'P@ssw0rd'
+  password_file '/etc/kea/ctrl-agent-admin.password'
   comment 'admin is authorized'
 end
 
