@@ -31,13 +31,6 @@ isc_kea_service dhcp6_service_name do
   subscribes :restart, 'template[/etc/kea/kea-dhcp6.conf]', :delayed
 end
 
-dhcp_ddns_service_name = platform_family?('debian') ? 'isc-kea-dhcp-ddns-server' : 'kea-dhcp-ddns'
-
-isc_kea_service dhcp_ddns_service_name do
-  action %i(enable start)
-  subscribes :restart, 'template[/etc/kea/kea-dhcp-ddns.conf]', :delayed
-end
-
 isc_kea_service_stork 'isc-stork-agent' do
   action %i(enable)
   subscribes :restart, 'template[/etc/stork/agent.env]', :delayed
