@@ -7,7 +7,7 @@
       it { should be_running }
     end
   when 'debian'
-    service_name = srv.eql?('ctrl-agent') ? 'kea-ctrl-agent' : "isc-kea-#{srv}-server"
+    service_name = srv.eql?('ctrl-agent') ? 'isc-kea-ctrl-agent' : "isc-kea-#{srv}-server"
 
     describe service(service_name) do
       it { should be_installed }

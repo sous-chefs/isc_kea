@@ -75,7 +75,7 @@ module IscKea
           if version.between?(1.6, 2.2)
             %w(isc-kea isc-kea-devel isc-kea-hooks isc-kea-libs isc-kea-shell)
           else
-            %w(isc-kea isc-kea-admin isc-kea-common isc-kea-ctrl-agent isc-kea-devel isc-kea-dhcp-ddns isc-kea-dhcp4 isc-kea-dhcp6 isc-kea-doc isc-kea-hooks isc-kea-perfdhcp)
+            %w(isc-kea isc-kea-admin isc-kea-common isc-kea-devel isc-kea-dhcp-ddns isc-kea-dhcp4 isc-kea-dhcp6 isc-kea-doc isc-kea-hooks isc-kea-perfdhcp)
           end
         when 'debian'
           if version.between?(1.6, 2.2)

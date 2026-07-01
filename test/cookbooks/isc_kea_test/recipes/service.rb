@@ -38,7 +38,9 @@ isc_kea_service dhcp_ddns_service_name do
   subscribes :restart, 'template[/etc/kea/kea-dhcp-ddns.conf]', :delayed
 end
 
-isc_kea_service 'kea-ctrl-agent' do
+ctrl_agent_service_name = platform_family?('debian') ? 'isc-kea-ctrl-agent' : 'kea-ctrl-agent'
+
+isc_kea_service ctrl_agent_service_name do
   action %i(enable start)
   subscribes :restart, 'template[/etc/kea/kea-ctrl-agent.conf]', :delayed
 end
