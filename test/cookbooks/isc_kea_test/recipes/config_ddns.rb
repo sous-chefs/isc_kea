@@ -48,16 +48,30 @@ isc_kea_config_dhcp_ddns_reverse_ddns_domain '2.0.192.in-addr.arpa.' do
               })
 end
 
+file '/etc/kea/d2.md5.key' do
+  content 'LSWXnfkKZjdPJI5QxlpnfQ=='
+  owner 'root'
+  group 'root'
+  mode '0600'
+end
+
 isc_kea_config_dhcp_ddns_tsig_key 'd2.md5.key' do
   algorithm 'HMAC-MD5'
   digest_bits 0
-  secret 'LSWXnfkKZjdPJI5QxlpnfQ=='
+  secret_file '/etc/kea/d2.md5.key'
+end
+
+file '/etc/kea/d2.sha1.key' do
+  content 'ACHZvN+gvMCnREbN/bgNeAj2rmM='
+  owner 'root'
+  group 'root'
+  mode '0600'
 end
 
 isc_kea_config_dhcp_ddns_tsig_key 'd2.sha1.key' do
   algorithm 'HMAC-SHA1'
   digest_bits 0
-  secret 'ACHZvN+gvMCnREbN/bgNeAj2rmM='
+  secret_file '/etc/kea/d2.sha1.key'
 end
 
 isc_kea_config_dhcp_ddns_loggers 'kea-dhcp-ddns' do

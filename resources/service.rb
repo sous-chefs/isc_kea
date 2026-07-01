@@ -72,7 +72,7 @@ action_class do
             end
           end
 
-          only_if { ::File.exist?(new_resource.config_file) }
+          only_if { ::File.exist?(new_resource.config_file) && ::File.exist?(kea_config_test_binary(new_resource.service_name)) }
 
           action :nothing
           # delayed_action :run
