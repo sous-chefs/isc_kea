@@ -7,8 +7,9 @@
       it { should be_running }
     end
   when 'debian'
-    srv.concat('-server') unless srv.eql?('ctrl-agent')
-    describe service("isc-kea-#{srv}") do
+    service_name = srv.eql?('ctrl-agent') ? 'kea-ctrl-agent' : "isc-kea-#{srv}-server"
+
+    describe service(service_name) do
       it { should be_installed }
       it { should be_enabled }
       it { should be_running }

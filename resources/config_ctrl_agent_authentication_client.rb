@@ -37,3 +37,6 @@ property :user, String,
           name_property: true
 
 property :password, String
+
+property :password_file, String,
+          sensitive: true
