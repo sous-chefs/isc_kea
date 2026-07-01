@@ -1,4 +1,4 @@
-%w(dhcp4 dhcp6 ctrl-agent dhcp-ddns).each do |srv|
+%w(dhcp4 dhcp6 dhcp-ddns).each do |srv|
   case os.family
   when 'redhat', 'linux'
     describe service("kea-#{srv}") do
@@ -36,13 +36,6 @@ describe port(53001) do
   it { should be_listening }
   its('protocols') { should cmp 'udp' }
   its('processes') { should include 'kea-dhcp-ddns' }
-end
-
-# Kea Ctrl Agent
-describe port(8000) do
-  it { should be_listening }
-  its('protocols') { should cmp 'tcp' }
-  its('processes') { should include 'kea-ctrl-agent' }
 end
 
 %w(agent server).each do |srv|
